@@ -10,15 +10,15 @@ public class Picture {
 	private String description;
 	private boolean isPrivate;
 	
-	public Picture(int pictureId, int userId, String picUrl, String picServerName, String picName, String description, boolean isPrivate) {
-		this.pictureId = pictureId;
-		this.userId = userId;
-		this.picUrl = picUrl;
-		this.picServerName = picServerName;
-		this.picName = picName;
-		this.description = description;
-		this.isPrivate = isPrivate;
-	}
+//	public Picture(int pictureId, int userId, String picUrl, String picServerName, String picName, String description, boolean isPrivate) {
+//		this.pictureId = pictureId;
+//		this.userId = userId;
+//		this.picUrl = picUrl;
+//		this.picServerName = picServerName;
+//		this.picName = picName;
+//		this.description = description;
+//		this.isPrivate = isPrivate;
+//	}
 	
 	
 	public int getPictureId() {
