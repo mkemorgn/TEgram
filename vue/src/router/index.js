@@ -5,7 +5,6 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import Photos from '../views/Photos.vue'
 import Favorites from '../views/Favorites.vue'
 import Profile from '../views/Profile.vue'
 
@@ -55,15 +54,7 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    },
-    {
-      path: "/photos",
-      name: "photos",
-      component: Photos,
-      meta: {
-        requiresAuth: false
-      }
-    },
+    },  
     {
       path: "/favorites",
       name: "favorites",
