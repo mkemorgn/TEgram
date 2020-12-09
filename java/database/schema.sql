@@ -1,5 +1,7 @@
 BEGIN TRANSACTION;
 
+DROP TABLE IF EXISTS ratings;
+DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS favorite_picture;
 DROP TABLE IF EXISTS favorites;
 DROP TABLE IF EXISTS likes;
@@ -19,6 +21,8 @@ CREATE TABLE users (
 	username varchar(50) NOT NULL,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
+	activated boolean DEFAULT (true),
+	deleted boolean DEFAULT (false),
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
@@ -28,13 +32,16 @@ INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpUL
 CREATE TABLE pictures(
         picture_id serial PRIMARY KEY, 
         user_id integer,
-        pic_data varchar(350),
+        pic_url varchar(350),
         pic_name varchar(50),
+        pic_server_name varchar(50),
+        description varchar(50),
         private boolean DEFAULT (false),
         
         FOREIGN KEY (user_id) REFERENCES users(user_id) 
         
 );
+
 CREATE TABLE likes (
         like_id serial PRIMARY KEY,
         picture_id integer,
@@ -53,6 +60,7 @@ CREATE TABLE favorites(
         FOREIGN KEY (user_id) REFERENCES users(user_id)
         
 );
+
 CREATE TABLE favorite_picture(
         favorite_id integer,
         picture_id integer,
@@ -60,6 +68,26 @@ CREATE TABLE favorite_picture(
         FOREIGN KEY (favorite_id) REFERENCES favorites(favorite_id),
         FOREIGN KEY (picture_id) REFERENCES pictures(picture_id)
          
+
+);
+CREATE TABLE comments (
+        comment_id serial PRIMARY KEY,
+        picture_id integer,
+        user_id integer,
+        comment varchar(300),
+        
+        FOREIGN KEY (picture_id) REFERENCES pictures(picture_id),
+        FOREIGN KEY (user_id) REFERENCES users(user_id)
+
+);
+CREATE TABLE ratings (
+        rating_id serial PRIMARY KEY,
+        picture_id integer,
+        user_id integer,
+        rating integer,
+        
+        FOREIGN KEY (picture_id) REFERENCES pictures(picture_id),
+        FOREIGN KEY (user_id) REFERENCES users(user_id)
 
 );
 
