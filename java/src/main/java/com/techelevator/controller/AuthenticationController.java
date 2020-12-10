@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.techelevator.dao.RowMapper;
 import com.techelevator.dao.UserDAO;
 import com.techelevator.model.LoginDTO;
 import com.techelevator.model.RegisterUserDTO;
