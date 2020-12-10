@@ -9,7 +9,6 @@
 
 <script>
 import axios from 'axios'
-import store from '../store/index.js'
 export default {
     data() {
         return {
@@ -22,7 +21,7 @@ export default {
         },
         onUpload() {
             const fd = new FormData();
-            fd.append('file', store.currentUser, this.selectedFile, this.selectedFile.name)
+            fd.append('file', this.selectedFile, this.selectedFile.name)
             axios({
                 method: 'post',
                 url: 'http://localhost:8080/upload',
