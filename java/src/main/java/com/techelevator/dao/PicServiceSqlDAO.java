@@ -17,7 +17,6 @@ public class PicServiceSqlDAO implements PicServiceDAO{
 
 	}
 	
-
 	@Override
 	public Like addLike(int pictureId) {
 		// TODO Auto-generated method stub
