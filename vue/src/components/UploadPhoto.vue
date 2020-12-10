@@ -1,27 +1,19 @@
 <template>
-  <div>
-    <vue-dropzone
-      id="dropzone"
-      class="mt-3"
-      v-bind:options="dropzoneOptions"
-      v-on:vdropzone-sending="addFormData"
-      v-on:vdropzone-success="getSuccess"
-      :useCustomDropzoneOptions="true"
-    ></vue-dropzone>
+  <div class="upload">
+    <input type="file" @change="onFileSelected">
   </div>
 </template>
 
 <script>
-
+export default {
+    methods: {
+        onFileSelected(event) {
+            console.log(event)
+        }
+    }
+}
 </script>
 
 <style>
-.image-div {
-    display: flex;
-    margin: 25px;
-}
-.image {
-    max-width: 250px;
-    margin: 15px;
-}
+
 </style>
