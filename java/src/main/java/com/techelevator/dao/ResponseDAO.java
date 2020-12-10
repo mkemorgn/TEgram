@@ -6,7 +6,7 @@ import com.techelevator.model.Picture;
 
 public interface ResponseDAO {
 	List<Picture> userPic(int userId);
-	List<Picture> userFav(int userId);
+	List<Picture> userFav(int userId, int favoriteID);
 	List<Picture> home();
 	
 

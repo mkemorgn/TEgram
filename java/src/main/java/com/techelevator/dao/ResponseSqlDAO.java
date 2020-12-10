@@ -26,18 +26,18 @@ public class ResponseSqlDAO implements ResponseDAO {
 		List<Picture> pictures = new ArrayList<>();
         String sql = "SELECT * from pictures WHERE user_id = ?";
 
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
-        RowMapper.mapRowsetToPictureList(rowSet);
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql,userId);
+       pictures= RowMapper.mapRowsetToPictureList(rowSet);
 
         return pictures;
     }
 	@Override
-	public List<Picture> userFav(int userId) {
+	public List<Picture> userFav(int userId, int favoriteID) {
 		List<Picture> pictures = new ArrayList<>();
         String sql = "SELECT * from pictures p JOIN favorite_picture fp ON p.picture_id = fp.picture_id " +
-		             "JOIN favorites f ON fp.favorite_id = f.favorite_id WHERE user_id = ?";
-        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
-        RowMapper.mapRowsetToPictureList(rowSet);
+		             "JOIN favorites f ON fp.favorite_id = f.favorite_id WHERE p.user_id = ? AND f.favorite_id =?";
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql,userId, favoriteID);
+       pictures= RowMapper.mapRowsetToPictureList(rowSet);
         
         return pictures;
 	}
@@ -47,7 +47,7 @@ public class ResponseSqlDAO implements ResponseDAO {
 		List<Picture> pictures = new ArrayList<>();
         String sql = "SELECT * from pictures WHERE private = 'false'";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql);
-        RowMapper.mapRowsetToPictureList(rowSet);
+        pictures=RowMapper.mapRowsetToPictureList(rowSet);
         
         return pictures;
 	}

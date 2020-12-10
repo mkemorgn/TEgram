@@ -9,6 +9,7 @@ import com.techelevator.model.Picture;
 
 public class RowMapper {
 	
+
 	
 	public static Picture mapRowsetToPicture(SqlRowSet rowSet) {
 		Picture newPic = null;
