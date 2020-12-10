@@ -20,6 +20,9 @@ public class Picture {
 		this.isPrivate = isPrivate;
 	}
 	
+	public Picture () {
+		
+	}
 	
 	public int getPictureId() {
 		return pictureId;
