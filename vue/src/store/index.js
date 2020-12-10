@@ -47,4 +47,4 @@ export default new Vuex.Store({
       state.photos.unshift(data);
     }
   }
-})
+});
