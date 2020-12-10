@@ -39,4 +39,4 @@ export default new Vuex.Store({
       axios.defaults.headers.common = {};
     }
   }
-})
+});

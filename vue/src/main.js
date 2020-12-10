@@ -1,16 +1,16 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router/index'
-import store from './store/index'
-import axios from 'axios'
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router/index';
+import store from './store/index';
+import axios from 'axios';
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-Vue.use(BootstrapVue)
-Vue.use(IconsPlugin)
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 axios.defaults.baseURL = process.env.VUE_APP_REMOTE_API;
 
