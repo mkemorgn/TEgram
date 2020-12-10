@@ -3,6 +3,9 @@ package com.techelevator.dao;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 
 import org.springframework.dao.DataAccessException;
@@ -50,6 +53,8 @@ public class UploadSqlDAO implements UploadDAO {
 			throw new DataAccessResourceFailureException("Can not reach database " + e.getMessage());
 		}
 
+		cleanTemp();
+
 		return mapRowsetToPicture(readBack);
 	}
 
@@ -64,7 +69,7 @@ public class UploadSqlDAO implements UploadDAO {
 
 	private int picNextVal() {
 		SqlRowSet nextVal = jdbcTemplate.queryForRowSet("SELECT nextval('pictures_picture_id_seq')");
-		
+
 		if (nextVal.next()) {
 			return nextVal.getInt(1);
 		} else {
@@ -73,13 +78,24 @@ public class UploadSqlDAO implements UploadDAO {
 	}
 
 	private Picture mapRowsetToPicture(SqlRowSet rowSet) {
-		Picture newPic=null;
+		Picture newPic = null;
 		if (rowSet.next())
 			newPic = new Picture(rowSet.getInt("picture_id"), rowSet.getInt("user_id"), rowSet.getString("pic_url"),
 					rowSet.getString("pic_server_name"), rowSet.getString("pic_name"), rowSet.getString("description"),
 					rowSet.getBoolean("private"));
 
 		return newPic;
+
+	}
+
+	private void cleanTemp() {
+		Path tempToDeletePath = Paths.get("src/main/resources/temp.jpg");
+		try {
+			Files.deleteIfExists(tempToDeletePath);
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
 
 	}
 
