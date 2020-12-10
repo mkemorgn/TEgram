@@ -55,7 +55,7 @@ public class UploadSqlDAO implements UploadDAO {
 
 		cleanTemp();
 
-		return mapRowsetToPicture(readBack);
+		return RowMapper.mapRowsetToPicture(readBack);
 	}
 
 	// helpers
@@ -77,16 +77,6 @@ public class UploadSqlDAO implements UploadDAO {
 		}
 	}
 
-	private Picture mapRowsetToPicture(SqlRowSet rowSet) {
-		Picture newPic = null;
-		if (rowSet.next())
-			newPic = new Picture(rowSet.getInt("picture_id"), rowSet.getInt("user_id"), rowSet.getString("pic_url"),
-					rowSet.getString("pic_server_name"), rowSet.getString("pic_name"), rowSet.getString("description"),
-					rowSet.getBoolean("private"));
-
-		return newPic;
-
-	}
 
 	private void cleanTemp() {
 		Path tempToDeletePath = Paths.get("src/main/resources/temp.jpg");
