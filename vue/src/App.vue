@@ -6,7 +6,6 @@
       <router-link v-bind:to="{ name: 'favorites' }">Favorites</router-link>&nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       <router-link v-bind:to="{ name: 'login' }" v-else>Login</router-link>
-      
     </div>
     <router-view />
   </div>
