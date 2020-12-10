@@ -2,25 +2,33 @@
   <div class="background">
     <div class="home">
       <div class="header">
+        <!-- Logo -->
         <router-link v-bind:to="{ name: 'home' }">
           <img id="logo" src="../assets/TeGram-logo.png" alt="TE-Gram Logo" />
         </router-link>
+        <!-- End Logo -->
+
+        <!-- Navbar icons -->
         <nav>
           <ul>
             <li>
-               <a href="#" v-on:click="(e) => changeView(e, {name: 'home'})">
-                <img class="benZona" src="../assets/home.png" alt="home link" width="35" height="35" />
-               </a>
+                <router-link v-bind:to="{name: 'home'}">
+                  <img class="topImage" src="../assets/home.png" alt="home-link" width="35" height="35" />
+                </router-link>
             </li>
             <li>
-              <!-- component to be linked to -->
-               <a href="#" v-on:click="(e) => changeView(e, {name: 'favorites'})">
-                <img class="benZona" src="../assets/heart.png" alt="favorite photos link" width="35" height="35" />
-              </a>
+              <router-link v-bind:to="{name: 'favorites'}">
+                <img class="topImage" src="../assets/heart.png" alt="favorite photos link" width="35" height="35" />
+              </router-link>
             </li>
             <li>
-              <a href="#" v-on:click="(e) => changeView(e, {name: 'user-profile'})">
-                <img class="benZona" src="../assets/account.png" alt="user profile" width="35" height="35" />
+              <router-link v-bind:to="{name: 'profile'}">
+                <img class="topImage" src="../assets/account.png" alt="user profile" width="35" height="35" />
+              </router-link>
+            </li>
+            <li>
+              <a href="#" v-on:click="(e) => changeView(e, {name: 'upload-photo'})">
+                <img class="topImage" src="../assets/upload-img.png" alt="upload-photo" width="35" height="35"/>
               </a>
             </li>
             <li>
@@ -29,36 +37,7 @@
             </li>
           </ul>
         </nav>
-      </div>
-
-      <div>
-        <transition name="modal">
-          <div v-if="isOpen">
-            <div class="overlay" @click.self="isOpen = false;">
-              <div class="modal">
-                <h1 id="upload-photo">Upload Photo</h1>
-                <upload-photo v-on:image-upload="saveUrl" />
-                <br />
-                <textarea
-                  name="description"
-                  id="description"
-                  placeholder="Description"
-                  cols="60"
-                  rows="5"
-                  v-model="picDesc"
-                ></textarea>
-                <button
-                class="upload-photo-btn"
-                  v-bind:disabled="(this.imgUrl.length == 0)"
-                  @click="savePhotoTo"
-                >Upload Photo</button>
-              </div>
-            </div>
-          </div>
-        </transition>
-        <button class="uploadBtn" @click="isOpen=!isOpen">
-          <img src="../assets/upload-img.png" alt />
-        </button>
+        <!-- End nav -->
       </div>
     </div>
   </div>
@@ -71,17 +50,6 @@
 <style>
 .backgound {
   background-color: #f4f4f4;
-  /*background-image: initial;
-    background-position-x: initial;
-    background-position-y: initial;
-    background-size: initial;
-    background-repeat-x: initial;
-    background-repeat-y: initial;
-    background-attachment: initial;
-    background-origin: initial;
-    background-clip: initial;
-    background-color: transparent;
-    background-color: #000000E6;*/
 }
 .home {
   display: grid;
@@ -221,10 +189,8 @@ footer {
   margin-top: 100px;
 }
 .selected {
-  
   padding: 5px;
   box-shadow: 0 1px 3px 2px;
   border-radius: 25%;
 }
-
 </style>
