@@ -27,12 +27,12 @@ public class UploadController {
 
 	@RequestMapping(value = "/upload", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 
-	public Picture upload(@RequestParam("file") MultipartFile file, @RequestParam(value = "userID") int userID,
-			@RequestParam(value = "picName", defaultValue = "no_name") String picName,
-			@RequestParam(value = "desc", defaultValue = "no_desc") String desc,
+	public Picture upload(@RequestParam("file") MultipartFile file, 
+			@RequestParam(value = "userID") int userID,
+			@RequestParam(value = "desc", defaultValue = "") String desc,
 			@RequestParam(value = "isPrivate", required = false) boolean isPrivate) {
 	
-		return uploadDAO.upload(file, userID, picName, desc, isPrivate);
+		return uploadDAO.upload(file, userID, desc, isPrivate);
 	}
 
 }
