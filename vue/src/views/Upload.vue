@@ -21,11 +21,11 @@ export default {
         },
         onUpload() {
             const fd = new FormData();
-            fd.append('image', this.selectedFile, this.selectedFile.name)
-             axios.post('http://127.0.0.1:8080/upload', fd)
+            fd.append('file', this.selectedFile, this.selectedFile.name)
+            axios.post('http://127.0.0.1:8080/upload', fd)
                 .then(res => {
                     console.log(res)
-                })
+            })
         }
     }
 }
