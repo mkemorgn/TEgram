@@ -20,10 +20,12 @@ import com.techelevator.model.Picture;
 @Component
 public class UploadSqlDAO implements UploadDAO {
 	private JdbcTemplate jdbcTemplate;
+	
 
 	public UploadSqlDAO(JdbcTemplate jdbcTemplate) {
 
 		this.jdbcTemplate = jdbcTemplate;
+		
 	}
 
 	@Override
