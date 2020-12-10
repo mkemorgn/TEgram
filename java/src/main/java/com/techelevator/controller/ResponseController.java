@@ -26,9 +26,9 @@ public class ResponseController {
 		return responseDAO.userPic(userId);
 	}
 	
-	@RequestMapping(value = "/photos/{userId}/favorites", method = RequestMethod.GET)
-	public List<Picture> favorites(@PathVariable int userId) {
-		return responseDAO.userFav(userId);
+	@RequestMapping(value = "/photos/{userId}/{favoriteID}", method = RequestMethod.GET)
+	public List<Picture> favorites(@PathVariable int userId, @PathVariable int favoriteID) {
+		return responseDAO.userFav(userId,favoriteID);
 	}
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
