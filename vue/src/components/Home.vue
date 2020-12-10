@@ -27,9 +27,9 @@
               </router-link>
             </li>
             <li>
-              <a href="#" v-on:click="(e) => changeView(e, {name: 'upload-photo'})">
+              <router-link v-bind:to="{name: 'upload' }">
                 <img class="topImage" src="../assets/upload-img.png" alt="upload-photo" width="35" height="35"/>
-              </a>
+              </router-link>
             </li>
             <li>
               <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">

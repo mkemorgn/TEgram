@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Favorites from '../views/Favorites.vue'
 import Profile from '../views/Profile.vue'
+import Upload from '../views/Upload.vue'
 
 Vue.use(Router)
 
@@ -70,7 +71,15 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }  
+    },
+    {
+      path: "/upload",
+      name: "upload",
+      component: Upload,
+      meta: {
+        requiresAuth: false
+      }
+    } 
   ]
 })
 
