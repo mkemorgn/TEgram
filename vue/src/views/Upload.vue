@@ -9,6 +9,7 @@
 
 <script>
 import axios from 'axios'
+import store from '../store/index.js'
 export default {
     data() {
         return {
@@ -21,11 +22,20 @@ export default {
         },
         onUpload() {
             const fd = new FormData();
-            fd.append('file', this.selectedFile, this.selectedFile.name)
-            axios.post('http://127.0.0.1:8080/upload', fd)
-                .then(res => {
-                    console.log(res)
+            fd.append('file', store.currentUser, this.selectedFile, this.selectedFile.name)
+            axios({
+                method: 'post',
+                url: 'http://localhost:8080/upload',
+                data: fd,
+                headers: {'Content-Type': 'multipart/form-data' }
             })
+            .then(res => {
+                //handle success
+                console.log(res);
+            })
+            .catch(res => {
+                console.log(res);
+            });
         }
     }
 }
