@@ -12,6 +12,3 @@
   </div>
 </template>
 
-<style>
-
-</style>
