@@ -72,9 +72,6 @@ export default {
 .main #login {
   grid-area: main-login;
 }
-.card {
-  
-}
 .card-container {
   grid-area: main-cards;
   
