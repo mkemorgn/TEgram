@@ -47,10 +47,13 @@ public class UploadSqlDAO implements UploadDAO {
 
 		String sql = "INSERT INTO pictures (picture_id, user_id, pic_url, pic_name, pic_server_name, description, private) "
 				+ "VALUES (?,?,?,?,?,?,?)";
+		
 		SqlRowSet readBack;
+		String readBackSql = "SELECT picture_id, p.user_id, u.username, pic_url, pic_name, pic_server_name, description, private FROM pictures p "
+        		+ "JOIN users u ON u.user_id=p.user_id WHERE p.picture_id = ?";
 		try {
 			jdbcTemplate.update(sql, pictureID, userID, picUrl, picName, serverName, desc, isPrivate);
-			readBack = jdbcTemplate.queryForRowSet("SELECT * FROM pictures WHERE picture_id=?", pictureID);
+			readBack = jdbcTemplate.queryForRowSet(readBackSql, pictureID);
 		} catch (DataAccessException e) {
 			throw new DataAccessResourceFailureException("Can not reach database " + e.getMessage());
 		}

@@ -6,6 +6,7 @@ public class Picture {
 	
 	private int pictureId;
 	private int userId;
+	private String userName;
 	private String picUrl;
 	private String picServerName;
 	private String picName;
@@ -15,23 +16,41 @@ public class Picture {
 	private List<Likes> likes;
 	private List<Ratings> ratings;
 	
-	public Picture(int pictureId, int userId, String picUrl, String picServerName, String picName, String description, boolean isPrivate) {
+	
+	
+
+	public Picture(int pictureId, int userId, String userName, String picUrl, String picServerName, String picName,
+			String description, boolean isPrivate) {
+		
 		this.pictureId = pictureId;
 		this.userId = userId;
+		this.userName = userName;
 		this.picUrl = picUrl;
 		this.picServerName = picServerName;
 		this.picName = picName;
 		this.description = description;
 		this.isPrivate = isPrivate;
-		this.comments=null;
-		this.likes=null;
-		this.ratings=null;
+		this.comments = null;
+		this.likes = null;
+		this.ratings = null;
 	}
+
+
 	public Picture () {
 		
 	}
 	
 	
+	public String getUserName() {
+		return userName;
+	}
+
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+
 	public List<Ratings> getRatings() {
 		return ratings;
 	}
