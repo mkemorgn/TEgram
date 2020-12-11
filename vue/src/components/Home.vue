@@ -33,19 +33,17 @@
             </li>
             <li>
               <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">
+                <img class="topImage" src="../assets/logout.png" alt="logout-photo" width="35" height="35"/>
               </router-link>
             </li>
           </ul>
         </nav>
-        <!-- End nav -->
+        <!-- End nav -->       
       </div>
     </div>
   </div>
 </template>
 
-<script>
-
-</script>
 
 <style>
 .backgound {
@@ -112,26 +110,12 @@ footer {
   grid-area: footer;
   margin-bottom: 20px;
 }
-.modal {
-  width: 500px;
-  margin: 0px auto;
-  padding: 20px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px 3px;
-  transition: all 0.2s ease-in;
-  font-family: Arial, Helvetica, sans-serif;
-}
 .fadeIn-enter {
   opacity: 0;
 }
 .fadeIn-leave-active {
   opacity: 0;
   transition: all 0.2s step-end;
-}
-.fadeIn-enter .modal,
-.fadeIn-leave-active .modal {
-  transform: scale(1.1);
 }
 .uploadBtn {
   height: 87px;
@@ -183,10 +167,6 @@ footer {
   margin-bottom: -4px;
   padding-top: 2px;
   box-shadow: none;
-}
-.feed {
-  grid-area: main;
-  margin-top: 100px;
 }
 .selected {
   padding: 5px;

@@ -43,7 +43,7 @@ export default new Vuex.Store({
     SET_PHOTOS(state, data) {
       state.photos = data;
     },
-    ADD_photo(state, data) {
+    ADD_PHOTO(state, data) {
       state.photos.unshift(data);
     }
   }
