@@ -43,26 +43,6 @@
   </div>
 </template>
 
-<script>
-import PhotoFeed from "./PhotoFeed";
-export default {
-  name: "home",
-  components: {
-    PhotoFeed,
-  },
-  data: function () {
-    return {
-      isOpen: false,
-      imgUrl: "",
-      picDesc: "",
-    };
-  },
-  methods: {
-    
-  }
-
-}
-</script>
 
 <style>
 .backgound {
