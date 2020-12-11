@@ -11,8 +11,9 @@ public class Picture {
 	private String picName;
 	private String description;
 	private boolean isPrivate;
-	private List<Comment> comments;
-	private List<Like> likes;
+	private List<Comments> comments;
+	private List<Likes> likes;
+	private List<Ratings> ratings;
 	
 	public Picture(int pictureId, int userId, String picUrl, String picServerName, String picName, String description, boolean isPrivate) {
 		this.pictureId = pictureId;
@@ -24,25 +25,32 @@ public class Picture {
 		this.isPrivate = isPrivate;
 		this.comments=null;
 		this.likes=null;
+		this.ratings=null;
 	}
 	public Picture () {
 		
 	}
 	
 	
-	public List<Comment> getComments() {
+	public List<Ratings> getRatings() {
+		return ratings;
+	}
+	public void setRatings(List<Ratings> ratings) {
+		this.ratings = ratings;
+	}
+	public List<Comments> getComments() {
 		return comments;
 	}
 
-	public void setComments(List<Comment> comments) {
+	public void setComments(List<Comments> comments) {
 		this.comments = comments;
 	}
 
-	public List<Like> getLikes() {
+	public List<Likes> getLikes() {
 		return likes;
 	}
 
-	public void setLikes(List<Like> likes) {
+	public void setLikes(List<Likes> likes) {
 		this.likes = likes;
 	}
 

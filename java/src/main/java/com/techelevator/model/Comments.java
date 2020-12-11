@@ -1,29 +1,29 @@
 package com.techelevator.model;
 
-public class Comment {
+public class Comments {
 	
 	private int commentId;
 	private int pictureId;
 	private int userId;
 	private String comment;
-	private String userName;
+	private String byUser;
 	
 
 
-	public Comment(int commentId, int pictureId, int userId, String comment, String userName) {
+	public Comments(int commentId, int pictureId, int userId, String comment, String userName) {
 
 		this.commentId = commentId;
 		this.pictureId = pictureId;
 		this.userId = userId;
 		this.comment = comment;
-		this.userName = userName;
+		this.byUser = userName;
 	}
 
 	public String getUserName() {
-		return userName;
+		return byUser;
 	}
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.byUser = userName;
 	}
 	public int getCommentId() {
 		return commentId;

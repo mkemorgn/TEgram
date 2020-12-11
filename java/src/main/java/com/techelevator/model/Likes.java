@@ -1,24 +1,24 @@
 package com.techelevator.model;
 
-public class Like {
+public class Likes {
 	
 	private int pictureId;
 	private int likeId;
 	private int userId;
-	private String userName;
+	private String byUser;
 	
-	public Like(int pictureId, int likeId, int userId, String userName) {
+	public Likes(int pictureId, int likeId, int userId, String userName) {
 	
 		this.pictureId = pictureId;
 		this.likeId = likeId;
 		this.userId = userId;
-		this.userName = userName;
+		this.byUser = userName;
 	}
 	public String getUserName() {
-		return userName;
+		return byUser;
 	}
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.byUser = userName;
 	}
 	public int getPictureId() {
 		return pictureId;

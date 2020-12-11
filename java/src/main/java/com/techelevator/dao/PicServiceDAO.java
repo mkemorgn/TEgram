@@ -1,18 +1,18 @@
 package com.techelevator.dao;
 
-import javax.xml.stream.events.Comment;
 
-import org.springframework.data.relational.core.sql.Like;
 
-import com.techelevator.model.Rating;
+import com.techelevator.model.Comments;
+import com.techelevator.model.Likes;
+import com.techelevator.model.Ratings;
 
 public interface PicServiceDAO {
 	
-	Like addLike (int pictureId);
-	void removeLike (int pictureId);
-	Comment addComment (int pictureId);
-	void removeComment (int pictureId);
-	Rating addRating (int pictureId);
-	Rating changeRating (int pictureId);
+	Likes addLike (int pictureId, int userId);
+	void removeLike (int likeId);
+	Comments addComment (int pictureId, int userId, String comment);
+	void removeComment (int commentId);
+	Ratings addRating (int pictureId, int userId, int rating);
+	Ratings changeRating (int ratingId, int rating);
 
 }
