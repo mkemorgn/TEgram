@@ -1,6 +1,6 @@
 <template>
   <div id="upload">
-    <p>Upload photos here.</p>
+    <h1>Upload Photos</h1>
     <div>
       <input type="file" @change="onFileSelected" />
     </div>
@@ -14,7 +14,7 @@
         type="text"
         name="desc"
         v-model="description"
-        placeholder="description"
+        placeholder="Add description"
       />
     </div>
     <div>
@@ -100,7 +100,10 @@ export default {
 }
 #preview img {
   max-width: 100%;
-
   border-radius: 5px;
+}
+#description {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 </style>

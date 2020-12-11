@@ -1,6 +1,5 @@
 <template>
-  <div class="upload">
-    <h1>Upload Photos</h1>
+  <div>
     <upload-photo />
   </div>
 </template>
