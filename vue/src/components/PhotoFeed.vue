@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div class="card" v-for="photo in this.$store.state.photos" v-bind:key="photo.photo_id">
+    <div class="card" v-for="photo in this.$store.state.photos" v-bind:key="photo.pictureId">
       <img v-bind:src="photo.picUrl" v-bind:alt="photo.description" />
       <div class="container">
         <h4>
           <b class="description">{{ photo.description }}</b>
         </h4>
         <div class="details">
-          <p class="username">Posted By: {{ photo.userId }}</p>
-          <p class="date-posted">Date: {{ photo.date_added }}</p>
+          <p class="username">Posted By: {{ photo.userName }}</p>
+          <p class="comment">Comment: {{ photo.comments }}</p>  
         </div>
       </div>
     </div>
@@ -78,10 +78,6 @@ export default {
 }
 #login form h1 {
   font: 25px;
-  text-align: center;
-}
-footer {
-  grid-area: footer;
   text-align: center;
 }
 .card {
