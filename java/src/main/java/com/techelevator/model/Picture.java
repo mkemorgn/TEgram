@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.util.List;
+
 public class Picture {
 	
 	private int pictureId;
@@ -9,6 +11,8 @@ public class Picture {
 	private String picName;
 	private String description;
 	private boolean isPrivate;
+	private List<Comment> comments;
+	private List<Like> likes;
 	
 	public Picture(int pictureId, int userId, String picUrl, String picServerName, String picName, String description, boolean isPrivate) {
 		this.pictureId = pictureId;
@@ -18,12 +22,31 @@ public class Picture {
 		this.picName = picName;
 		this.description = description;
 		this.isPrivate = isPrivate;
+		this.comments=null;
+		this.likes=null;
 	}
-	
 	public Picture () {
 		
 	}
 	
+	
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public List<Like> getLikes() {
+		return likes;
+	}
+
+	public void setLikes(List<Like> likes) {
+		this.likes = likes;
+	}
+
+
 	public int getPictureId() {
 		return pictureId;
 	}

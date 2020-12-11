@@ -1,7 +1,9 @@
 package com.techelevator.controller;
 
+import java.security.Principal;
 import java.util.List;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,32 +11,38 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.dao.ResponseDAO;
+import com.techelevator.dao.UserDAO;
 import com.techelevator.model.Picture;
 
 @RestController
 @CrossOrigin
 public class ResponseController {
-	
+
 	private ResponseDAO responseDAO;
-	
-	public ResponseController (ResponseDAO responseDAO) {
+	private UserDAO userDAO;
+
+	public ResponseController(ResponseDAO responseDAO, UserDAO userDAO) {
 		this.responseDAO = responseDAO;
+		this.userDAO = userDAO;
 	}
-	
-	@RequestMapping(value = "/photos/{userId}", method = RequestMethod.GET)
-	public List<Picture> userpictures(@PathVariable int userId) {
-		return responseDAO.userPic(userId);
+
+	@PreAuthorize("isAuthenticated()")
+	@RequestMapping(value = "/photos", method = RequestMethod.GET)
+	public List<Picture> userpictures(Principal principal) {
+		int userID = userDAO.findIdByUsername(principal.getName());
+		return responseDAO.userPic(userID);
 	}
-	
-	@RequestMapping(value = "/photos/{userId}/{favoriteID}", method = RequestMethod.GET)
-	public List<Picture> favorites(@PathVariable int userId, @PathVariable int favoriteID) {
-		return responseDAO.userFav(userId,favoriteID);
+
+	@PreAuthorize("isAuthenticated()")
+	@RequestMapping(value = "/photos/{favoriteID}", method = RequestMethod.GET)
+	public List<Picture> favorites(@PathVariable int favoriteID, Principal principal) {
+		int userID = userDAO.findIdByUsername(principal.getName());
+		return responseDAO.userFav(userID, favoriteID);
 	}
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public List<Picture> home() {
 		return responseDAO.home();
 	}
-	
 
 }

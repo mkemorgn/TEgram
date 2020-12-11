@@ -6,15 +6,25 @@ public class Comment {
 	private int pictureId;
 	private int userId;
 	private String comment;
+	private String userName;
 	
-	public Comment(int commentId, int pictureId, int userId, String comment) {
+
+
+	public Comment(int commentId, int pictureId, int userId, String comment, String userName) {
+
 		this.commentId = commentId;
 		this.pictureId = pictureId;
 		this.userId = userId;
 		this.comment = comment;
+		this.userName = userName;
 	}
-	
 
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 	public int getCommentId() {
 		return commentId;
 	}
