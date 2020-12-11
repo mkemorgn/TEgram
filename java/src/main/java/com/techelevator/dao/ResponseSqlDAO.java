@@ -30,7 +30,7 @@ public class ResponseSqlDAO implements ResponseDAO {
 	@Override
 	public List<Picture> userPic(int userId) {
 		List<Picture> pictures = new ArrayList<>();
-        String sql = "SELECT picture_id, p.user_id, u.username, pic_url, pic_name, pic_server_name, description, private FROM pictures p"
+        String sql = "SELECT picture_id, p.user_id, u.username, pic_url, pic_name, pic_server_name, description, private FROM pictures p "
         		+ "JOIN users u ON u.user_id=p.user_id WHERE p.user_id = ?";
         SqlRowSet rowSet;
 		try {
