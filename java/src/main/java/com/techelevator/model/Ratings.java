@@ -1,20 +1,28 @@
 package com.techelevator.model;
 
-public class Rating {
+public class Ratings {
 	
 	private int ratingId;
 	private int pictureId;
 	private int userId;
-	private double rating;
+	private int rating;
+	private String byUser;
 	
-	public Rating(int ratingId, int pictureId, int userId, double rating) {
+
+	public Ratings(int ratingId, int pictureId, int userId, int rating, String byUser) {
+
 		this.ratingId = ratingId;
 		this.pictureId = pictureId;
 		this.userId = userId;
 		this.rating = rating;
+		this.byUser = byUser;
 	}
-	
-	
+	public String getByUser() {
+		return byUser;
+	}
+	public void setByUser(String byUser) {
+		this.byUser = byUser;
+	}
 	public int getRatingId() {
 		return ratingId;
 	}
@@ -33,10 +41,10 @@ public class Rating {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public double getRating() {
+	public int getRating() {
 		return rating;
 	}
-	public void setRating(double rating) {
+	public void setRating(int rating) {
 		this.rating = rating;
 	}
 
