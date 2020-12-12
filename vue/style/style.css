@@ -28,6 +28,10 @@ body {
       justify-content: space-between;
   }
 
+  .nav-links a{
+      color: #2CB2EA;
+  }
+
   #app {
       color:#2CB2EA;
   }
