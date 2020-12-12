@@ -39,6 +39,7 @@
           </ul>
         </nav>
         <!-- End nav --> 
+        <photo-feed class="feed" />
       </div>
     </div>
   </div>
