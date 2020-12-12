@@ -30,7 +30,7 @@ public class ResponseController {
 
 	@PreAuthorize("isAuthenticated()")
 	@RequestMapping(value = "/photos", method = RequestMethod.GET)
-	public List<Picture> userpictures(Principal principal) {
+	public List<Picture> userPictures(Principal principal) {
 		int userID = userDAO.findIdByUsername(principal.getName());
 		return responseDAO.userPic(userID);
 	}
@@ -48,7 +48,7 @@ public class ResponseController {
 	}
 	
 	@PreAuthorize("isAuthenticated()")
-	@RequestMapping(value = "/favlist", method = RequestMethod.GET)
+	@RequestMapping(value = "/favList", method = RequestMethod.GET)
 	public List<Favorites> getFavoriteList(Principal principal) {
 		int userID = userDAO.findIdByUsername(principal.getName());
 		return responseDAO.getFavoriteList(userID);
