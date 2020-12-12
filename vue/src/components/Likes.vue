@@ -23,8 +23,15 @@ export default {
       }, 0);
       return sum;
     },
-  },
-};
+    removeLike() {
+      let sum = this.likes.reduce((currentSum, like) => {
+        return currentSum - like;
+      }, 0);
+      return sum;
+    },
+    }
+  };
+
 </script>
 
 <style>
