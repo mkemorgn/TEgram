@@ -8,7 +8,7 @@
         </h4>
         <div class="details">
           <p class="username">Posted By: {{ photo.userName }}</p>
-          <p class="comment">Comment: {{ photo.comments }}</p>  
+          <p class="comment" v-for="comment in photo.comments" v-bind:key="comment">Comment: {{ comment.comment }}</p>  
         </div>
       </div>
     </div>
