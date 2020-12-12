@@ -58,8 +58,6 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
-=======
 .main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -81,7 +79,6 @@ export default {
   font: 25px;
   text-align: center;
 }
->>>>>>> 53b229f75d6097c4f01df7d4855930d17b7edef0
 .card {
   margin: auto;
 }
