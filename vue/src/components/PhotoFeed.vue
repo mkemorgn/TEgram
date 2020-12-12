@@ -1,15 +1,21 @@
 <template>
-  <div>
-    <div class="card" v-for="photo in this.$store.state.photos" v-bind:key="photo.pictureId">
-      <img v-bind:src="photo.picUrl" v-bind:alt="photo.description" />
-      <div class="container">
-        <h4>
-          <b class="description">{{ photo.description }}</b>
-        </h4>
-        <div class="details">
-          <p class="username">Posted By: {{ photo.userName }}</p>
-          <p class="comment">Comment: {{ photo.comments }}</p>  
-        </div>
+  <div class="d-flex flex-wrap">
+    <div
+      class="card"
+      style="max-width: 400px"
+      v-for="photo in this.$store.state.photos"
+      v-bind:key="photo.pictureId"
+    >
+      <img
+        class="card-img-top"
+        style="max-width: 380px"
+        v-bind:src="photo.picUrl"
+        v-bind:alt="photo.picName"
+      />
+      <div class="card-body">
+        <h4 class="card-title">{{ photo.description }}</h4>
+        <p class="card-text">Posted By: {{ photo.userName }}</p>
+        <!-- <p class="card-text">Comment: {{ photo.comments }}</p> -->
       </div>
     </div>
   </div>
@@ -20,9 +26,7 @@ import PhotoService from "@/services/PhotoService";
 export default {
   name: "photo-feed",
   data() {
-    return {
-
-    };
+    return {};
   },
   created() {
     this.retrievePhotos();
@@ -57,3 +61,31 @@ export default {
 };
 </script>
 
+<<<<<<< HEAD
+=======
+<style>
+/* .main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    ".    .       .          ."
+    ". main-cards main-login ."
+    ". footer     footer     .";
+  grid-gap: 12px;
+  margin-top: 50px;
+}
+.main #login {
+  grid-area: main-login;
+}
+.card-container {
+  grid-area: main-cards;
+}
+#login form h1 {
+  font: 25px;
+  text-align: center;
+}
+.card {
+  margin: auto;
+} */
+</style>
+>>>>>>> f5f7e07a48cdc6394be0d9960864dfbdacfa876a

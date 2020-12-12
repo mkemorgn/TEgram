@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-
     <div id="nav">
       <a class="logo-link" href="http://localhost:8081/">
       <img src="./assets/TE_Mark_Website2020_v3-01.png" id="logo" alt="Logo">
@@ -14,11 +13,11 @@
         <router-link v-bind:to="{ name: 'login' }" v-else>Login</router-link>
       </div>
     </div>
-    
+
     <router-view />
   </div>
 </template>
 
 <style>
-  @import '../style/style.css';
+@import "../style/style.css";
 </style>
