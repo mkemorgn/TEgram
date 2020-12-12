@@ -18,7 +18,7 @@ import com.techelevator.model.Picture;
 
 @RestController
 @CrossOrigin
-class ResponseController {
+public class ResponseController {
 
 	private ResponseDAO responseDAO;
 	private UserDAO userDAO;

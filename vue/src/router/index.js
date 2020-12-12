@@ -56,7 +56,7 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    },  
+    },
     {
       path: "/favorites",
       name: "favorites",
