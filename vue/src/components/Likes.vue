@@ -1,14 +1,15 @@
 <template>
-  <div id="likes">
-    <div @change="addLike">
+  <div id="like">
+    <button @click="addLike" />
       Add Like
       <img src="../assets/thumbsUp.png" />
-    </div>
   </div>
 </template>
 
 <script>
+
 export default {
+  name: "likes",
   data() {
     return {
       likeId: null,
