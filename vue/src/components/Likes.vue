@@ -3,7 +3,8 @@
     <div @change="addLike">
       Add Like
     <img src= "../assets/thumbsUp.png" />
-    
+    </div>
+   </div>   
 </template>
 
 <script>
@@ -26,8 +27,6 @@ export default {
         }
 
     }
-
-}
 </script>
 
 <style>

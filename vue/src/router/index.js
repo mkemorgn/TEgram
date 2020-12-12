@@ -87,9 +87,9 @@ const router = new Router({
       component: Likes,
       meta: {
         requiresAuth: true
-    }
-
-  ]
+      }
+    },
+  ],
 })
 
 router.beforeEach((to, from, next) => {
