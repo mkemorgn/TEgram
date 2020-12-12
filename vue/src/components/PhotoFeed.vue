@@ -57,3 +57,8 @@ export default {
 };
 </script>
 
+<style>
+.card {
+  margin: auto;
+}
+</style>
