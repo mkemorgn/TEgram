@@ -1,14 +1,14 @@
 <template>
   <div>
-    <div class="card" v-for="photo in this.$store.state.photos" v-bind:key="photo.photo_id">
+    <div class="card" v-for="photo in this.$store.state.photos" v-bind:key="photo.pictureId">
       <img v-bind:src="photo.picUrl" v-bind:alt="photo.description" />
       <div class="container">
         <h4>
           <b class="description">{{ photo.description }}</b>
         </h4>
         <div class="details">
-          <p class="username">Posted By: {{ photo.userId }}</p>
-          <p class="date-posted">Date: {{ photo.date_added }}</p>
+          <p class="username">Posted By: {{ photo.userName }}</p>
+          <p class="comment">Comment: {{ photo.comments }}</p>  
         </div>
       </div>
     </div>
@@ -58,6 +58,30 @@ export default {
 </script>
 
 <style>
+<<<<<<< HEAD
+=======
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    ".    .       .          ."
+    ". main-cards main-login ."
+    ". footer     footer     .";
+  grid-gap: 12px;
+  margin-top: 50px;
+}
+.main #login {
+  grid-area: main-login;
+}
+.card-container {
+  grid-area: main-cards;
+  
+}
+#login form h1 {
+  font: 25px;
+  text-align: center;
+}
+>>>>>>> 53b229f75d6097c4f01df7d4855930d17b7edef0
 .card {
   margin: auto;
 }

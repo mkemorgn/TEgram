@@ -8,6 +8,7 @@ import store from '../store/index'
 import Favorites from '../views/Favorites.vue'
 import Profile from '../views/Profile.vue'
 import Upload from '../views/Upload.vue'
+import Likes from '../views/Likes.vue'
 
 Vue.use(Router)
 
@@ -55,7 +56,7 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    },  
+    },
     {
       path: "/favorites",
       name: "favorites",
@@ -79,8 +80,16 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    } 
-  ]
+    },
+    {
+      path: "/likes",
+      name: "likes",
+      component: Likes,
+      meta: {
+        requiresAuth: true
+      }
+    },
+  ],
 })
 
 router.beforeEach((to, from, next) => {
