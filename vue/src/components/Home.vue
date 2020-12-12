@@ -156,11 +156,6 @@
   </p>
 
         <!-- Navbar icons -->
-<<<<<<< HEAD
-
-        <!-- End nav --> 
-        <photo-feed class="feed" />      
-=======
         <nav>
           <ul>
             <li>
@@ -192,7 +187,6 @@
         </nav>
         <!-- End nav --> 
         <photo-feed class="feed" />
->>>>>>> 53b229f75d6097c4f01df7d4855930d17b7edef0
       </div>
     </div>
   </div>
