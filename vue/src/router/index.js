@@ -56,7 +56,7 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    },  
+    },
     {
       path: "/favorites",
       name: "favorites",
@@ -87,6 +87,7 @@ const router = new Router({
       component: Likes,
       meta: {
         requiresAuth: true
+      }
     }
 
   ]
