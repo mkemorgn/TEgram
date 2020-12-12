@@ -57,7 +57,6 @@ export default {
 };
 </script>
 
-
 <style>
 .main {
   display: grid;
@@ -81,51 +80,6 @@ export default {
   text-align: center;
 }
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  border-radius: 5px;
-  height: 400px;
-  width: 500px;
-  margin-bottom: 50px;
-  background-color: white;
-}
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-}
-.card img {
-  border-radius: 5px 5px 0 0;
   margin: auto;
-  height: 75%;
-  width: 100%;
-}
-.date-posted {
-  color: rgba(0, 0, 0, 0.4);
-  font-size: 11px;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-.username {
-  color: rgba(0, 0, 0, 0.9);
-  font-size: 14px;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-.details {
-  background-color: rgba(0, 120, 163, 0.1);
-  padding: 2px 16px;
-  margin-top: -4px;
-}
-.description {
-  padding: 2px 16px;
-  font-size: 21px;
-}
-.details {
-  background-color: white;
-}
-.username {
-  font-size: 18px;
-}
-.date-posted {
-  font-size: 18px;
 }
 </style>
