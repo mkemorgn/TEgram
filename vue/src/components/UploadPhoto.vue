@@ -1,8 +1,8 @@
 <template>
-  <div id="upload">
+  <div class="form-group" id="upload">
     <h1>Upload Photos</h1>
     <div>
-      <input type="file" @change="onFileSelected" />
+      <input class="form-control-file" type="file" @change="onFileSelected" />
     </div>
     <div id="preview" v-if="url">
       <img :src="url" />
@@ -17,29 +17,35 @@
         placeholder="Add description"
       />
     </div>
-    <div>
-      <input
-        id="public"
-        type="radio"
-        name="isPrivate"
-        value="false"
-        checked
-        v-model="isPrivate"
-      />
-      <label for="public">Public</label>
+    <div class="form-check">
+      <label class="form-check-label" for="public">
+        <input
+          class="form-check-input"
+          id="public"
+          type="radio"
+          name="isPrivate"
+          value="false"
+          checked
+          v-model="isPrivate"
+        />Public</label
+      >
     </div>
-    <div>
-      <input
-        id="private"
-        type="radio"
-        name="isPrivate"
-        value="true"
-        v-model="isPrivate"
-      />
-      <label for="private">Private</label>
+    <div class="form-check">
+      <label class="form-check-label" for="private"
+        ><input
+          class="form-check-input"
+          id="private"
+          type="radio"
+          name="isPrivate"
+          value="true"
+          v-model="isPrivate"
+        />Private</label
+      >
     </div>
-    <button @click="onUpload">Upload</button>&nbsp; &nbsp;
-    <button @click="cancelUpload">Cancel</button>
+    <div class="btn-group">
+      <button class="btn btn-success" @click="onUpload">Upload</button>
+      <button class="btn btn-success" @click="cancelUpload">Cancel</button>
+    </div>
   </div>
 </template>
 
@@ -87,7 +93,7 @@ export default {
 };
 </script>
 <style >
-#upload {
+/* #upload {
   margin: 10px;
 }
 
@@ -105,5 +111,5 @@ export default {
 #description {
   margin-top: 5px;
   margin-bottom: 5px;
-}
+} */
 </style>
