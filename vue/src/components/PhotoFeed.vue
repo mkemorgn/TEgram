@@ -57,3 +57,29 @@ export default {
 };
 </script>
 
+<style>
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-areas:
+    ".    .       .          ."
+    ". main-cards main-login ."
+    ". footer     footer     .";
+  grid-gap: 12px;
+  margin-top: 50px;
+}
+.main #login {
+  grid-area: main-login;
+}
+.card-container {
+  grid-area: main-cards;
+  
+}
+#login form h1 {
+  font: 25px;
+  text-align: center;
+}
+.card {
+  margin: auto;
+}
+</style>
