@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <template>
   <div class="background">
     <div class="home">
@@ -43,5 +44,15 @@
     </div>
   </div>
 </template>
+=======
+<template><photo-feed /></template>
+
+<script>
+import PhotoFeed from "./PhotoFeed.vue";
+export default {
+  components: { PhotoFeed },
+};
+</script>
+>>>>>>> f5f7e07a48cdc6394be0d9960864dfbdacfa876a
 
 
