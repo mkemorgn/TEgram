@@ -9,8 +9,8 @@ body {
   #logo {
       top: 40px;
       /* float: left; */
-      padding-right: 1250px;
       padding-top: 15px;
+      padding-left: 20px;
   }
 
   #nav {
@@ -19,10 +19,13 @@ body {
       position: sticky;
       top: 0px;
       color:#2CB2EA;
-      /* margin-bottom: 50px; */
       padding-bottom: 30px;
       padding-right: 10px;
-      border-bottom: 1px solid #2CB2EA;;   
+      border-bottom: 1px solid #2CB2EA;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
   }
 
   #app {
