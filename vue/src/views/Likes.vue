@@ -1,6 +1,5 @@
 <template>
   <div class="likes">
-    <home />
     <likes />
     
   </div>
