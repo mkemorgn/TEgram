@@ -85,25 +85,3 @@ export default {
     },
   },
 };
-</script>
-<style >
-#upload {
-  margin: 10px;
-}
-
-#preview {
-  margin-top: 10px;
-  padding: 15px;
-  background-color: rgba(44, 142, 233, 0.486);
-  border-radius: 5px;
-  max-width: 300px;
-}
-#preview img {
-  max-width: 100%;
-  border-radius: 5px;
-}
-#description {
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-</style>
