@@ -15,9 +15,10 @@ import com.techelevator.dao.UserDAO;
 import com.techelevator.model.Favorites;
 import com.techelevator.model.Picture;
 
+
 @RestController
 @CrossOrigin
-public class ResponseController {
+class ResponseController {
 
 	private ResponseDAO responseDAO;
 	private UserDAO userDAO;
