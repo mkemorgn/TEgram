@@ -15,11 +15,11 @@
       Total Likes <font-awesome-icon icon="thumbs-up" />
       {{ likeCount(this.likes) }}
     </p>
-    <ul class="list-group">
+    <!-- <ul class="list-group">
       <li class="list-group-item" v-for="like in likes" v-bind:key="like">
         {{ like.byUser }}
       </li>
-    </ul>
+    </ul> -->
   </div>
 </template>
 
