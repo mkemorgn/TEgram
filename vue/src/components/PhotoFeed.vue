@@ -15,9 +15,7 @@
       <div class="card-body">
         <h4 class="card-title">{{ photo.description }}</h4>
         <p class="card-text">Posted By: {{ photo.userName }}</p>
-        <span class="badge badge-pill badge-primary"
-          >Likes {{ likeCount(photo) }}</span
-        >
+        <like-list :likes="photo.likes" />
 
         <p
           class="card-text"
@@ -33,7 +31,9 @@
 
 <script>
 import PhotoService from "@/services/PhotoService";
+import LikeList from "./LikeList.vue";
 export default {
+  components: { LikeList },
   name: "photo-feed",
   props: ["photos"],
   data() {
@@ -68,48 +68,19 @@ export default {
           }
         });
     },
-    likeCount(photo) {
-      if (photo.likes) {
-        return photo.likes.length;
-      } else {
-        return 0;
-      }
-    },
   },
 };
 </script>
 
 <style>
+/* do not revome this styles */
 #feedbox {
   margin: 10px;
   max-width: 400px;
 }
 #image {
-  min-height: 300px;
-  max-height: 350px;
-  width: auto;
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
 }
-/* .main {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-areas:
-    ".    .       .          ."
-    ". main-cards main-login ."
-    ". footer     footer     .";
-  grid-gap: 12px;
-  margin-top: 50px;
-}
-.main #login {
-  grid-area: main-login;
-}
-.card-container {
-  grid-area: main-cards;
-}
-#login form h1 {
-  font: 25px;
-  text-align: center;
-}
-.card {
-  margin: auto;
-} */
 </style>
