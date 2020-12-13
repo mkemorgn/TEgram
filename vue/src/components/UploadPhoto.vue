@@ -10,39 +10,18 @@
       </div>
 
       <div>
-        <input
-          class="form-control-plaintext"
-          type="text"
-          name="desc"
-          v-model="description"
-          placeholder="Add description"
-        />
+        <input class="form-control-plaintext" type="text" name="desc" v-model="description" placeholder="Add description"/>
       </div>
       <div>
         <div class="form-check-inline">
           <label class="form-check-label" for="public">
-            <input
-              class="form-check-input"
-              id="public"
-              type="radio"
-              name="isPrivate"
-              value="false"
-              checked
-              v-model="isPrivate"
-            />Public</label
-          >
+            <input class="form-check-input" id="public" type="radio" name="isPrivate" value="false" checked v-model="isPrivate"/>Public
+          </label>
         </div>
         <div class="form-check-inline">
-          <label class="form-check-label" for="private"
-            ><input
-              class="form-check-input"
-              id="private"
-              type="radio"
-              name="isPrivate"
-              value="true"
-              v-model="isPrivate"
-            />Private</label
-          >
+          <label class="form-check-label" for="private">
+            <input class="form-check-input" id="private" type="radio" name="isPrivate" value="true" v-model="isPrivate"/>Private
+          </label>
         </div>
       </div>
 
