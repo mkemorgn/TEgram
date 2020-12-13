@@ -16,6 +16,7 @@
         <h4 class="card-title">{{ photo.description }}</h4>
         <p class="card-text">Posted By: {{ photo.userName }}</p>
         <like-list :likes="photo.likes" />
+        <rating v-for="r in photo.rating" v-bind:key="r" v-bind:rating="rating" />
         <comment  v-for="comment in photo.comments" v-bind:key="comment" v-bind:comment="comment"/>
         <CommentManager/>
       </div>
