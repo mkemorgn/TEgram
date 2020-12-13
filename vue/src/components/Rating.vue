@@ -24,7 +24,7 @@
 <script>
 export default {
   name: 'rating',
-  props: ["rating"],
+  props: ["r"],
   data() {
     return {
       rated: false,

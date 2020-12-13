@@ -16,6 +16,7 @@
         <h4 class="card-title">{{ photo.description }}</h4>
         <p class="card-text">Posted By: {{ photo.userName }}</p>
         <like-list :likes="photo.likes" />
+        <rating v-for="r in photo.rating" v-bind:key="r" v-bind:rating="rating" />
         <comment  v-for="comment in photo.comments" v-bind:key="comment" v-bind:comment="comment"/>
         <CommentManager/>
       </div>
@@ -28,11 +29,14 @@ import PhotoService from "@/services/PhotoService";
 import LikeList from "./LikeList.vue";
 import Comment from "./Comment.vue";
 import CommentManager from "./CommentManager";
+import Rating from "./Rating.vue";
+
 export default {
   components: { 
     LikeList,
     Comment,
-    CommentManager },
+    CommentManager,
+    Rating },
   name: "photo-feed",
   props: [
     "photos",
