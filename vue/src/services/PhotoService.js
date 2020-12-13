@@ -8,6 +8,9 @@ export default {
     uploadPhoto(formData) {
         return axios.post('/upload', formData);
     },
+    submitComment(formData) {
+        return axios.post('/comment', formData);
+    },
     getUserPhotos() {
         return axios.get('/photos');
     },
