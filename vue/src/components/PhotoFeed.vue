@@ -15,6 +15,7 @@
       <div class="card-body">
         <h4 class="card-title">{{ photo.description }}</h4>
         <p class="card-text">Posted By: {{ photo.userName }}</p>
+        <comment-manager />
         <p class="card-text" v-for="comment in photo.comments" v-bind:key="comment">Comment: {{ comment.comment }}</p>
       </div>
     </div>
