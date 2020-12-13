@@ -73,8 +73,6 @@ export default {
 };
 </script>
 
-<<<<<<< HEAD
-=======
 <style>
 /* do not revome this styles */
 .comments {
@@ -89,16 +87,4 @@ export default {
   width: 100%;
   object-fit: cover;
 }
-<<<<<<< HEAD
-#login form h1 {
-  font: 25px;
-  text-align: center;
-}
-.card {
-  margin: auto;
-} */
 </style>
->>>>>>> f5f7e07a48cdc6394be0d9960864dfbdacfa876a
-=======
-</style>
->>>>>>> 863e7caba969072ce3213b560137d23b892e429b
