@@ -1,11 +1,18 @@
 <template>
-  <photo-feed v-bind:photos="this.$store.state.photos" />
+<div>
+    <photo-feed v-bind:photos="this.$store.state.photos"/>
+    <comment/>
+</div>  
 </template>
 
 <script>
 import PhotoFeed from "./PhotoFeed.vue";
+import Comment from "./Comment";
 export default {
-  components: { PhotoFeed },
+  components: { 
+    PhotoFeed,
+    Comment
+  },
 };
 </script>
 
