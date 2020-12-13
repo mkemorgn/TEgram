@@ -29,7 +29,7 @@ import PhotoService from "@/services/PhotoService";
 import LikeList from "./LikeList.vue";
 import Comment from "./Comment.vue";
 import CommentManager from "./CommentManager";
-import Rating from "./Rating";
+import Rating from "./Rating.vue";
 
 export default {
   components: { 
