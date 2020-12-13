@@ -9,8 +9,6 @@
             </b-thead>
         </b-table-simple>
     </div>
-    <br />
-    
 </div>
 </template>
 
