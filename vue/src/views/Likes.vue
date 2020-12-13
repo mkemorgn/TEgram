@@ -1,14 +1,8 @@
 <template>
-  <div class="likes">
-    <likes />
-    
-  </div>
+  <div class="likes"></div>
 </template>
 <script>
-import Likes from "../components/Likes";
 export default {
-  components: {
-    Likes
-  }
+  components: {},
 };
 </script>
