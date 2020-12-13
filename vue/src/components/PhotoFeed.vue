@@ -17,13 +17,29 @@
         <p class="card-text">Posted By: {{ photo.userName }}</p>
         <like-list :likes="photo.likes" />
 
-        <p
-          class="card-text"
-          v-for="comment in photo.comments"
-          v-bind:key="comment"
-        >
-          Comment: {{ comment.comment }}
-        </p>
+        <div class="comments">
+          <div
+            class="card-text"
+            id=":commentbox"
+            v-for="comment in photo.comments"
+            v-bind:key="comment"
+          >
+            <b-table-simple responsive outlined>
+              <b-thead>
+                <b-tr>
+                  <b-th>{{ comment.byUser }}: {{ comment.comment }}</b-th>
+                </b-tr>
+              </b-thead>
+            </b-table-simple>
+          </div>
+          <br />
+          <b-input
+            type="text"
+            id="commentbox"
+            placeholder="add comment..."
+          ></b-input>
+          <b-button>Submit</b-button>
+        </div>
       </div>
     </div>
   </div>
@@ -73,8 +89,13 @@ export default {
 </script>
 
 <style>
+<<<<<<< HEAD
 /* do not revome this styles */
-#feedbox {
+=======
+.comments {
+  margin-top: 10px;
+}
+>>>>>>>b4a42fc2e67f1c995eaf300893fb9b842320e8cf #feedbox {
   margin: 10px;
   max-width: 400px;
 }
