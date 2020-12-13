@@ -20,7 +20,11 @@
         <h5 class="card-title">{{ photo.description }}</h5>
         <p class="card-text">Posted By: {{ photo.userName }}</p>
         <like-manager />
-
+        <rating
+          v-for="r in photo.rating"
+          v-bind:key="r"
+          v-bind:rating="rating"
+        />
         <CommentManager />
       </div>
     </div>
@@ -33,13 +37,17 @@ import LikeList from "./LikeList.vue";
 import Comment from "./Comment.vue";
 import CommentManager from "./CommentManager";
 import LikeManager from "./LikeManager.vue";
+import Rating from "./Rating.vue";
+
 export default {
   components: {
     LikeList,
     Comment,
     CommentManager,
     LikeManager,
+    Rating,
   },
+
   name: "photo-feed",
   props: ["photos"],
   data() {
