@@ -1,4 +1,6 @@
-<template><photo-feed /></template>
+<template>
+  <photo-feed v-bind:photos="this.$store.state.photos" />
+</template>
 
 <script>
 import PhotoFeed from "./PhotoFeed.vue";
