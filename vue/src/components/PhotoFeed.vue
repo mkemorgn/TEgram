@@ -13,7 +13,7 @@
         v-bind:alt="photo.picName"
       />
       <div class="card-body">
-        <h4 class="card-title">{{ photo.description }}</h4>
+        <h5 class="card-title">{{ photo.description }}</h5>
         <p class="card-text">Posted By: {{ photo.userName }}</p>
         <like-list :likes="photo.likes" />
 
@@ -89,19 +89,21 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
 /* do not revome this styles */
-=======
 .comments {
   margin-top: 10px;
 }
->>>>>>>b4a42fc2e67f1c995eaf300893fb9b842320e8cf #feedbox {
+#feedbox {
   margin: 10px;
   max-width: 400px;
+  box-shadow: 2px 2px 6px #2cb1eab9;
 }
 #image {
   height: 300px;
   width: 100%;
   object-fit: cover;
+}
+.card-text {
+  font-size: 8pt;
 }
 </style>
