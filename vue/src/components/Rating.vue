@@ -7,6 +7,9 @@
     >
       Add Rating <font-awesome-icon icon="rating" />
     </button>
+    <button v-else type="button" class="btn btn-primary btn-sm">
+      Change Rating <font-awesome-icon icon="rating" />
+    </button>
   </div>    
 </template>
 

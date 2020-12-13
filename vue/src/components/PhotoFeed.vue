@@ -96,10 +96,12 @@ export default {
 #feedbox {
   margin: 10px;
   max-width: 400px;
+  box-shadow: 2px 2px 6px #2cb1eab9;
 }
 #image {
   height: 300px;
   width: 100%;
   object-fit: cover;
 }
+
 </style>
