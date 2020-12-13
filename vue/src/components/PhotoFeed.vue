@@ -19,7 +19,13 @@
           >Likes {{ likeCount(photo) }}</span
         >
 
-        <!-- <p class="card-text">Comment: {{ photo.comments }}</p> -->
+        <p
+          class="card-text"
+          v-for="comment in photo.comments"
+          v-bind:key="comment"
+        >
+          Comment: {{ comment.comment }}
+        </p>
       </div>
     </div>
   </div>
