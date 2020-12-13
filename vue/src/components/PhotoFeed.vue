@@ -16,30 +16,8 @@
         <h4 class="card-title">{{ photo.description }}</h4>
         <p class="card-text">Posted By: {{ photo.userName }}</p>
         <like-list :likes="photo.likes" />
-
-        <div class="comments">
-          <div
-            class="card-text"
-            id=":commentbox"
-            v-for="comment in photo.comments"
-            v-bind:key="comment"
-          >
-            <b-table-simple responsive outlined>
-              <b-thead>
-                <b-tr>
-                  <b-th>{{ comment.byUser }}: {{ comment.comment }}</b-th>
-                </b-tr>
-              </b-thead>
-            </b-table-simple>
-          </div>
-          <br />
-          <b-input
-            type="text"
-            id="commentbox"
-            placeholder="add comment..."
-          ></b-input>
-          <b-button>Submit</b-button>
-        </div>
+        <comment  v-for="comment in photo.comments" v-bind:key="comment" v-bind:comment="comment"/>
+        <CommentManager/>
       </div>
     </div>
   </div>
@@ -48,10 +26,17 @@
 <script>
 import PhotoService from "@/services/PhotoService";
 import LikeList from "./LikeList.vue";
+import Comment from "./Comment.vue";
+import CommentManager from "./CommentManager";
 export default {
-  components: { LikeList },
+  components: { 
+    LikeList,
+    Comment,
+    CommentManager },
   name: "photo-feed",
-  props: ["photos"],
+  props: [
+    "photos",
+  ],
   data() {
     return {};
   },
