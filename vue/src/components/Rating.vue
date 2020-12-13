@@ -1,6 +1,12 @@
 <template>
   <div class="rating">
-      <button @click="addToFavorites" \>
+      <button
+      v-if="rated"
+      type="button"
+      @click="addRating"
+    >
+      Add Rating <font-awesome-icon icon="rating" />
+    </button>
   </div>    
 </template>
 
