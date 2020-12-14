@@ -13,7 +13,7 @@
         class="card"
         id="feedbox"
         v-for="photo in photos"
-        v-bind:key="photo.pictureId"
+        v-bind:key="photo.pictureId"        
       >
         <img
           class="card-img-top"
@@ -21,6 +21,7 @@
           v-bind:src="photo.picUrl"
           v-bind:alt="photo.picName"
         />
+        
         <div class="pic-info">
           <rate-lists v-bind:ratings="photo.ratings" /> &nbsp; &nbsp;
           <like-list v-bind:likes="photo.likes" /> &nbsp; &nbsp;
@@ -30,8 +31,7 @@
           <h5 class="card-title">{{ photo.description }}</h5>
           <p class="card-text">Posted By: {{ photo.userName }}</p>
           <like-manager />
-
-          <CommentManager />
+          <comment-manager v-bind:pictureId="photo.pictureId" />
         </div>
       </div>
     </div>
