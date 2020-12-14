@@ -49,6 +49,7 @@ import LikeList from "./LikeList.vue";
 import Comment from "./Comment.vue";
 import CommentManager from "./CommentManager";
 import LikeManager from "./LikeManager.vue";
+import RatingManager from "./RatingManager.vue"
 import RateLists from "./RateLists.vue";
 
 export default {
@@ -61,6 +62,7 @@ export default {
     CommentManager,
     LikeManager,
     RateLists,
+    RatingManager
   },
   // data() {
   //   return {
