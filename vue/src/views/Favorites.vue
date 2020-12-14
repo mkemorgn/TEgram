@@ -1,14 +1,15 @@
 <template>
   <div class="favorites">
-    <h1>Favorite List</h1>
-    <p>Favorite list here.
-    </p>
-
+    <home />
   </div>
 </template>
 
 <script>
+import Favorites from "../components/Favorites";
+
 export default {
-  name: "favorites"
+  components: {
+    Favorites,
+  },
 };
 </script>
