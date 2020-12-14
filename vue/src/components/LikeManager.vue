@@ -16,14 +16,23 @@
 
 <script>
 export default {
-  props: ["picture"],
+  props: ["likes"],
   data() {
     return {
-      liked: true,
+      liked: false,
+      currenUserId: this.$store.state.loggedUserId,
     };
+  },
+  created() {
+    this.isLiked(this.likes);
   },
 
   methods: {
+    isLiked(lks) {
+      if (lks) {
+        this.liked = lks.includes((l) => l.userId == currenUserId);
+      }
+    },
     addLike() {},
   },
 };

@@ -29,7 +29,7 @@
         <div class="card-body" id="idcard-body">
           <h5 class="card-title">{{ photo.description }}</h5>
           <p class="card-text">Posted By: {{ photo.userName }}</p>
-          <like-manager />
+          <like-manager v-bind:likes="photo.likes" />
 
           <CommentManager />
         </div>
