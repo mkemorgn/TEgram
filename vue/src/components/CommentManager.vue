@@ -1,37 +1,50 @@
 <template>
     <div class="addcomment">
         <div>
-            <b-form-input @submit.prevent="submit" type ="text" v-model="text" placeholder="add comment..."></b-form-input>
-        </div>
-        <div>
-            <b-button type="submit" @click="submit">Submit</b-button>
-        </div>
+            <form v-on:submit.prevent>
+                <input class="form-control" id="newComment" type ="text" name="newComment" placeholder="add comment..."/>
+                <b-button type="submit" class="btn" value="submit" v-on:click="submit">Submit</b-button>
+            </form>
+        </div>    
     </div>
 </template>
 
 <script>
 import photoService from "@/services/PhotoService";
-import axios from 'axios';
+import PhotoFeed from "./PhotoFeed";
 export default {
+    components: {
+        PhotoFeed,
+    },
+    data() {
+        return {
+            pictureId: null,
+            comment: null,
+        };
+    },
     methods: {
         submit() {
-            axios({
-                method: 'post',
-                url: '/comment',
-                data: {
-                    "pictureId": ,
-                    "comment": "" 
+             if (this.$store.state.token === '') {
+                this.$modal.show('alert');
+            } else {
+                let comment = {
+                    photoId: PhotoFeed.photo.photoId,
+                    comment: this.newComment,
                 }
+        if (comment.contents !== '') {
+          photoService.addComment(comment)
+            .then(res => {
+              if (res.status === 200) {
+                this.comments.push(comment)
+                this.newComment = '';
+              }
             })
-        .then((res) => {
-          if (res.status === 201) {
-            this.$router.push("/");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+            .catch(err => {
+                console.log(err);
+            })
         }
+    }
+    }
     }
 }
 </script>

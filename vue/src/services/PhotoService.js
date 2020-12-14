@@ -8,8 +8,11 @@ export default {
     uploadPhoto(formData) {
         return axios.post('/upload', formData);
     },
-    submitComment() {
-        return axios.post('/comment');
+    submitComment(comment) {
+        return axios.post('/comment', {
+            photoId: comment.photoId,
+            comment: comment.comment
+        });
     },
     getUserPhotos() {
         return axios.get('/photos');
