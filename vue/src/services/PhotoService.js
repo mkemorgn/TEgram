@@ -10,10 +10,10 @@ export default {
     },
     submitComment(comment) {
         return axios.post('/comment', comment, {
-            headers: { 
+            headers: {
                 'Content-Type': 'application/json',
             }
-    });
+        });
     },
     rating(formData) {
         return axios.post('/rating', formData);
@@ -27,4 +27,13 @@ export default {
     getPhotos() {
         return axios.get('/');
     },
+    addLike(pictureId) {
+        return axios.post(`/like/${pictureId}`)
+
+    },
+    removeLike(pictureId) {
+        return axios.post(`/rlike/${pictureId}`)
+
+    },
+
 }
