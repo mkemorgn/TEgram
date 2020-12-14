@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="max-width: 700px">
+  <div class="card" style="">
     <div v-if="!uploading" class="form-group">
       <h1>Upload Photos</h1>
       <div>
@@ -10,17 +10,38 @@
       </div>
 
       <div>
-        <input class="form-control-plaintext" type="text" name="desc" v-model="description" placeholder="Add description"/>
+        <input
+          class="form-control-plaintext"
+          type="text"
+          name="desc"
+          v-model="description"
+          placeholder="Add description"
+        />
       </div>
       <div>
         <div class="form-check-inline">
           <label class="form-check-label" for="public">
-            <input class="form-check-input" id="public" type="radio" name="isPrivate" value="false" checked v-model="isPrivate"/>Public
+            <input
+              class="form-check-input"
+              id="public"
+              type="radio"
+              name="isPrivate"
+              value="false"
+              checked
+              v-model="isPrivate"
+            />Public
           </label>
         </div>
         <div class="form-check-inline">
           <label class="form-check-label" for="private">
-            <input class="form-check-input" id="private" type="radio" name="isPrivate" value="true" v-model="isPrivate"/>Private
+            <input
+              class="form-check-input"
+              id="private"
+              type="radio"
+              name="isPrivate"
+              value="true"
+              v-model="isPrivate"
+            />Private
           </label>
         </div>
       </div>
@@ -86,13 +107,20 @@ export default {
 /* do not revome this styles */
 #preview {
   margin-top: 10px;
-  padding: 15px;
+  padding: 5px;
   background-color: #2cb1eaa7;
-  border-radius: 5px;
+  border-radius: 3px;
   max-width: 300px;
+  box-shadow: 2px 2px 6px #041820b9;
 }
 #preview img {
   max-width: 100%;
-  border-radius: 5px;
+  border-radius: 3px;
+}
+.card {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 2px 2px 6px #2cb1eab9;
 }
 </style>

@@ -1,31 +1,38 @@
 <template>
-  <div class="d-flex flex-wrap">
-    <div
-      class="card"
-      id="feedbox"
-      v-for="photo in photos"
-      v-bind:key="photo.pictureId"
-    >
-      <img
-        class="card-img-top"
-        id="image"
-        v-bind:src="photo.picUrl"
-        v-bind:alt="photo.picName"
-      />
-      <dir class="pic-info">
-        <like-list :likes="photo.likes" /> &nbsp; &nbsp;
-        <comment v-bind:comments="photo.comments" />
-      </dir>
-      <div class="card-body" id="idcard-body">
-        <h5 class="card-title">{{ photo.description }}</h5>
-        <p class="card-text">Posted By: {{ photo.userName }}</p>
-        <like-manager />
-        <rating
-          v-for="r in photo.rating"
-          v-bind:key="r"
-          v-bind:rating="rating"
+  <div>
+    <div v-if="!pageLoaded" id="loading">
+      <p>
+        <span class="spinner-grow text-primary"></span> &nbsp;
+        <span class="spinner-grow text-success"></span>&nbsp;
+        <span class="spinner-grow text-secondary"></span>&nbsp;
+        <span>Loading...</span>
+      </p>
+    </div>
+    <div v-else class="d-flex flex-wrap justify-content-center">
+      <div
+        class="card"
+        id="feedbox"
+        v-for="photo in photos"
+        v-bind:key="photo.pictureId"
+      >
+        <img
+          class="card-img-top"
+          id="image"
+          v-bind:src="photo.picUrl"
+          v-bind:alt="photo.picName"
         />
-        <comment-manager v-bind:pictureId="photo.pictureId" />
+        <div class="pic-info">
+          <rate-lists v-bind:ratings="photo.ratings" /> &nbsp; &nbsp;
+          <like-list v-bind:likes="photo.likes" /> &nbsp; &nbsp;
+          <comment v-bind:comments="photo.comments" />
+        </div>
+        <div class="card-body" id="idcard-body">
+          <h5 class="card-title">{{ photo.description }}</h5>
+          <p class="card-text">Posted By: {{ photo.userName }}</p>
+          <like-manager />
+
+          <CommentManager />
+        </div>
       </div>
     </div>
   </div>
@@ -37,42 +44,33 @@ import LikeList from "./LikeList.vue";
 import Comment from "./Comment.vue";
 import CommentManager from "./CommentManager";
 import LikeManager from "./LikeManager.vue";
-import Rating from "./Rating.vue";
+import RateLists from "./RateLists.vue";
 
 export default {
+  name: "photo-feed",
+  props: ["photos"],
+
   components: {
     LikeList,
     Comment,
     CommentManager,
     LikeManager,
-    Rating,
+    RateLists,
   },
-
-  name: "photo-feed",
-  props: ["photos"],
   data() {
     return {
-      componentKey: 0,
+      pageLoaded: false,
     };
   },
   created() {
     this.retrievePhotos();
   },
   methods: {
-    forceRerender() {
-      this.componentKey += 1;
-    },
-    toggleLike(id) {
-      if (this.isFavoritePhoto(id)) {
-        this.removeFromFavorites(id);
-      } else {
-        this.addToFavorites(id);
-      }
-    },
     retrievePhotos() {
       PhotoService.getPhotos()
         .then((response) => {
           this.$store.commit("SET_PHOTOS", response.data);
+          this.pageLoaded = true;
         })
         .catch((error) => {
           if (error.response) {
@@ -93,13 +91,12 @@ export default {
 
 <style>
 /* do not revome this styles */
-.comments {
-  margin-top: 10px;
-}
+
 #feedbox {
   margin: 10px;
   max-width: 400px;
   box-shadow: 2px 2px 6px #2cb1eab9;
+  padding: 0px;
 }
 #image {
   height: 300px;
@@ -116,5 +113,10 @@ export default {
 }
 #idcard-body > * {
   margin-bottom: 5px;
+}
+#loading {
+  margin-top: auto;
+  margin-bottom: auto;
+  text-align: center;
 }
 </style>
