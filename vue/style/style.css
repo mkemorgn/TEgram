@@ -50,7 +50,12 @@ body {
   .logo-link{
       font-size: 200%;
       font-family: "Montserrat";
+      color:#2CB2EA;
   }
+  .logo-link:hover{
+    text-decoration: none;
+    color:#2CB2EA;
+}
 
   /* hr.solid {
     border-top: 1px solid#2CB2EA;
