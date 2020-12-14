@@ -80,7 +80,7 @@ INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 7, 5, 5);
 INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 7, 1, 5);
 INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 5, 4, 4);
 INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 5, 5, 3);
-INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 5, 3, 4);
+INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 5, 5, 4);
 INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 5, 1, 2);
 INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 8, 1, 5);
 INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 8, 3, 2);
