@@ -21,6 +21,7 @@
           v-bind:src="photo.picUrl"
           v-bind:alt="photo.picName"
         />
+
         <div class="pic-info">
           <rate-lists v-bind:ratings="photo.ratings" /> &nbsp; &nbsp;
           <like-list v-bind:likes="photo.likes" /> &nbsp; &nbsp;
@@ -29,9 +30,11 @@
         <div class="card-body" id="idcard-body">
           <h5 class="card-title">{{ photo.description }}</h5>
           <p class="card-text">Posted By: {{ photo.userName }}</p>
-          <like-manager v-bind:likes="photo.likes" />
-
-          <CommentManager />
+          <like-manager
+            v-bind:likes="photo.likes"
+            v-bind:pictureId="photo.pictureId"
+          />
+          <comment-manager v-bind:pictureId="photo.pictureId" />
         </div>
       </div>
     </div>

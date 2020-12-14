@@ -9,7 +9,7 @@ import com.techelevator.model.Ratings;
 public interface PicServiceDAO {
 	
 	Likes addLike (int pictureId, int userId);
-	void removeLike (int likeId);
+	void removeLike (int pictureId, int userId);
 	Comments addComment (int pictureId, int userId, String comment);
 	void removeComment (int commentId);
 	Ratings addRating (int pictureId, int userId, int rating);

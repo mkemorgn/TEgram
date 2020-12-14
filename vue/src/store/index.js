@@ -22,7 +22,7 @@ export default new Vuex.Store({
     user: currentUser || {},
     photos: [],
     favoritePhotos: [],
-    loggedUserId: null
+    comments: [],
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -32,7 +32,6 @@ export default new Vuex.Store({
     },
     SET_USER(state, user) {
       state.user = user;
-      state.loggedUserId = user.id;
       localStorage.setItem('user', JSON.stringify(user));
     },
     LOGOUT(state) {
@@ -40,7 +39,6 @@ export default new Vuex.Store({
       localStorage.removeItem('user');
       state.token = '';
       state.user = {};
-      state.loggedUserId = null;
       axios.defaults.headers.common = {};
     },
     SET_PHOTOS(state, data) {
