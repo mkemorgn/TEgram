@@ -35,6 +35,9 @@
             v-bind:pictureId="photo.pictureId"
           />
           <comment-manager v-bind:pictureId="photo.pictureId" />
+          <rating-manager
+            v-bind:ratings="photo.ratings" 
+            v-bind:pictureId="photo.pictureId" />
         </div>
       </div>
     </div>
