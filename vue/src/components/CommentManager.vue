@@ -11,7 +11,6 @@
 
 <script>
 import photoService from "@/services/PhotoService";
-import PhotoFeed from './PhotoFeed';
 export default {
     props: ["pictureId"],
     components: {       
@@ -19,10 +18,10 @@ export default {
     data() {
         return {
             comment: '',
-                   
+                  
         };
     },
-    methods: {        
+    methods: {       
         submit() {
             console.log(this.pictureId)
             console.log(this.comments)
@@ -32,9 +31,8 @@ export default {
             };
             photoService.submitComment(theComment)
             .then(response => {
-                PhotoFeed.forceRerender()//method to re render page after comment is posted
                 if (response.status == 201) {
-                    this.$router.push("/");
+                    this.$store.commit('ADD_COMMENT', theComment)
                 }
             })
             .catch((err) => {
