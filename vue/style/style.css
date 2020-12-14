@@ -1,10 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
 body {
-    background-color: white;
+    /* background-color: #f9f9f9; */
     font-family: "Montserrat";
     color:#2CB2EA;
   }
+
+  head {
+      /* background-color: #f9f9f9; */
+  }
+
+#app {
+    /* background-color: #f9f9f9; */
+}
 
   #logo {
       top: 40px;
@@ -14,13 +22,14 @@ body {
   }
 
   #nav {
-      background-color: white;
+      background-color: #f9f9f9;
       text-align: right; 
       position: sticky;
       top: 0px;
       color:#2CB2EA;
-      padding-bottom: 30px;
-      padding-right: 10px;
+      padding-bottom: 20px;
+      padding-right: 130px;
+      margin-bottom: 30px;
       border-bottom: 1px solid #2CB2EA;
       z-index: 2;
       display: flex;
@@ -29,6 +38,7 @@ body {
   }
 
   .nav-links a{
+      align-items: center;
       color: #2CB2EA;
   }
 
@@ -48,8 +58,20 @@ body {
       margin:auto;
   }
 
-  /* hr.solid {
-    border-top: 1px solid#2CB2EA;
-    position:sticky;
-    top:30px;
-  } */
+  @media screen and (max-width: 425px) {
+    #nav {
+        background-color: white;
+        text-align: right; 
+        position: sticky;
+        top: 0px;
+        color:#2CB2EA;
+        padding-bottom: 20px;
+        padding-right: 10px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #2CB2EA;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
