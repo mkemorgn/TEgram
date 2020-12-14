@@ -21,7 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     photos: [],
-    favoritePhotos: []
+    favoritePhotos: [],
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -45,6 +45,10 @@ export default new Vuex.Store({
     },
     ADD_PHOTO(state, data) {
       state.photos.unshift(data);
+    },
+    ADD_COMMENT(state, data) {
+      const photo = state.photos.find(p => p.pictureId == data.pictureId);
+      photo.comments.push(data);
     },
     REMOVE_PHOTO(state, data) {
       let newPhotos = state.photos.filter(photo => photo.PictureId != data.id);
