@@ -13,7 +13,7 @@
         class="card"
         id="feedbox"
         v-for="photo in photos"
-        v-bind:key="photo.pictureId"        
+        v-bind:key="photo.pictureId"
       >
         <img
           class="card-img-top"
@@ -42,7 +42,6 @@
 </template>
 
 <script>
-import PhotoService from "@/services/PhotoService";
 import LikeList from "./LikeList.vue";
 import Comment from "./Comment.vue";
 import CommentManager from "./CommentManager";
@@ -51,7 +50,7 @@ import RateLists from "./RateLists.vue";
 
 export default {
   name: "photo-feed",
-  props: ["photos"],
+  props: ["photos", "pageLoaded"],
 
   components: {
     LikeList,
@@ -60,35 +59,35 @@ export default {
     LikeManager,
     RateLists,
   },
-  data() {
-    return {
-      pageLoaded: false,
-    };
-  },
-  created() {
-    this.retrievePhotos();
-  },
-  methods: {
-    retrievePhotos() {
-      PhotoService.getPhotos()
-        .then((response) => {
-          this.$store.commit("SET_PHOTOS", response.data);
-          this.pageLoaded = true;
-        })
-        .catch((error) => {
-          if (error.response) {
-            this.errorMsg =
-              "Error. Response received was '" +
-              error.response.statusText +
-              "'.";
-          } else if (error.request) {
-            this.errorMsg = "Error. Server could not be reached.";
-          } else {
-            this.errorMsg = "Error. Request could not be created.";
-          }
-        });
-    },
-  },
+  // data() {
+  //   return {
+  //     pageLoaded: false,
+  //   };
+  // },
+  // created() {
+  //   this.retrievePhotos();
+  // },
+  // methods: {
+  //   retrievePhotos() {
+  //     PhotoService.getPhotos()
+  //       .then((response) => {
+  //         this.$store.commit("SET_PHOTOS", response.data);
+  //         this.pageLoaded = true;
+  //       })
+  //       .catch((error) => {
+  //         if (error.response) {
+  //           this.errorMsg =
+  //             "Error. Response received was '" +
+  //             error.response.statusText +
+  //             "'.";
+  //         } else if (error.request) {
+  //           this.errorMsg = "Error. Server could not be reached.";
+  //         } else {
+  //           this.errorMsg = "Error. Request could not be created.";
+  //         }
+  //       });
+  //   },
+  // },
 };
 </script>
 
