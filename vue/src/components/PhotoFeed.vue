@@ -13,7 +13,7 @@
         class="card"
         id="feedbox"
         v-for="photo in photos"
-        v-bind:key="photo.pictureId"        
+        v-bind:key="photo.pictureId"
       >
         <img
           class="card-img-top"
@@ -34,21 +34,6 @@
             v-bind:likes="photo.likes"
             v-bind:pictureId="photo.pictureId"
           />
-          <!-- Remove photo -->
-          <b-button
-          class="btn"
-          type="delete"
-          v-if="ensureDelete != photo.pictureId"
-          v-on:click="ensureDelete = photo.pictureId"
-          >
-          Remove Photo
-          </b-button>
-          <div v-if="ensureDelete === photo.pictureId">
-            <p class="sureQuestion">Are you sure? This is permanent!</p>
-            <b-button class="btn" type="button" v-on:click="deletePhoto(photo.pictureId)">Yes</b-button>
-            <b-button class="btn" type="button" v-on:click="resetForm">Cancel</b-button>
-          </div>
-          <!-- End remove photo -->
           <comment-manager v-bind:pictureId="photo.pictureId" />
           <rating-manager
             v-bind:ratings="photo.ratings" 
@@ -60,7 +45,6 @@
 </template>
 
 <script>
-import PhotoService from "@/services/PhotoService";
 import LikeList from "./LikeList.vue";
 import Comment from "./Comment.vue";
 import CommentManager from "./CommentManager";
@@ -70,7 +54,7 @@ import RateLists from "./RateLists.vue";
 
 export default {
   name: "photo-feed",
-  props: ["photos"],
+  props: ["photos", "pageLoaded"],
 
   components: {
     LikeList,
@@ -80,48 +64,35 @@ export default {
     RateLists,
     RatingManager
   },
-  data() {
-    return {
-      pageLoaded: false,
-      ensureDelete: 0,
-    };
-  },
-  created() {
-    this.retrievePhotos();
-  },
-  methods: {
-    resetForm() {
-      this.ensureDelete= 0;
-    },
-    retrievePhotos() {
-      PhotoService.getPhotos()
-        .then((response) => {
-          this.$store.commit("SET_PHOTOS", response.data);
-          this.pageLoaded = true;
-        })
-        .catch((error) => {
-          if (error.response) {
-            this.errorMsg =
-              "Error. Response received was '" +
-              error.response.statusText +
-              "'.";
-          } else if (error.request) {
-            this.errorMsg = "Error. Server could not be reached.";
-          } else {
-            this.errorMsg = "Error. Request could not be created.";
-          }
-        });
-        this.ensureDelete = 0;
-    },
-    deletePhoto(photoId) {
-      PhotoService.deletePhoto(photoId).then((response) => {
-        if(response.status === 200) {
-          alert("Photo deleted");
-          this.$store.commit('REMOVE_PHOTO', { id: photoId });
-        }
-      })
-    }
-  },
+  // data() {
+  //   return {
+  //     pageLoaded: false,
+  //   };
+  // },
+  // created() {
+  //   this.retrievePhotos();
+  // },
+  // methods: {
+  //   retrievePhotos() {
+  //     PhotoService.getPhotos()
+  //       .then((response) => {
+  //         this.$store.commit("SET_PHOTOS", response.data);
+  //         this.pageLoaded = true;
+  //       })
+  //       .catch((error) => {
+  //         if (error.response) {
+  //           this.errorMsg =
+  //             "Error. Response received was '" +
+  //             error.response.statusText +
+  //             "'.";
+  //         } else if (error.request) {
+  //           this.errorMsg = "Error. Server could not be reached.";
+  //         } else {
+  //           this.errorMsg = "Error. Request could not be created.";
+  //         }
+  //       });
+  //   },
+  // },
 };
 </script>
 
