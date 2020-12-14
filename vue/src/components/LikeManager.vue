@@ -1,7 +1,7 @@
 <template>
   <div>
     <button
-      v-if="liked"
+      v-if="!liked"
       type="button"
       class="btn btn-primary btn-sm"
       @click="addLike"
@@ -20,7 +20,6 @@ export default {
   data() {
     return {
       liked: false,
-      currenUserId: this.$store.state.loggedUserId,
     };
   },
   created() {
@@ -30,7 +29,9 @@ export default {
   methods: {
     isLiked(lks) {
       if (lks) {
-        this.liked = lks.includes((l) => l.userId == currenUserId);
+        this.liked = lks.find(
+          (l) => l.userId == this.$store.state.loggedUserId
+        );
       }
     },
     addLike() {},
