@@ -25,7 +25,7 @@
           v-bind:key="r"
           v-bind:rating="rating"
         />
-        <CommentManager />
+        <comment-manager v-bind:pictureId="photo.pictureId" />
       </div>
     </div>
   </div>

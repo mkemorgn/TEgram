@@ -9,9 +9,10 @@ export default {
         return axios.post('/upload', formData);
     },
     submitComment(comment) {
-        return axios.post('/comment', {
-            photoId: comment.photoId,
-            comment: comment.comment
+        return axios.post('/comment', comment, {
+            headers: { 
+                'Content-Type': 'application/json',
+            }
         });
     },
     rating(formData) {

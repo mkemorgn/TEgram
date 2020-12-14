@@ -2,7 +2,7 @@
     <div class="addcomment">
         <div>
             <form v-on:submit.prevent>
-                <input class="form-control" id="newComment" type ="text" name="newComment" placeholder="add comment..."/>
+                <input v-model="comments" class="form-control" id="newComment" type ="text" name="newComment" placeholder="add comment..."/>
                 <b-button type="submit" class="btn" value="submit" v-on:click="submit">Submit</b-button>
             </form>
         </div>    
@@ -11,40 +11,32 @@
 
 <script>
 import photoService from "@/services/PhotoService";
-import PhotoFeed from "./PhotoFeed";
 export default {
-    components: {
-        PhotoFeed,
+    props: ["pictureId"],
+    components: {       
     },
     data() {
         return {
-            pictureId: null,
-            comment: null,
+            comment: '',        
         };
     },
-    methods: {
+    methods: {        
         submit() {
-             if (this.$store.state.token === '') {
-                this.$modal.show('alert');
-            } else {
-                let comment = {
-                    photoId: PhotoFeed.photo.photoId,
-                    comment: this.newComment,
+            console.log(this.comments)
+            const theComment = {
+                comment: this.comments,
+                pictureId: this.pictureId
+            };
+            photoService.submitComment(theComment)
+            .then(response => {
+                if (response.status == 201) {
+                    this.$router.push("/");
                 }
-        if (comment.contents !== '') {
-          photoService.addComment(comment)
-            .then(res => {
-              if (res.status === 200) {
-                this.comments.push(comment)
-                this.newComment = '';
-              }
             })
-            .catch(err => {
-                console.log(err);
-            })
+            .catch((err) => {
+            console.log(err);
+        });
         }
-    }
-    }
     }
 }
 </script>
