@@ -14,6 +14,9 @@ export default {
             comment: comment.comment
         });
     },
+    rating(formData) {
+        return axios.post('/rating', formData);
+    },
     getUserPhotos() {
         return axios.get('/photos');
     },
