@@ -9,7 +9,7 @@ body {
   #logo {
       top: 40px;
       /* float: left; */
-      padding-top: 15px;
+      padding-top: 10px;
       padding-left: 20px;
   }
 
@@ -19,7 +19,7 @@ body {
       position: sticky;
       top: 0px;
       color:#2CB2EA;
-      padding-bottom: 30px;
+      padding-bottom: 10px;
       padding-right: 10px;
       border-bottom: 1px solid #2CB2EA;
       z-index: 2;
@@ -46,6 +46,10 @@ body {
 
   .feed {
       margin:auto;
+  }
+  .logo-link{
+      font-size: 200%;
+      font-family: "Montserrat";
   }
 
   /* hr.solid {
