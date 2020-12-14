@@ -12,12 +12,20 @@
         v-bind:src="photo.picUrl"
         v-bind:alt="photo.picName"
       />
-      <div class="card-body">
-        <h4 class="card-title">{{ photo.description }}</h4>
+      <dir class="pic-info">
+        <like-list :likes="photo.likes" /> &nbsp; &nbsp;
+        <comment v-bind:comments="photo.comments" />
+      </dir>
+      <div class="card-body" id="idcard-body">
+        <h5 class="card-title">{{ photo.description }}</h5>
         <p class="card-text">Posted By: {{ photo.userName }}</p>
-        <like-list :likes="photo.likes" />
-        <comment  v-for="comment in photo.comments" v-bind:key="comment" v-bind:comment="comment"/>
-        <CommentManager/>
+        <like-manager />
+        <rating
+          v-for="r in photo.rating"
+          v-bind:key="r"
+          v-bind:rating="rating"
+        />
+        <CommentManager />
       </div>
     </div>
   </div>
@@ -28,15 +36,20 @@ import PhotoService from "@/services/PhotoService";
 import LikeList from "./LikeList.vue";
 import Comment from "./Comment.vue";
 import CommentManager from "./CommentManager";
+import LikeManager from "./LikeManager.vue";
+import Rating from "./Rating.vue";
+
 export default {
-  components: { 
+  components: {
     LikeList,
     Comment,
-    CommentManager },
+    CommentManager,
+    LikeManager,
+    Rating,
+  },
+
   name: "photo-feed",
-  props: [
-    "photos",
-  ],
+  props: ["photos"],
   data() {
     return {};
   },
@@ -88,5 +101,15 @@ export default {
   width: 100%;
   object-fit: cover;
 }
-
+.card-text {
+  font-size: 8pt;
+}
+.pic-info {
+  display: inline-flex;
+  justify-content: flex-end;
+  margin: 3px 10px;
+}
+#idcard-body > * {
+  margin-bottom: 5px;
+}
 </style>
