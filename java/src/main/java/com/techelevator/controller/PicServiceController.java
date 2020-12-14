@@ -44,9 +44,11 @@ public class PicServiceController {
 	}
 	
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@RequestMapping(value = "/rlike/{likeId}", method = RequestMethod.POST)
-	public void  removeLike(@PathVariable int likeId) {
-		picServiceDAO.removeLike(likeId);
+	@RequestMapping(value = "/rlike/{pictureId}", method = RequestMethod.POST)
+	public void  removeLike(@PathVariable int pictureId, Principal principal) {
+		
+		int userId=userDAO.findIdByUsername(principal.getName());
+		picServiceDAO.removeLike(pictureId,userId);
 		
 	}
 	

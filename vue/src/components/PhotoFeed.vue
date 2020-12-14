@@ -21,7 +21,7 @@
           v-bind:src="photo.picUrl"
           v-bind:alt="photo.picName"
         />
-        
+
         <div class="pic-info">
           <rate-lists v-bind:ratings="photo.ratings" /> &nbsp; &nbsp;
           <like-list v-bind:likes="photo.likes" /> &nbsp; &nbsp;
@@ -30,8 +30,29 @@
         <div class="card-body" id="idcard-body">
           <h5 class="card-title">{{ photo.description }}</h5>
           <p class="card-text">Posted By: {{ photo.userName }}</p>
-          <like-manager />
+          <like-manager
+            v-bind:likes="photo.likes"
+            v-bind:pictureId="photo.pictureId"
+          />
+          <!-- Remove photo -->
+          <b-button
+          class="btn"
+          type="delete"
+          v-if="ensureDelete != photo.pictureId"
+          v-on:click="ensureDelete = photo.pictureId"
+          >
+          Remove Photo
+          </b-button>
+          <div v-if="ensureDelete === photo.pictureId">
+            <p class="sureQuestion">Are you sure? This is permanent!</p>
+            <b-button class="btn" type="button" v-on:click="deletePhoto(photo.pictureId)">Yes</b-button>
+            <b-button class="btn" type="button" v-on:click="resetForm">Cancel</b-button>
+          </div>
+          <!-- End remove photo -->
           <comment-manager v-bind:pictureId="photo.pictureId" />
+          <rating-manager
+            v-bind:ratings="photo.ratings" 
+            v-bind:pictureId="photo.pictureId" />
         </div>
       </div>
     </div>
@@ -44,6 +65,7 @@ import LikeList from "./LikeList.vue";
 import Comment from "./Comment.vue";
 import CommentManager from "./CommentManager";
 import LikeManager from "./LikeManager.vue";
+import RatingManager from "./RatingManager.vue"
 import RateLists from "./RateLists.vue";
 
 export default {
@@ -56,16 +78,21 @@ export default {
     CommentManager,
     LikeManager,
     RateLists,
+    RatingManager
   },
   data() {
     return {
       pageLoaded: false,
+      ensureDelete: 0,
     };
   },
   created() {
     this.retrievePhotos();
   },
   methods: {
+    resetForm() {
+      this.ensureDelete= 0;
+    },
     retrievePhotos() {
       PhotoService.getPhotos()
         .then((response) => {
@@ -84,7 +111,16 @@ export default {
             this.errorMsg = "Error. Request could not be created.";
           }
         });
+        this.ensureDelete = 0;
     },
+    deletePhoto(photoId) {
+      PhotoService.deletePhoto(photoId).then((response) => {
+        if(response.status === 200) {
+          alert("Photo deleted");
+          this.$store.commit('REMOVE_PHOTO', { id: photoId });
+        }
+      })
+    }
   },
 };
 </script>

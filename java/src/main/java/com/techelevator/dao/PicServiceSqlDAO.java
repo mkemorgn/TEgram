@@ -34,11 +34,11 @@ public class PicServiceSqlDAO implements PicServiceDAO{
 		return null;
 	}
 	@Override
-	public void removeLike(int likeId) {
-		String sql ="DELETE FROM likes WHERE like_id=?";
+	public void removeLike(int pictureId, int userId) {
+		String sql ="DELETE FROM likes WHERE picture_id=? AND user_id=?";
 		
 		try {
-			jdbcTemplate.update(sql, likeId);
+			jdbcTemplate.update(sql, pictureId, userId);
 		} catch (DataAccessException e) {
 			throw new DataAccessResourceFailureException("Can not reach database " + e.getMessage());
 		}
