@@ -51,12 +51,17 @@ export default {
   name: "photo-feed",
   props: ["photos"],
   data() {
-    return {};
+    return {
+      componentKey: 0,
+    };
   },
   created() {
     this.retrievePhotos();
   },
   methods: {
+    forceRerender() {
+      this.componentKey += 1;
+    },
     toggleLike(id) {
       if (this.isFavoritePhoto(id)) {
         this.removeFromFavorites(id);

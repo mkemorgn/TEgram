@@ -13,7 +13,7 @@ export default {
             headers: { 
                 'Content-Type': 'application/json',
             }
-        });
+    });
     },
     rating(formData) {
         return axios.post('/rating', formData);

@@ -47,9 +47,6 @@ export default new Vuex.Store({
     ADD_PHOTO(state, data) {
       state.photos.unshift(data);
     },
-    ADD_COMMENT(state, data) {
-      state.photos.push(data)
-    },
     REMOVE_PHOTO(state, data) {
       let newPhotos = state.photos.filter(photo => photo.PictureId != data.id);
       this.commit("SET_PHOTOS", newPhotos);
