@@ -13,7 +13,7 @@
         class="card"
         id="feedbox"
         v-for="photo in photos"
-        v-bind:key="photo.pictureId"
+        v-bind:key="photo.pictureId"        
       >
         <img
           class="card-img-top"
