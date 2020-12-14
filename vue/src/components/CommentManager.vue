@@ -12,7 +12,7 @@
 <script>
 import photoService from "@/services/PhotoService";
 export default {
-    props: ["pictureId","comments"],
+    props: ["pictureId"],
     components: {       
     },
     data() {
