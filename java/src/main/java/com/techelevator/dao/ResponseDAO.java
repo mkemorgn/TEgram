@@ -9,7 +9,6 @@ public interface ResponseDAO {
 	List<Picture> userPic(int userId);
 	List<Picture> userFav(int userId);
 	List<Picture> home();
-	List<Favorites> getFavoriteList(int userId);
 	List<Picture> photoDetail(int pictureID);
 
 	
