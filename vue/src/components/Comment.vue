@@ -8,9 +8,13 @@
       <p
         class="dropdown-elements"
         v-for="comment in comments"
-        v-bind:key="comment"
+        v-bind:key="comment.commentId"
       >
-        <i @click="deleteComment"><font-awesome-icon icon="comment-slash" /></i>
+        <i @click="deleteComment(comment)" style="color: red">
+          <font-awesome-icon
+            icon="comment-slash"
+            v-if="comment.userId == userd"
+        /></i>
         {{ comment.byUser }}: {{ comment.comment }}
       </p>
     </div>
@@ -18,8 +22,14 @@
 </template>
 
 <script>
+import photoService from "@/services/PhotoService";
 export default {
   props: ["comments"],
+  data() {
+    return {
+      userd: this.$store.state.user.id,
+    };
+  },
 
   methods: {
     commentCount(comments) {
@@ -29,7 +39,16 @@ export default {
         return 0;
       }
     },
-    deleteComment() {},
+    deleteComment(comment) {
+      photoService
+        .deleteComment(comment)
+        .then(() => {
+          this.$store.commit("REMOVE_COMMENT", comment);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 };
 </script>

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techelevator.dao.PicServiceDAO;
 import com.techelevator.dao.UserDAO;
 import com.techelevator.model.Comments;
-
+import com.techelevator.model.Likes;
 import com.techelevator.model.Ratings;
 
 @RestController
@@ -36,15 +36,15 @@ public class PicServiceController {
 	
 	@ResponseStatus(HttpStatus.CREATED)
 	@RequestMapping(value = "/like/{pictureId}", method = RequestMethod.POST)
-	public void  addLike(@PathVariable int pictureId, Principal principal) {
+	public Likes addLike(@PathVariable int pictureId, Principal principal) {
 		
 		int userId=userDAO.findIdByUsername(principal.getName());
-		picServiceDAO.addLike(pictureId, userId);
+		return picServiceDAO.addLike(pictureId, userId);
 		
 	}
 	
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@RequestMapping(value = "/rlike/{pictureId}", method = RequestMethod.POST)
+	@RequestMapping(value = "/rlike/{pictureId}", method = RequestMethod.DELETE)
 	public void  removeLike(@PathVariable int pictureId, Principal principal) {
 		
 		int userId=userDAO.findIdByUsername(principal.getName());
@@ -55,31 +55,31 @@ public class PicServiceController {
 	@ResponseStatus(HttpStatus.CREATED)
 	@RequestMapping(value = "/comment", method = RequestMethod.POST)
 	
-	public void addComment(@RequestBody Comments cmnt, Principal principal) {
+	public Comments addComment(@RequestBody Comments cmnt, Principal principal) {
 		
 		int userId=userDAO.findIdByUsername(principal.getName());
-		picServiceDAO.addComment(cmnt.getPictureId(), userId, cmnt.getComment());
+		return picServiceDAO.addComment(cmnt.getPictureId(), userId, cmnt.getComment());
 		
 	}
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@RequestMapping(value = "/comment/{commentId}", method = RequestMethod.POST)
+	@RequestMapping(value = "/comment/{commentId}", method = RequestMethod.DELETE)
 	public void removeComment(@PathVariable int commentId) {
 		picServiceDAO.removeComment(commentId);
 	}
 	
 	@ResponseStatus(HttpStatus.CREATED)
 	@RequestMapping(value = "/rate", method = RequestMethod.POST)
-	public void addRating(@RequestBody Ratings rating, Principal principal) {
+	public Ratings addRating(@RequestBody Ratings rating, Principal principal) {
 		int userId=userDAO.findIdByUsername(principal.getName());
-		picServiceDAO.addRating(rating.getPictureId(), userId, rating.getRating());
+	return	picServiceDAO.addRating(rating.getPictureId(), userId, rating.getRating());
 		
 	}
 	
 	@ResponseStatus(HttpStatus.ACCEPTED)
 	@RequestMapping(value = "/editrate", method = RequestMethod.POST)
-	public void changeRating(@RequestBody Ratings rating) {
+	public Ratings changeRating(@RequestBody Ratings rating) {
 		
-		picServiceDAO.changeRating(rating.getRatingId(), rating.getRating());
+		return picServiceDAO.changeRating(rating.getRatingId(), rating.getRating());
 		
 	}
 
