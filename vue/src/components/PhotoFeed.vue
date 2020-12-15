@@ -4,7 +4,7 @@
       <p>
         <span class="spinner-grow text-primary"></span> &nbsp;
         <span class="spinner-grow text-success"></span>&nbsp;
-        <span class="spinner-grow text-secondary"></span>&nbsp;
+        <span class="spinner-grow text-danger"></span>&nbsp;
         <span>Loading...</span>
       </p>
     </div>
@@ -28,7 +28,9 @@
           <comment v-bind:comments="photo.comments" />
         </div>
         <div class="card-body" id="idcard-body">
-          <h5 class="card-title">{{ photo.description }}</h5>
+          <div style="heigth: 30px">
+            <h5 class="card-title">{{ photo.description }}</h5>
+          </div>
           <p class="card-text">Posted By: {{ photo.userName }}</p>
           <like-manager
             v-bind:likes="photo.likes"
@@ -36,8 +38,9 @@
           />
           <comment-manager v-bind:pictureId="photo.pictureId" />
           <rating-manager
-            v-bind:ratings="photo.ratings" 
-            v-bind:pictureId="photo.pictureId" />
+            v-bind:ratings="photo.ratings"
+            v-bind:pictureId="photo.pictureId"
+          />
         </div>
       </div>
     </div>
@@ -49,7 +52,7 @@ import LikeList from "./LikeList.vue";
 import Comment from "./Comment.vue";
 import CommentManager from "./CommentManager";
 import LikeManager from "./LikeManager.vue";
-import RatingManager from "./RatingManager.vue"
+import RatingManager from "./RatingManager.vue";
 import RateLists from "./RateLists.vue";
 
 export default {
@@ -62,37 +65,8 @@ export default {
     CommentManager,
     LikeManager,
     RateLists,
-    RatingManager
+    RatingManager,
   },
-  // data() {
-  //   return {
-  //     pageLoaded: false,
-  //   };
-  // },
-  // created() {
-  //   this.retrievePhotos();
-  // },
-  // methods: {
-  //   retrievePhotos() {
-  //     PhotoService.getPhotos()
-  //       .then((response) => {
-  //         this.$store.commit("SET_PHOTOS", response.data);
-  //         this.pageLoaded = true;
-  //       })
-  //       .catch((error) => {
-  //         if (error.response) {
-  //           this.errorMsg =
-  //             "Error. Response received was '" +
-  //             error.response.statusText +
-  //             "'.";
-  //         } else if (error.request) {
-  //           this.errorMsg = "Error. Server could not be reached.";
-  //         } else {
-  //           this.errorMsg = "Error. Request could not be created.";
-  //         }
-  //       });
-  //   },
-  // },
 };
 </script>
 

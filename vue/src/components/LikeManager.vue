@@ -44,7 +44,8 @@ export default {
         .addLike(pictureId)
         .then((res) => {
           if (res.status === 201) {
-            this.$router.push("/");
+            this.$store.commit("ADD_LIKE", res.data);
+            this.isLiked(this.likes);
           }
         })
         .catch((err) => {
@@ -56,7 +57,7 @@ export default {
         .removeLike(pictureId)
         .then((res) => {
           if (res.status === 204) {
-            this.$router.push("/");
+            this.$store.commit("REMOVE_LIKE", pictureId);
           }
         })
         .catch((err) => {

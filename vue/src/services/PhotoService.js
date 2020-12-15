@@ -9,11 +9,10 @@ export default {
         return axios.post('/upload', formData);
     },
     submitComment(comment) {
-        return axios.post('/comment', comment, {
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        });
+        return axios.post('/comment', comment);
+    },
+    deleteComment(comment) {
+        return axios.delete(`/comment/${comment.commentId}`);
     },
     rating(formData) {
         return axios.post('/rating', formData);
@@ -32,7 +31,7 @@ export default {
 
     },
     removeLike(pictureId) {
-        return axios.post(`/rlike/${pictureId}`)
+        return axios.delete(`/rlike/${pictureId}`)
 
     },
 
