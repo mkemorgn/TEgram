@@ -2,14 +2,15 @@
   <div>
     <button v-if="!rated" type="button" @click="addRating">
       Add Rating <font-awesome-icon icon="star" />
-
+      
+      <!-- <label for="rating">Rating</label>
       <select id="rating" v-model.number="photo.rating">
         <option value="1">1 Star</option>
         <option value="2">2 Stars</option>
         <option value="3">3 Stars</option>
         <option value="4">4 Stars</option>
         <option value="5">5 Stars</option>
-      </select>
+      </select> -->
     </button>
     <button
       v-else
@@ -18,14 +19,14 @@
       @click="changeRating"
     >
       Change Rating <font-awesome-icon icon="star-half-alt" />
-      <label for="rating">Rating</label>
+      <!-- <label for="rating">Rating</label>
       <select id="rating" v-model.number="photo.rating">
         <option value="1">1 Star</option>
         <option value="2">2 Stars</option>
         <option value="3">3 Stars</option>
         <option value="4">4 Stars</option>
         <option value="5">5 Stars</option>
-      </select>
+      </select> -->
     </button>
   </div>
 </template>
