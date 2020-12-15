@@ -16,6 +16,7 @@
           name="desc"
           v-model="description"
           placeholder="Add description"
+          value=".."
         />
       </div>
       <div>

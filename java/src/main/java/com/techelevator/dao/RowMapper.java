@@ -69,13 +69,5 @@ public class RowMapper {
 		return ratingList;
 	}
 	
-//	public static List<Favorites> mapRowsetToFavoriteList(SqlRowSet rowSet) {
-//		List<Favorites> favoriteList =new ArrayList<Favorites>();
-//		while(rowSet.next()) {
-//			Favorites  newFavorite = new Favorites(rowSet.getInt("favorite_id"), rowSet.getString("fav_name"), rowSet.getInt("user_id"), rowSet.getString("username"));
-//			favoriteList.add(newFavorite);
-//		}
-//		return favoriteList;
-//	}
-	
+
 }
