@@ -55,7 +55,12 @@ export default new Vuex.Store({
       );
     },
     REMOVE_COMMENT(state, comment) {
-      state.photos.find(p => { p.pictureId == comment.pictureId }).comments.filter(c => { c.commentId != comment.commentId });
+      state.photos.forEach(p => {
+        if (p.pictureId == comment.pictureId) {
+          p.comments = p.comments.filter(c => c.commentId != comment.commentId);
+        }
+      });
+
     },
 
     REMOVE_PHOTO(state, data) {
@@ -95,6 +100,10 @@ export default new Vuex.Store({
         }
       }
       );
+    },
+    FAVORITE_FILTER(state) {
+      state.photos = state.photos.filter(p => p.favorite == true);
+
     }
   }
 })
