@@ -8,9 +8,7 @@ import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-
 import com.techelevator.dao.ResponseDAO;
-import com.techelevator.model.Favorites;
 import com.techelevator.model.Picture;
 import com.techelevator.dao.RowMapper;
 
@@ -30,7 +28,7 @@ public class ResponseSqlDAO implements ResponseDAO {
 	@Override
 	public List<Picture> userPic(int userId) {
 		List<Picture> pictures = new ArrayList<>();
-        String sql = "SELECT picture_id, p.user_id, u.username, pic_url, pic_name, pic_server_name, description, private FROM pictures p "
+        String sql = "SELECT picture_id, p.user_id, u.username, pic_url, pic_name, pic_server_name, description, private, favorite FROM pictures p "
         		+ "JOIN users u ON u.user_id=p.user_id WHERE p.user_id = ?";
         SqlRowSet rowSet;
 		try {
@@ -43,15 +41,13 @@ public class ResponseSqlDAO implements ResponseDAO {
         return polulatePicList(pictures);
     }
 	@Override
-	public List<Picture> userFav(int userId, int favoriteID) {
+	public List<Picture> userFav(int userId) {
 		List<Picture> pictures = new ArrayList<>();
-        String sql = "SELECT picture_id, p.user_id, u.username, pic_url, pic_name, pic_server_name, description, private FROM pictures p "
-        		+ "JOIN favorite_picture fp ON p.picture_id = fp.picture_id " +
-		             "JOIN favorites f ON fp.favorite_id = f.favorite_id "
-		             + "JOIN users u ON u.user_id=p.user_id WHERE p.user_id = ? AND f.favorite_id =?";
+        String sql = "SELECT picture_id, p.user_id, u.username, pic_url, pic_name, pic_server_name, description, private, favorite FROM pictures p "
+		             + "JOIN users u ON u.user_id=p.user_id WHERE p.user_id = ? AND p.favorite =true";
         SqlRowSet rowSet;
 		try {
-			 rowSet = jdbcTemplate.queryForRowSet(sql,userId, favoriteID);
+			 rowSet = jdbcTemplate.queryForRowSet(sql,userId);
 		} catch (DataAccessException e) {
 			throw new DataAccessResourceFailureException("Can not reach database " + e.getMessage());
 		}
@@ -63,7 +59,7 @@ public class ResponseSqlDAO implements ResponseDAO {
 	@Override
 	public List<Picture> home() {
 		List<Picture> pictures = new ArrayList<>();
-        String sql = "SELECT picture_id, p.user_id, u.username, pic_url, pic_name, pic_server_name, description, private FROM pictures p "
+        String sql = "SELECT picture_id, p.user_id, u.username, pic_url, pic_name, pic_server_name, description, private, favorite FROM pictures p "
         		+ "JOIN users u ON u.user_id=p.user_id WHERE p.private = 'false'";
         SqlRowSet rowSet ;
 		try {
@@ -76,23 +72,7 @@ public class ResponseSqlDAO implements ResponseDAO {
         return polulatePicList(pictures);
 	}
 	
-	@Override
-	public List<Favorites> getFavoriteList(int userId) {
-		List<Favorites> favorites= new ArrayList<>();
-        String sql = "SELECT favorite_id, fav_name, f.user_id, u.username FROM favorites f "
-        		+ "JOIN users u ON u.user_id=f.user_id WHERE u.user_id=?";
-        SqlRowSet rowSet ;
-		try {
-			rowSet = jdbcTemplate.queryForRowSet(sql,userId);
-		} catch (DataAccessException e) {
-			throw new DataAccessResourceFailureException("Can not reach database " + e.getMessage());
-		}
-		favorites=RowMapper.mapRowsetToFavoriteList(rowSet);
-		
-		return favorites;
-	}
-	
-	
+
 	//helpers
 	private List<Picture> polulatePicList(List<Picture> picList){
 		

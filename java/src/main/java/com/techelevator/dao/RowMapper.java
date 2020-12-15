@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import com.techelevator.model.Comments;
-import com.techelevator.model.Favorites;
 import com.techelevator.model.Likes;
 import com.techelevator.model.Picture;
 import com.techelevator.model.Ratings;
@@ -21,7 +20,7 @@ public class RowMapper {
 			newPic = new Picture(rowSet.getInt("picture_id"), rowSet.getInt("user_id"),
 					rowSet.getString("username"), rowSet.getString("pic_url"),
 					rowSet.getString("pic_server_name"), rowSet.getString("pic_name"), 
-					rowSet.getString("description"),rowSet.getBoolean("private"));
+					rowSet.getString("description"),rowSet.getBoolean("private"), rowSet.getBoolean("favorite"));
 
 		return newPic;
 
@@ -33,7 +32,7 @@ public class RowMapper {
 		Picture  newPic = new Picture(rowSet.getInt("picture_id"), rowSet.getInt("user_id"),
 				rowSet.getString("username"), rowSet.getString("pic_url"),
 				rowSet.getString("pic_server_name"), rowSet.getString("pic_name"), 
-				rowSet.getString("description"),rowSet.getBoolean("private"));
+				rowSet.getString("description"),rowSet.getBoolean("private"), rowSet.getBoolean("favorite"));
 		picList.add(newPic);
 		}
 
@@ -70,13 +69,5 @@ public class RowMapper {
 		return ratingList;
 	}
 	
-	public static List<Favorites> mapRowsetToFavoriteList(SqlRowSet rowSet) {
-		List<Favorites> favoriteList =new ArrayList<Favorites>();
-		while(rowSet.next()) {
-			Favorites  newFavorite = new Favorites(rowSet.getInt("favorite_id"), rowSet.getString("fav_name"), rowSet.getInt("user_id"), rowSet.getString("username"));
-			favoriteList.add(newFavorite);
-		}
-		return favoriteList;
-	}
-	
+
 }
