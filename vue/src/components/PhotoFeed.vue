@@ -15,13 +15,14 @@
         v-for="photo in photos"
         v-bind:key="photo.pictureId"
       >
-        <img
-          class="card-img-top"
-          id="image"
-          v-bind:src="photo.picUrl"
-          v-bind:alt="photo.picName"
-        />
-
+        <router-link to="/photo-detail/:pictureId">
+          <img
+            class="card-img-top"
+            id="image"
+            v-bind:src="photo.picUrl"
+            v-bind:alt="photo.picName"
+          />
+        </router-link>
         <div class="pic-info">
           <rate-lists v-bind:ratings="photo.ratings" /> &nbsp; &nbsp;
           <like-list v-bind:likes="photo.likes" /> &nbsp; &nbsp;
