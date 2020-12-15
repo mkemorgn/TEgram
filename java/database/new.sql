@@ -1,9 +1,5 @@
 BEGIN TRANSACTION;
 
-INSERT INTO public.users ( username, password_hash, role, activated, deleted) VALUES ( 'user1', '$2a$10$QBbJ5oIACbcA6w5qQ/iiouEphQGhGXUxtwvbwWn2072rb6iZAoNsG', 'ROLE_USER', true, false);
-INSERT INTO public.users ( username, password_hash, role, activated, deleted) VALUES ( 'user2', '$2a$10$z.ZfdTwrjZkadjTKZIgD5OrM9ovN2QacC75UTX1E/vEttq8Qh9D.C', 'ROLE_USER', true, false);
-INSERT INTO public.users ( username, password_hash, role, activated, deleted) VALUES ( 'user3', '$2a$10$EciTGklE6FirjBtwa9ApOONEbCemuS9GwaxgrvypP/RrGfcRto95W', 'ROLE_USER', true, false);
-
 INSERT INTO public.pictures ( user_id, pic_url, pic_name, pic_server_name, description, private) VALUES ( 3, 'https://res.cloudinary.com/dr1xyxwvj/image/upload/v1607573500/3/yi2wwpz37sedzb8eujko.jpg', 'sheep.jpg', '3/yi2wwpz37sedzb8eujko', 'my sheeps', false);
 INSERT INTO public.pictures ( user_id, pic_url, pic_name, pic_server_name, description, private) VALUES ( 3, 'https://res.cloudinary.com/dr1xyxwvj/image/upload/v1607573532/3/mwaa6n4pmzdpcyypeule.jpg', 'bike.jpg', '3/mwaa6n4pmzdpcyypeule', 'red bike', false);
 INSERT INTO public.pictures ( user_id, pic_url, pic_name, pic_server_name, description, private) VALUES ( 3, 'https://res.cloudinary.com/dr1xyxwvj/image/upload/v1607574059/3/zgqnlklydhkrppoomy1y.jpg', 'bicycle.jpg', '3/zgqnlklydhkrppoomy1y', 'red bike', false);
@@ -80,7 +76,7 @@ INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 7, 5, 5);
 INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 7, 1, 5);
 INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 5, 4, 4);
 INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 5, 5, 3);
-INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 5, 5, 4);
+INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 5, 3, 4);
 INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 5, 1, 2);
 INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 8, 1, 5);
 INSERT INTO public.ratings ( picture_id, user_id, rating) VALUES ( 8, 3, 2);
@@ -172,4 +168,3 @@ INSERT INTO public.comments ( picture_id, user_id, comment) VALUES ( 17, 3, 'Som
 
 
 COMMIT TRANSACTION;
-
