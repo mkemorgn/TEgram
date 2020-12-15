@@ -1,18 +1,4 @@
-<!-- Remove photo -->
-          <b-button
-          class="btn btn-danger"
-          type="delete"
-          v-if="ensureDelete != photo.pictureId"
-          v-on:click="ensureDelete = photo.pictureId"
-          >
-          Remove Photo
-          </b-button>
-          <div v-if="ensureDelete === photo.pictureId">
-            <p class="sureQuestion">Are you sure? This is permanent!</p>
-            <b-button class="btn btn-danger" type="button" v-on:click="deletePhoto(photo.pictureId)">Yes</b-button>
-            <b-button class="btn" type="button" v-on:click="resetForm">Cancel</b-button>
-          </div>
-          <!-- End remove photo -->
+
 
           deletePhoto(photoId) {
       PhotoService.deletePhoto(photoId).then((response) => {
