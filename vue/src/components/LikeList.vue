@@ -5,7 +5,11 @@
       {{ likeCount(this.likes) }}
     </p>
     <div class="dropdown-content">
-      <p class="dropdown-elements" v-for="like in likes" v-bind:key="like">
+      <p
+        class="dropdown-elements"
+        v-for="like in likes"
+        v-bind:key="like.likeId"
+      >
         {{ like.byUser }}
       </p>
     </div>
