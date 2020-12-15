@@ -42,8 +42,10 @@ export default {
     deleteComment(comment) {
       photoService
         .deleteComment(comment)
-        .then(() => {
-          this.$store.commit("REMOVE_COMMENT", comment);
+        .then((res) => {
+          if (res.status === 204) {
+            this.$store.commit("REMOVE_COMMENT", comment);
+          }
         })
         .catch((err) => {
           console.log(err);
