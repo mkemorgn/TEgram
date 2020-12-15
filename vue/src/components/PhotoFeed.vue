@@ -15,7 +15,8 @@
         v-for="photo in photos"
         v-bind:key="photo.pictureId"
       >
-        <router-link to="/photo-detail/:pictureId">
+        <!-- <router-link to="'/photo-detail/${photo.pictureId}'"> -->
+        <router-link v-bind:to="'/photo-detail/' + photo.pictureId">
           <img
             class="card-img-top"
             id="image"
