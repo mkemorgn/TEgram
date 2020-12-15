@@ -58,7 +58,7 @@ public class ResponseSqlDAO implements ResponseDAO {
 	@Override
 	public List<Picture> photoDetail(int pictureID) {
 		List<Picture> pictures = new ArrayList<>();
-        String sql = "SELECT picture_id, p.user_id, u.username, pic_url, pic_name, pic_server_name, description, private FROM pictures p "
+        String sql = "SELECT picture_id, p.user_id, u.username, pic_url, pic_name, pic_server_name, description, private, favorite FROM pictures p "
 		+ "JOIN users u ON u.user_id = p.user_id WHERE p.private = 'false' AND picture_id = ?";
         SqlRowSet rowSet ;
 		try {
