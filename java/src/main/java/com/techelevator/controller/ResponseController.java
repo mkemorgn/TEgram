@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.dao.ResponseDAO;
 import com.techelevator.dao.UserDAO;
-import com.techelevator.model.Favorites;
+
 import com.techelevator.model.Picture;
 
 
@@ -43,22 +43,16 @@ public class ResponseController {
 	}
 
 	@PreAuthorize("isAuthenticated()")
-	@RequestMapping(value = "/photos/{favoriteID}", method = RequestMethod.GET)
+	@RequestMapping(value = "/photos/favorite", method = RequestMethod.GET)
 	public List<Picture> favorites(@PathVariable int favoriteID, Principal principal) {
 		int userID = userDAO.findIdByUsername(principal.getName());
-		return responseDAO.userFav(userID, favoriteID);
+		return responseDAO.userFav(userID);
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public List<Picture> home() {
 		return responseDAO.home();
 	}
-	
-	@PreAuthorize("isAuthenticated()")
-	@RequestMapping(value = "/favList", method = RequestMethod.GET)
-	public List<Favorites> getFavoriteList(Principal principal) {
-		int userID = userDAO.findIdByUsername(principal.getName());
-		return responseDAO.getFavoriteList(userID);
-	}
+
 
 }
