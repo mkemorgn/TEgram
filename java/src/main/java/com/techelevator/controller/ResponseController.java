@@ -36,6 +36,13 @@ public class ResponseController {
 	}
 
 	@PreAuthorize("isAuthenticated()")
+	@RequestMapping(value = "/details/{pictureID}", method = RequestMethod.GET)
+	public List<Picture> photoDetail(@PathVariable int pictureID ,Principal principal) {
+		int userID = userDAO.findIdByUsername(principal.getName());
+		return responseDAO.photoDetail(pictureID);
+	}
+
+	@PreAuthorize("isAuthenticated()")
 	@RequestMapping(value = "/photos/{favoriteID}", method = RequestMethod.GET)
 	public List<Picture> favorites(@PathVariable int favoriteID, Principal principal) {
 		int userID = userDAO.findIdByUsername(principal.getName());

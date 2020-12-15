@@ -26,6 +26,9 @@ export default {
     getPhotos() {
         return axios.get('/');
     },
+    getPhotoDetails(pictureId) {
+        return axios.get(`/details/${pictureId}`);
+    },
     addLike(pictureId) {
         return axios.post(`/like/${pictureId}`)
 

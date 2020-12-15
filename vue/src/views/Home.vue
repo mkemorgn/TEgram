@@ -9,6 +9,7 @@
 import PhotoService from "@/services/PhotoService";
 import PhotoFeed from "../components/PhotoFeed";
 
+
 export default {
   name: "homeview",
   components: {

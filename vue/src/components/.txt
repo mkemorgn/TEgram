@@ -1,8 +1,0 @@
-
-
-          deletePhoto(photoId) {
-      PhotoService.deletePhoto(photoId).then((response) => {
-        if(response.status === 200) {
-          alert("Photo deleted");
-          this.$store.commit('REMOVE_PHOTO', { id: photoId });
-        }

@@ -10,6 +10,6 @@ public interface ResponseDAO {
 	List<Picture> userFav(int userId, int favoriteID);
 	List<Picture> home();
 	List<Favorites> getFavoriteList(int userId);
-	
+	List<Picture> photoDetail(int pictureID);
 
 }

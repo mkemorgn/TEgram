@@ -15,7 +15,7 @@
         v-for="photo in photos"
         v-bind:key="photo.pictureId"
       >
-        <router-link v-bind:to="'/photo-detail/' + photo.pictureId">
+        <router-link v-bind:to="{ name: 'photo-detail', params: { pictureId: photo.pictureId } }">
           <img
             class="card-img-top"
             id="image"
@@ -42,6 +42,7 @@
             v-bind:ratings="photo.ratings"
             v-bind:pictureId="photo.pictureId"
           />
+          <details v-bind:pictureId="photo.pictureId"/>
         </div>
       </div>
     </div>
@@ -67,11 +68,14 @@ export default {
     LikeManager,
     RateLists,
     RatingManager,
+    
   },
 };
 </script>
 
-<style>
+,
+    PhotoDetail,
+    PhotoDetail<style>
 /* do not revome this styles */
 
 #feedbox {

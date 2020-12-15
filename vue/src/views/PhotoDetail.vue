@@ -1,13 +1,59 @@
 <template>
-    <div class="photo-detail">
-        <h1>Photo Details</h1>
-        <p>Photo Details here.</p>
-    </div>
+  <div class="Profile">
+    <h1>hi</h1>
+    <photo-feed
+      v-bind:photos="this.$store.state.photos"
+      v-bind:pageLoaded="this.pageLoaded"
+            
+    />
+  </div>
+  
 </template>
 
 <script>
+import PhotoService from "@/services/PhotoService";
+import PhotoFeed from "../components/PhotoFeed";
+
 export default {
-  name: "PhotoDetail"
+  name: "PhotoDetails",
+  components: {
+    PhotoFeed,
+  },
+  props: ["pictureId"],
+  data() {
+    return {
+      pageLoaded: false,
+
+    };
+  },
+  created() {
+    this.retrievePhotos();
+    
+  },
+  methods: {
+    retrievePhotos() {
+        const pictureId = this.$route.params.pictureId
+        console.log('here ' + pictureId);
+        PhotoService.getPhotoDetails(pictureId)
+        .then((response) => {
+          console.log('success');
+          this.$store.commit("SET_PHOTOS", response.data);
+          this.pageLoaded = true;
+        })
+        .catch((error) => {
+          if (error.response) {
+            this.errorMsg =
+              "Error. Response received was '" +
+              error.response.statusText +
+              "'.";
+          } else if (error.request) {
+            this.errorMsg = "Error. Server could not be reached.";
+          } else {
+            this.errorMsg = "Error. Request could not be created.";
+          }
+        });
+    },
+  },
 };
 </script>
 
