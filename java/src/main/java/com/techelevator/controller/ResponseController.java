@@ -46,12 +46,6 @@ public class ResponseController {
 	public List<Picture> home() {
 		return responseDAO.home();
 	}
-	
-//	@PreAuthorize("isAuthenticated()")
-//	@RequestMapping(value = "/favList", method = RequestMethod.GET)
-//	public List<Favorites> getFavoriteList(Principal principal) {
-//		int userID = userDAO.findIdByUsername(principal.getName());
-//		return responseDAO.getFavoriteList(userID);
-//	}
+
 
 }
