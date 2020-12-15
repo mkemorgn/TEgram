@@ -3,7 +3,7 @@ BEGIN TRANSACTION;
 DROP TABLE IF EXISTS ratings;
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS favorite_picture;
-DROP TABLE IF EXISTS favorites;
+DROP TABLE IF EXISTS favorites; 
 DROP TABLE IF EXISTS likes;
 DROP TABLE IF EXISTS pictures;
 DROP TABLE IF EXISTS users;
@@ -37,6 +37,7 @@ CREATE TABLE pictures(
         pic_server_name varchar(50),
         description varchar(50),
         private boolean DEFAULT (false),
+        favorite boolean DEFAULT (false),
         
         FOREIGN KEY (user_id) REFERENCES users(user_id) 
         
@@ -52,24 +53,6 @@ CREATE TABLE likes (
 
 );
 
-CREATE TABLE favorites(
-        favorite_id serial PRIMARY KEY,
-        fav_name varchar(50),
-        user_id integer,
-        
-        FOREIGN KEY (user_id) REFERENCES users(user_id)
-        
-);
-
-CREATE TABLE favorite_picture(
-        favorite_id integer,
-        picture_id integer,
-        
-        FOREIGN KEY (favorite_id) REFERENCES favorites(favorite_id),
-        FOREIGN KEY (picture_id) REFERENCES pictures(picture_id)
-         
-
-);
 CREATE TABLE comments (
         comment_id serial PRIMARY KEY,
         picture_id integer,
