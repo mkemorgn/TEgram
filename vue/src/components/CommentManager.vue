@@ -44,8 +44,10 @@ export default {
       photoService
         .submitComment(this.theComment)
         .then((res) => {
-          this.$store.commit("ADD_COMMENT", res.data);
-          this.reset();
+          if (res.status === 201) {
+            this.$store.commit("ADD_COMMENT", res.data);
+            this.reset();
+          }
         })
         .catch((err) => {
           console.log(err);
