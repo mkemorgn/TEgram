@@ -7,7 +7,7 @@
       <p
         class="dropdown-elements"
         v-for="rating in ratings"
-        v-bind:key="rating"
+        v-bind:key="rating.ratingId"
       >
         {{ rating.byUser }} rated: {{ rating.rating }}
         <font-awesome-icon icon="star" />

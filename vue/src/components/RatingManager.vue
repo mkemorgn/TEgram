@@ -1,33 +1,31 @@
 <template>
   <div>
-   <button 
-    v-if="!rated" 
-    type="button" 
-    @click="addRating">
+    <button v-if="!rated" type="button" @click="addRating">
       Add Rating <font-awesome-icon icon="star" />
 
-    <select id="rating" v-model.number="photo.rating">
-      <option value="1">1 Star</option>
-      <option value="2">2 Stars</option>
-      <option value="3">3 Stars</option>
-      <option value="4">4 Stars</option>
-      <option value="5">5 Stars</option>
-    </select>
+      <select id="rating" v-model.number="photo.rating">
+        <option value="1">1 Star</option>
+        <option value="2">2 Stars</option>
+        <option value="3">3 Stars</option>
+        <option value="4">4 Stars</option>
+        <option value="5">5 Stars</option>
+      </select>
     </button>
-    <button 
-    v-else 
-    type="button" 
-    class="btn btn-primary btn-sm"
-    @click="changeRating">
+    <button
+      v-else
+      type="button"
+      class="btn btn-primary btn-sm"
+      @click="changeRating"
+    >
       Change Rating <font-awesome-icon icon="star-half-alt" />
-    <label for="rating">Rating</label>
-    <select id="rating" v-model.number="photo.rating">
-      <option value="1">1 Star</option>
-      <option value="2">2 Stars</option>
-      <option value="3">3 Stars</option>
-      <option value="4">4 Stars</option>
-      <option value="5">5 Stars</option>
-    </select>
+      <label for="rating">Rating</label>
+      <select id="rating" v-model.number="photo.rating">
+        <option value="1">1 Star</option>
+        <option value="2">2 Stars</option>
+        <option value="3">3 Stars</option>
+        <option value="4">4 Stars</option>
+        <option value="5">5 Stars</option>
+      </select>
     </button>
   </div>
 </template>
@@ -53,9 +51,10 @@ export default {
       }
     },
     addRating(pictureId) {
-        photoService.addLike(pictureId)
+      photoService
+        .addLike(pictureId)
         .then((response) => {
-          if(response.status === 200) {
+          if (response.status === 200) {
             this.$router.push("/");
           }
         })

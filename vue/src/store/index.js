@@ -46,10 +46,18 @@ export default new Vuex.Store({
     ADD_PHOTO(state, data) {
       state.photos.unshift(data);
     },
-    ADD_COMMENT(state, data) {
-      const photo = state.photos.find(p => p.pictureId == data.pictureId);
-      photo.comments.push(data);
+    ADD_COMMENT(state, comment) {
+      state.photos.forEach(p => {
+        if (p.pictureId == comment.pictureId) {
+          p.comments.push(comment);
+        }
+      }
+      );
     },
+    REMOVE_COMMENT(state, comment) {
+      state.photos.find(p => { p.pictureId == comment.pictureId }).comments.filter(c => { c.commentId != comment.commentId });
+    },
+
     REMOVE_PHOTO(state, data) {
       let newPhotos = state.photos.filter(photo => photo.PictureId != data.id);
       this.commit("SET_PHOTOS", newPhotos);
@@ -71,6 +79,22 @@ export default new Vuex.Store({
       state.filteredPhotos = state.photos.filter(photo => {
         return photo.userId == userId;
       });
+    },
+    ADD_LIKE(state, like) {
+      state.photos.forEach(p => {
+        if (p.pictureId == like.pictureId) {
+          p.likes.push(like);
+        }
+      }
+      );
+    },
+    REMOVE_LIKE(state, pictureId) {
+      state.photos.forEach(p => {
+        if (p.pictureId == pictureId) {
+          p.likes.filter(l => l.userId != this.$store.state.user.id);
+        }
+      }
+      );
     }
   }
 })

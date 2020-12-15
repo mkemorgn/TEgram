@@ -24,15 +24,25 @@ public class PicServiceSqlDAO implements PicServiceDAO{
 	}
 	@Override
 	public Likes addLike(int pictureId, int userId) {
-		String sql ="INSERT INTO likes ( picture_id, user_id) VALUES ( ?, ?)";
+		String sql ="INSERT INTO likes ( like_id, picture_id, user_id) VALUES (?, ?, ?)";
+		
+		String readBackSql="SELECT like_id, picture_id, l.user_id, u.username FROM likes l "
+				+ "JOIN users u ON u.user_id=l.user_id WHERE like_id=?";
+		
+		int nextVal=nextLikeId();
+		SqlRowSet readBack; 
 		
 		try {
-			jdbcTemplate.update(sql, pictureId, userId);
+			jdbcTemplate.update(sql, nextVal,pictureId, userId);
+			readBack= jdbcTemplate.queryForRowSet(readBackSql, nextVal);
+			
 		} catch (DataAccessException e) {
 			throw new DataAccessResourceFailureException("Can not reach database " + e.getMessage());
 		}
-		return null;
+		return RowMapper.mapRowsetToLikeList(readBack).get(0);
 	}
+	
+	
 	@Override
 	public void removeLike(int pictureId, int userId) {
 		String sql ="DELETE FROM likes WHERE picture_id=? AND user_id=?";
@@ -46,15 +56,25 @@ public class PicServiceSqlDAO implements PicServiceDAO{
 	}
 	@Override
 	public Comments addComment(int pictureId, int userId, String comment) {
-		String sql ="INSERT INTO comments ( picture_id, user_id, comment) VALUES ( ?, ?, ?)";
+		String sql ="INSERT INTO comments ( comment_id, picture_id, user_id, comment) VALUES ( ?,?, ?, ?)";
+		
+		String readBackSql="SELECT comment_id, picture_id, c.user_id, comment, u.username FROM comments c "
+				+ "JOIN users u ON u.user_id=c.user_id WHERE c.comment_id=?";
+		
+		int nextVal=nextCommentId();
+		SqlRowSet readBack; 
 		
 		try {
-			jdbcTemplate.update(sql, pictureId, userId, comment);
+			jdbcTemplate.update(sql, nextVal, pictureId, userId, comment);
+			readBack= jdbcTemplate.queryForRowSet(readBackSql, nextVal);
+			
 		} catch (DataAccessException e) {
 			throw new DataAccessResourceFailureException("Can not reach database " + e.getMessage());
 		}
-		return null;
+		return RowMapper.mapRowsetToCommentList(readBack).get(0);
 	}
+	
+	
 	@Override
 	public void removeComment(int commentId) {
 		String sql ="DELETE FROM comments WHERE comment_id=?";
@@ -68,25 +88,37 @@ public class PicServiceSqlDAO implements PicServiceDAO{
 	}
 	@Override
 	public Ratings addRating(int pictureId, int userId, int rating) {
-		String sql ="INSERT INTO ratings ( picture_id, user_id, rating) VALUES ( ?, ?, ?)";
+		String sql ="INSERT INTO ratings ( rating_id, picture_id, user_id, rating) VALUES ( ?,?, ?, ?)";
+		String readBackSql="SELECT rating_id, picture_id, r.user_id, rating, u.username FROM ratings r "
+				+ "JOIN users u ON u.user_id=r.user_id WHERE r.rating_id=?";
+		
+		int nextVal=nextRateId();
+		SqlRowSet readBack; 
 		
 		try {
-			jdbcTemplate.update(sql, pictureId, userId, rating);
+			jdbcTemplate.update(sql, nextVal, pictureId, userId, rating);
+			readBack= jdbcTemplate.queryForRowSet(readBackSql, nextVal);
+			
 		} catch (DataAccessException e) {
 			throw new DataAccessResourceFailureException("Can not reach database " + e.getMessage());
 		}
-		return null;
+		return RowMapper.mapRowsetToRatingList(readBack).get(0);
 	}
 	@Override
 	public Ratings changeRating(int ratingId, int rating) {
 		String sql ="UPDATE ratings SET rating=? WHERE rating_id=?";
+		String readBackSql="SELECT rating_id, picture_id, r.user_id, rating, u.username FROM ratings r "
+				+ "JOIN users u ON u.user_id=r.user_id WHERE r.rating_id=?";
+
+		SqlRowSet readBack; 
 		
 		try {
 			jdbcTemplate.update(sql, rating, ratingId);
+			readBack= jdbcTemplate.queryForRowSet(readBackSql, ratingId);
 		} catch (DataAccessException e) {
 			throw new DataAccessResourceFailureException("Can not reach database " + e.getMessage());
 		}
-		return null;
+		return RowMapper.mapRowsetToRatingList(readBack).get(0);
 	}
 	
 	
@@ -126,5 +158,33 @@ public class PicServiceSqlDAO implements PicServiceDAO{
 		}
 		return RowMapper.mapRowsetToRatingList(rowSet);
 	}
+	 
+	private int nextLikeId() {
+		SqlRowSet nextVal = jdbcTemplate.queryForRowSet("SELECT nextval('likes_like_id_seq')");
+		if (nextVal.next()) {
+			return nextVal.getInt(1);
+		} else {
+			throw new RuntimeException("Error unable to get an id for the new picture");
+		}
+	}
+	
+	private int nextCommentId() {
+		SqlRowSet nextVal = jdbcTemplate.queryForRowSet("SELECT nextval('comments_comment_id_seq')");
+		if (nextVal.next()) {
+			return nextVal.getInt(1);
+		} else {
+			throw new RuntimeException("Error unable to get an id for the new picture");
+		}
+	}
+	private int nextRateId() {
+		SqlRowSet nextVal = jdbcTemplate.queryForRowSet("SELECT nextval('ratings_rating_id_seq')");
+		if (nextVal.next()) {
+			return nextVal.getInt(1);
+		} else {
+			throw new RuntimeException("Error unable to get an id for the new picture");
+		}
+	}
+	
+	
 
 }
