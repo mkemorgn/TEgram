@@ -5,6 +5,7 @@ import java.security.Principal;
 import org.springframework.http.HttpStatus;
 
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import com.techelevator.dao.PicServiceDAO;
 import com.techelevator.dao.UserDAO;
 import com.techelevator.model.Comments;
 import com.techelevator.model.Likes;
+import com.techelevator.model.Picture;
 import com.techelevator.model.Ratings;
 
 @RestController
@@ -75,12 +77,24 @@ public class PicServiceController {
 		
 	}
 	
-	@ResponseStatus(HttpStatus.ACCEPTED)
-	@RequestMapping(value = "/editrate", method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.CREATED)
+	@RequestMapping(value = "/editrate", method = RequestMethod.PUT)
 	public Ratings changeRating(@RequestBody Ratings rating) {
 		
 		return picServiceDAO.changeRating(rating.getRatingId(), rating.getRating());
 		
+	}
+	
+	@ResponseStatus(HttpStatus.CREATED)
+	@RequestMapping(value = "/editfav", method = RequestMethod.PUT)
+	public Picture updateFavorite(@RequestBody Picture picture, Principal principal){
+		
+		//security check
+		if(picture.getUserName().equals(principal.getName())) {
+		return picServiceDAO.updateFavorite(picture);
+		}else {
+			throw new  UsernameNotFoundException("User " + picture.getUserName() + " not allowed to make change");
+		}
 	}
 
 }

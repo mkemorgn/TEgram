@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import com.techelevator.model.Ratings;
 import com.techelevator.model.Comments;
 import com.techelevator.model.Likes;
+import com.techelevator.model.Picture;
 
 @Component
 public class PicServiceSqlDAO implements PicServiceDAO{
@@ -121,6 +122,21 @@ public class PicServiceSqlDAO implements PicServiceDAO{
 		return RowMapper.mapRowsetToRatingList(readBack).get(0);
 	}
 	
+	@Override
+	public Picture updateFavorite(Picture picture) {
+		String sql ="UPDATE pictures SET favorite=? WHERE picture_id=?";
+		
+		try {
+			jdbcTemplate.update(sql, picture.isFavorite(), picture.getPictureId());
+			
+		} catch (DataAccessException e) {
+			throw new DataAccessResourceFailureException("Can not reach database " + e.getMessage());
+		}
+		return picture;
+	
+	}
+	
+	
 	
 	//helpers
 	public List<Likes> getLikesByPicId(int pictureId){
@@ -184,7 +200,7 @@ public class PicServiceSqlDAO implements PicServiceDAO{
 			throw new RuntimeException("Error unable to get an id for the new picture");
 		}
 	}
-	
+
 	
 
 }

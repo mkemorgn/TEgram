@@ -4,6 +4,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Comments;
 import com.techelevator.model.Likes;
+import com.techelevator.model.Picture;
 import com.techelevator.model.Ratings;
 
 public interface PicServiceDAO {
@@ -14,5 +15,6 @@ public interface PicServiceDAO {
 	void removeComment (int commentId);
 	Ratings addRating (int pictureId, int userId, int rating);
 	Ratings changeRating (int ratingId, int rating);
+	Picture updateFavorite(Picture picture);
 
 }
