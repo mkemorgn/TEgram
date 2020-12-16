@@ -15,15 +15,6 @@
         v-for="photo in photos"
         v-bind:key="photo.pictureId"
       >
-<<<<<<< HEAD
-        <img
-          class="card-img-top"
-          id="image"
-          v-bind:src="photo.picUrl"
-          v-bind:alt="photo.picName"
-        />
-
-=======
         <favorite-manager v-bind:photo="photo" />
         <router-link
           v-bind:to="{
@@ -38,7 +29,6 @@
             v-bind:alt="photo.picName"
           />
         </router-link>
->>>>>>> fb0fe13475eda2af55c0adc1bd977045fc5a93df
         <div class="pic-info">
           <rate-lists v-bind:ratings="photo.ratings" /> &nbsp; &nbsp;
           <like-list v-bind:likes="photo.likes" /> &nbsp; &nbsp;
@@ -80,13 +70,9 @@ import CommentManager from "./CommentManager";
 import LikeManager from "./LikeManager.vue";
 import RatingManager from "./RatingManager.vue"
 import RateLists from "./RateLists.vue";
-<<<<<<< HEAD
-
-=======
 // import Favorite from "./Favorite.vue";
 import FavoriteManager from "./FavoriteManager.vue";
 import CommentList from "./CommentList.vue";
->>>>>>> fb0fe13475eda2af55c0adc1bd977045fc5a93df
 
 export default {
   name: "photo-feed",
@@ -98,19 +84,11 @@ export default {
     CommentManager,
     LikeManager,
     RateLists,
-<<<<<<< HEAD
-    RatingManager
-    
-  }
-}
-  
-=======
     RatingManager,
     FavoriteManager,
     CommentList,
   },
 };
->>>>>>> fb0fe13475eda2af55c0adc1bd977045fc5a93df
 </script>
 
 <style>
