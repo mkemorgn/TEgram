@@ -1,10 +1,8 @@
 <template>
-  <div class="Profile">
-    <h1>hi</h1>
+  <div class="Detail">
     <photo-feed
       v-bind:photos="this.$store.state.photos"
-      v-bind:pageLoaded="this.pageLoaded"
-            
+      v-bind:pageLoaded="this.pageLoaded"           
     />
   </div>
   
