@@ -1,9 +1,10 @@
 <template>
+<div id="favbtn2">
   <div>
     <button
       v-if="!favorited"
       type="button"
-      class="btn btn-primary btn-sm"
+      class="btn btn-info btn-sm"
       @click="addFavorite(pictureId)"
     >
       Favorite <font-awesome-icon icon="heart" />
@@ -11,12 +12,13 @@
     <button
       v-else
       type="button"
-      class="btn btn-primary btn-sm"
+      class="btn btn-info btn-sm"
       @click="removeFavorite(pictureId)"
     >
       Unfavorite <font-awesome-icon icon="heart-broken" />
     </button>
   </div>
+</div>
 </template>
 
 <script>

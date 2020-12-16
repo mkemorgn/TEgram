@@ -1,6 +1,7 @@
 <template>
+<div id="favbtn">
   <div class="dropdown">
-    <p class="dropbtn badge badge-pill badge-success">
+    <p class="dropbtn badge badge-pill badge-info">
       <font-awesome-icon icon="heart" />
       {{ favCount(this.favorites) }}
     </p>
@@ -14,6 +15,7 @@
       </p>
     </div>
   </div>
+</div>
 </template>
 
 <script>
