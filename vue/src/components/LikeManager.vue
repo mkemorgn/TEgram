@@ -35,7 +35,7 @@ export default {
 
   methods: {
     isLiked(lks) {
-      if (lks) {
+      if (lks && lks.length > 0) {
         this.liked = lks.find((l) => l.userId == this.$store.state.user.id);
       }
     },
@@ -45,7 +45,7 @@ export default {
         .then((res) => {
           if (res.status === 201) {
             this.$store.commit("ADD_LIKE", res.data);
-            this.isLiked(this.likes);
+            this.liked = true;
           }
         })
         .catch((err) => {
@@ -58,6 +58,7 @@ export default {
         .then((res) => {
           if (res.status === 204) {
             this.$store.commit("REMOVE_LIKE", pictureId);
+            this.liked = false;
           }
         })
         .catch((err) => {
