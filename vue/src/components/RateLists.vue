@@ -24,7 +24,7 @@ export default {
     averageRating(ratings) {
       let sum = 0;
       let avg = 0;
-      if (ratings) {
+      if (ratings && ratings.length > 0) {
         ratings.forEach((rate) => {
           sum = sum + rate.rating;
         });
