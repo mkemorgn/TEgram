@@ -15,6 +15,7 @@
         v-for="photo in photos"
         v-bind:key="photo.pictureId"
       >
+<<<<<<< HEAD
         <img
           class="card-img-top"
           id="image"
@@ -22,22 +23,50 @@
           v-bind:alt="photo.picName"
         />
 
+=======
+        <favorite-manager v-bind:photo="photo" />
+        <router-link
+          v-bind:to="{
+            name: 'photo-detail',
+            params: { pictureId: photo.pictureId },
+          }"
+        >
+          <img
+            class="card-img-top"
+            id="image"
+            v-bind:src="photo.picUrl"
+            v-bind:alt="photo.picName"
+          />
+        </router-link>
+>>>>>>> fb0fe13475eda2af55c0adc1bd977045fc5a93df
         <div class="pic-info">
           <rate-lists v-bind:ratings="photo.ratings" /> &nbsp; &nbsp;
           <like-list v-bind:likes="photo.likes" /> &nbsp; &nbsp;
           <comment v-bind:comments="photo.comments" />
         </div>
-        <div class="card-body" id="idcard-body">
-          <h5 class="card-title">{{ photo.description }}</h5>
-          <p class="card-text">Posted By: {{ photo.userName }}</p>
-          <like-manager
-            v-bind:likes="photo.likes"
-            v-bind:pictureId="photo.pictureId"
-          />
-          <comment-manager v-bind:pictureId="photo.pictureId" />
-          <rating-manager
-            v-bind:ratings="photo.ratings" 
-            v-bind:pictureId="photo.pictureId" />
+        <div class="card-body">
+          <div style="heigth: 30px">
+            <h5 class="card-title">{{ photo.description }}</h5>
+          </div>
+          <router-link
+            v-bind:to="{ name: 'user-posts', params: { userId: photo.userId } }"
+          >
+            <p class="card-text">Posted By: {{ photo.userName }}</p>
+          </router-link>
+          <div v-if="$store.state.token != ''" id="piccard-edits">
+            <like-manager
+              v-bind:likes="photo.likes"
+              v-bind:pictureId="photo.pictureId"
+            />
+            <comment-list v-bind:comments="photo.comments" />
+            <comment-manager v-bind:pictureId="photo.pictureId" />
+            <rating-manager
+              v-bind:ratings="photo.ratings"
+              v-bind:pictureId="photo.pictureId"
+            />
+            <!-- <favorite-manager v-bind:photo="photo" /> -->
+          </div>
+          <details v-bind:pictureId="photo.pictureId" />
         </div>
       </div>
     </div>
@@ -51,7 +80,13 @@ import CommentManager from "./CommentManager";
 import LikeManager from "./LikeManager.vue";
 import RatingManager from "./RatingManager.vue"
 import RateLists from "./RateLists.vue";
+<<<<<<< HEAD
 
+=======
+// import Favorite from "./Favorite.vue";
+import FavoriteManager from "./FavoriteManager.vue";
+import CommentList from "./CommentList.vue";
+>>>>>>> fb0fe13475eda2af55c0adc1bd977045fc5a93df
 
 export default {
   name: "photo-feed",
@@ -63,11 +98,19 @@ export default {
     CommentManager,
     LikeManager,
     RateLists,
+<<<<<<< HEAD
     RatingManager
     
   }
 }
   
+=======
+    RatingManager,
+    FavoriteManager,
+    CommentList,
+  },
+};
+>>>>>>> fb0fe13475eda2af55c0adc1bd977045fc5a93df
 </script>
 
 <style>
