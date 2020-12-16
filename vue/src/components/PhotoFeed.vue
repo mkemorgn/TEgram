@@ -32,7 +32,7 @@
           <div style="heigth: 30px">
             <h5 class="card-title">{{ photo.description }}</h5>
           </div>
-          <router-link v-bind:to="{ name: 'user-posts', params: { userName: photo.userName } }">
+          <router-link v-bind:to="{ name: 'user-posts', params: { userId: photo.userId } }">
             <p class="card-text">Posted By: {{ photo.userName }}</p>
           </router-link>  
           <like-manager

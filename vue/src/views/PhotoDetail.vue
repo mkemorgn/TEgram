@@ -17,7 +17,6 @@ export default {
   components: {
     PhotoFeed,
   },
-  props: ["pictureId"],
   data() {
     return {
       pageLoaded: false,

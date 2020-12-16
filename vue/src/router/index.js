@@ -92,7 +92,7 @@ const router = new Router({
       }
     },
     {
-      path: "/posts/:userName",
+      path: "/posts/:userId",
       name: "user-posts",
       component: UserPosts,
       meta: {
