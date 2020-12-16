@@ -16,7 +16,6 @@
           name="desc"
           v-model="description"
           placeholder="Add description"
-          value=".."
         />
       </div>
       <div>
@@ -87,7 +86,7 @@ export default {
         .uploadPhoto(fd)
         .then((res) => {
           if (res.status === 201) {
-            this.$router.push("/");
+            this.$router.push({ name: "profile" });
           }
         })
         .catch((err) => {
@@ -99,7 +98,7 @@ export default {
       this.selectedFile = null;
       this.description = null;
       this.isPrivate = false;
-      this.$router.push("/");
+      this.$router.go(-1);
     },
   },
 };
@@ -123,5 +122,8 @@ export default {
   margin: 20px auto;
   padding: 20px;
   box-shadow: 2px 2px 6px #2cb1eab9;
+}
+.form-group > * {
+  margin-top: 10px;
 }
 </style>

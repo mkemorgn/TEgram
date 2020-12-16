@@ -1,11 +1,13 @@
 <template>
   <div class="user-posts">
+    <p id="go-back" @click="$router.go(-1)">
+      <font-awesome-icon icon="arrow-circle-left" />
+    </p>
     <photo-feed
       v-bind:photos="this.$store.state.photos"
-      v-bind:pageLoaded="this.pageLoaded"           
+      v-bind:pageLoaded="this.pageLoaded"
     />
   </div>
-  
 </template>
 
 <script>
@@ -23,15 +25,15 @@ export default {
     };
   },
   created() {
-    this.retrievePhotos();    
+    this.retrievePhotos();
   },
   methods: {
     retrievePhotos() {
-        const userId = this.$route.params.userId
-        console.log('here ' + userId);
-        PhotoService.getPhotosByUserId(userId)
+      const userId = this.$route.params.userId;
+      console.log("here " + userId);
+      PhotoService.getPhotosByUserId(userId)
         .then((response) => {
-          console.log('success');
+          console.log("success");
           this.$store.commit("SET_PHOTOS", response.data);
           this.pageLoaded = true;
         })

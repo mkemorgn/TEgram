@@ -2,12 +2,7 @@
   <div id="app">
     <div id="nav">
       <a class="logo-link" href="http://localhost:8081/">
-        <img
-          src="./assets/TE_Mark_Website2020_v3-01.png"
-          id="logo"
-          alt="Logo"
-        />
-        TE Gram
+        <img src="./assets/TEGram-logo.png" id="logo" alt="Logo" />
       </a>
       <div>
         <div class="nav-links">

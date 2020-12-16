@@ -1,8 +1,13 @@
 <template>
   <div>
-    <button v-if="!rated" type="button" @click="addRating">
+    <button
+      v-if="!rated"
+      type="button"
+      class="btn btn-primary btn-sm"
+      @click="addRating"
+    >
       Add Rating <font-awesome-icon icon="star" />
-      
+
       <!-- <label for="rating">Rating</label>
       <select id="rating" v-model.number="photo.rating">
         <option value="1">1 Star</option>

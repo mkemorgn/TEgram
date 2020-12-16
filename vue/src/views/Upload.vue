@@ -1,5 +1,8 @@
 <template>
   <div>
+    <p id="go-back" @click="$router.go(-1)">
+      <font-awesome-icon icon="arrow-circle-left" />
+    </p>
     <upload-photo />
   </div>
 </template>
