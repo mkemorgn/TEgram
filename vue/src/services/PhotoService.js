@@ -39,6 +39,11 @@ export default {
     },
     getPhotosByUserId(userId) {
         return axios.get(`/users/${userId}`);
-    }
-
+    },
+    addFavorite(pictureId) {
+        return axios.post(`/favorite/${pictureId}`)
+    },
+    removeFavorite(pictureId) {
+        return axios.delete(`/rfavorite/${pictureId}`)
+    },
 }
