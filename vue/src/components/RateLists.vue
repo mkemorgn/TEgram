@@ -1,7 +1,8 @@
 <template>
   <div class="dropdown">
     <p class="dropbtn badge badge-pill badge-success">
-      <font-awesome-icon icon="star" /> {{ averageRating(this.ratings) }}
+      <font-awesome-icon :icon="['far', 'star']" />
+      {{ averageRating(this.ratings) }}
     </p>
     <div class="dropdown-content">
       <p
@@ -10,7 +11,7 @@
         v-bind:key="rating.ratingId"
       >
         {{ rating.byUser }}&nbsp;-&nbsp;rated: {{ rating.rating }}
-        <font-awesome-icon icon="star" />
+        <font-awesome-icon :icon="['far', 'star']" />
       </p>
     </div>
   </div>

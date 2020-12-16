@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown">
     <p class="dropbtn badge badge-pill badge-success">
-      <font-awesome-icon icon="comments" />
+      <font-awesome-icon :icon="['far', 'comments']" />
       {{ commentCount(this.comments) }}
     </p>
     <div class="dropdown-content">
@@ -12,7 +12,7 @@
       >
         <i @click="deleteComment(comment)" style="color: red">
           <font-awesome-icon
-            icon="comment-slash"
+            :icon="['fas', 'comment-slash']"
             v-if="comment.userId == userd"
         /></i>
         {{ comment.byUser }}: {{ comment.comment }}

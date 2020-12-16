@@ -1,21 +1,21 @@
 <template>
-<div id="favbtn">
-  <div class="dropdown">
-    <p class="dropbtn badge badge-pill badge-info">
-      <font-awesome-icon icon="heart" />
-      {{ favCount(this.favorites) }}
-    </p>
-    <div class="dropdown-content">
-      <p
-        class="dropdown-elements"
-        v-for="favorite in favorites"
-        v-bind:key="favorite.favoriteId"
-      >
-        {{ favorite.byUser }}
+  <div id="favbtn">
+    <div class="dropdown">
+      <p class="dropbtn badge badge-pill badge-info">
+        <font-awesome-icon :icon="['far', 'heart']" />
+        {{ favCount(this.favorites) }}
       </p>
+      <div class="dropdown-content">
+        <p
+          class="dropdown-elements"
+          v-for="favorite in favorites"
+          v-bind:key="favorite.favoriteId"
+        >
+          {{ favorite.byUser }}
+        </p>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
