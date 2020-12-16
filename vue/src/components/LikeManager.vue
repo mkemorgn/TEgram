@@ -6,7 +6,7 @@
       class="btn btn-primary btn-sm"
       @click="addLike(pictureId)"
     >
-      Like <font-awesome-icon icon="thumbs-up" />
+      Like <font-awesome-icon icon="thumbs-up" class="far fa-thumbs-up" />
     </button>
     <button
       v-else
