@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown">
     <p class="dropbtn badge badge-pill badge-success">
-      <font-awesome-icon icon="['far', 'thumbs-up']" />
+      <font-awesome-icon icon="thumbs-up" />
       {{ likeCount(this.likes) }}
     </p>
     <div class="dropdown-content">
