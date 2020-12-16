@@ -1,5 +1,6 @@
 package com.techelevator.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Picture {
@@ -29,9 +30,9 @@ public class Picture {
 		this.description = description;
 		this.isPrivate = isPrivate;
 		this.favorite = favorite;
-		this.comments = null;
-		this.likes = null;
-		this.ratings = null;
+		this.comments =new ArrayList<Comments>();
+		this.likes = new ArrayList<Likes>();
+		this.ratings = new ArrayList<Ratings>();
 	}
 
 	public int getPictureId() {

@@ -15,7 +15,12 @@
         v-for="photo in photos"
         v-bind:key="photo.pictureId"
       >
-        <router-link v-bind:to="{ name: 'photo-detail', params: { pictureId: photo.pictureId } }">
+        <router-link
+          v-bind:to="{
+            name: 'photo-detail',
+            params: { pictureId: photo.pictureId },
+          }"
+        >
           <img
             class="card-img-top"
             id="image"
@@ -28,12 +33,15 @@
           <like-list v-bind:likes="photo.likes" /> &nbsp; &nbsp;
           <comment v-bind:comments="photo.comments" />
         </div>
-        <div class="card-body" id="idcard-body">
+        <div class="card-body">
           <div style="heigth: 30px">
             <h5 class="card-title">{{ photo.description }}</h5>
           </div>
-          <router-link v-bind:to="{ name: 'user-posts', params: { userId: photo.userId } }">
+          <router-link
+            v-bind:to="{ name: 'user-posts', params: { userId: photo.userId } }"
+          >
             <p class="card-text">Posted By: {{ photo.userName }}</p>
+<<<<<<< HEAD
           </router-link>  
           <like-manager
             v-bind:likes="photo.likes"
@@ -46,6 +54,33 @@
             v-bind:pictureId="photo.pictureId"
           />
           <details v-bind:pictureId="photo.pictureId"/>
+||||||| merged common ancestors
+          </router-link>  
+          <like-manager
+            v-bind:likes="photo.likes"
+            v-bind:pictureId="photo.pictureId"
+          />
+          <comment-manager v-bind:pictureId="photo.pictureId" />
+          <rating-manager
+            v-bind:ratings="photo.ratings"
+            v-bind:pictureId="photo.pictureId"
+          />
+          <details v-bind:pictureId="photo.pictureId"/>
+=======
+          </router-link>
+          <div v-if="$store.state.token != ''" id="piccard-edits">
+            <like-manager
+              v-bind:likes="photo.likes"
+              v-bind:pictureId="photo.pictureId"
+            />
+            <comment-manager v-bind:pictureId="photo.pictureId" />
+            <rating-manager
+              v-bind:ratings="photo.ratings"
+              v-bind:pictureId="photo.pictureId"
+            />
+          </div>
+          <details v-bind:pictureId="photo.pictureId" />
+>>>>>>> 60b394d01e56e01b68c830feb8618084fd91ba1e
         </div>
       </div>
     </div>
@@ -73,16 +108,18 @@ export default {
     LikeManager,
     RateLists,
     RatingManager,
+<<<<<<< HEAD
 
     CommentList
 
+||||||| merged common ancestors
+    
+=======
+>>>>>>> 60b394d01e56e01b68c830feb8618084fd91ba1e
   },
 };
 </script>
-
-,
-    PhotoDetail,
-    PhotoDetail<style>
+<style>
 /* do not revome this styles */
 
 #feedbox {
@@ -104,8 +141,9 @@ export default {
   justify-content: flex-end;
   margin: 3px 10px;
 }
-#idcard-body > * {
+#piccard-edits > * {
   margin-bottom: 5px;
+  margin-top: 5px;
 }
 #loading {
   margin-top: auto;

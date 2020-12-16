@@ -2,22 +2,15 @@
   <div id="app">
     <div id="nav">
       <a class="logo-link" href="http://localhost:8081/">
-        <img
-          src="./assets/TE_Mark_Website2020_v3-01.png"
-          id="logo"
-          alt="Logo"
-        />
-        TE Gram
+        <img src="./assets/TEGram-logo.png" id="logo" alt="Logo" />
       </a>
       <div>
         <div class="nav-links">
           <div v-if="$store.state.token != ''">
-            <router-link
-              v-bind:to="{ name: 'home' }"
-              data-toggle="tooltip"
-              title="Home"
-            >
+            <router-link v-bind:to="{ name: 'home' }">
               <img
+                data-toggle="tooltip"
+                title="Home"
                 class="topImage"
                 src="./assets/home.png"
                 alt="home-link"
@@ -25,12 +18,10 @@
                 height="35"
               /> </router-link
             >&nbsp;&nbsp;
-            <router-link
-              v-bind:to="{ name: 'profile' }"
-              data-toggle="tooltip"
-              title="Profile"
-            >
+            <router-link v-bind:to="{ name: 'profile' }">
               <img
+                data-toggle="tooltip"
+                title="Profile"
                 class="topImage"
                 src="./assets/account.png"
                 alt="user profile"
@@ -38,12 +29,10 @@
                 height="35"
               /> </router-link
             >&nbsp;&nbsp;
-            <router-link
-              v-bind:to="{ name: 'favorites' }"
-              data-toggle="tooltip"
-              title="Favorites"
-            >
+            <router-link v-bind:to="{ name: 'favorites' }">
               <img
+                data-toggle="tooltip"
+                title="Favorites"
                 class="topImage"
                 src="./assets/heart.png"
                 alt="favorite photos link"
@@ -51,12 +40,10 @@
                 height="35"
               /> </router-link
             >&nbsp;&nbsp;
-            <router-link
-              v-bind:to="{ name: 'upload' }"
-              data-toggle="tooltip"
-              title="Upload Image"
-            >
+            <router-link v-bind:to="{ name: 'upload' }">
               <img
+                data-toggle="tooltip"
+                title="Upload Image"
                 class="topImage"
                 src="./assets/upload-img.png"
                 alt="upload-photo"
@@ -65,12 +52,10 @@
               /> </router-link
             >&nbsp;&nbsp;
 
-            <router-link
-              v-bind:to="{ name: 'logout' }"
-              data-toggle="tooltip"
-              title="Logout"
-            >
+            <router-link v-bind:to="{ name: 'logout' }">
               <img
+                data-toggle="tooltip"
+                title="Logout"
                 class="topImage"
                 src="./assets/logout.png"
                 alt="logout-photo"
@@ -80,12 +65,10 @@
             >&nbsp;&nbsp;
           </div>
           <div v-else>
-            <router-link
-              v-bind:to="{ name: 'home' }"
-              data-toggle="tooltip"
-              title="Home"
-            >
+            <router-link v-bind:to="{ name: 'home' }">
               <img
+                data-toggle="tooltip"
+                title="Home"
                 class="topImage"
                 src="./assets/home.png"
                 alt="home-link"
@@ -93,12 +76,10 @@
                 height="35"
               /> </router-link
             >&nbsp;&nbsp;
-            <router-link
-              v-bind:to="{ name: 'login' }"
-              data-toggle="tooltip"
-              title="Login"
-            >
+            <router-link v-bind:to="{ name: 'login' }">
               <img
+                data-toggle="tooltip"
+                title="Login"
                 class="topImage"
                 src="./assets/login.png"
                 alt="login-photo"

@@ -60,7 +60,6 @@ export default new Vuex.Store({
           p.comments = p.comments.filter(c => c.commentId != comment.commentId);
         }
       });
-
     },
 
     REMOVE_PHOTO(state, data) {
@@ -96,7 +95,7 @@ export default new Vuex.Store({
     REMOVE_LIKE(state, pictureId) {
       state.photos.forEach(p => {
         if (p.pictureId == pictureId) {
-          p.likes.filter(l => l.userId != this.$store.state.user.id);
+          p.likes = p.likes.filter(l => l.userId != state.user.id);
         }
       }
       );

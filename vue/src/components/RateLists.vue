@@ -9,7 +9,7 @@
         v-for="rating in ratings"
         v-bind:key="rating.ratingId"
       >
-        {{ rating.byUser }} rated: {{ rating.rating }}
+        {{ rating.byUser }}&nbsp;-&nbsp;rated: {{ rating.rating }}
         <font-awesome-icon icon="star" />
       </p>
     </div>
@@ -24,7 +24,7 @@ export default {
     averageRating(ratings) {
       let sum = 0;
       let avg = 0;
-      if (ratings) {
+      if (ratings && ratings.length > 0) {
         ratings.forEach((rate) => {
           sum = sum + rate.rating;
         });
