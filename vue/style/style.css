@@ -49,6 +49,9 @@ body {
   .card {
       margin: auto;
   }
+  .card:hover{
+    transform: scale(1.06);
+  }
 
   .home {
       margin: auto;

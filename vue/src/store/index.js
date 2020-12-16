@@ -67,18 +67,19 @@ export default new Vuex.Store({
       this.commit("SET_PHOTOS", newPhotos);
       this.commit("SET_FILTERED_PHOTOS", state.user.id)
     },
-    ADD_FAVORITE_PHOTO(state, data) {
-      let favoritePhoto = state.photos.find(photo => {
-        return photo.pictureId == data;
+    EDIT_FAVORITE(state, photo) {
+      state.photos.forEach(p => {
+        if (p.pictureId == photo.pictureId) {
+          p = photo;
+        }
       });
-      state.favoritePhotos.push(favoritePhoto);
     },
-    REMOVE_FAVORITE_PHOTO(state, data) {
-      let newPhotos = state.favoritePhotos.filter(photo => {
-        return photo.pictureId != data
-      });
-      this.commit("SET_FAVORITE_PHOTOS", newPhotos);
-    },
+    // REMOVE_FAVORITE_PHOTO(state, data) {
+    //   let newPhotos = state.favoritePhotos.filter(photo => {
+    //     return photo.pictureId != data
+    //   });
+    //   this.commit("SET_FAVORITE_PHOTOS", newPhotos);
+    // },
     SET_FILTERED_PHOTOS(state, userId) {
       state.filteredPhotos = state.photos.filter(photo => {
         return photo.userId == userId;

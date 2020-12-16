@@ -12,14 +12,14 @@
         type="button"
         v-on:click="submit"
       >
-        <font-awesome-icon icon="comment" />
+        <font-awesome-icon :icon="['far', 'comment']" />
       </button>
       <button
         class="btn btn-outline-danger btn-sm"
         type="button"
         v-on:click="reset"
       >
-        <font-awesome-icon icon="ban" />
+        <font-awesome-icon :icon="['fas', 'ban']" />
       </button>
     </div>
   </div>

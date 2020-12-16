@@ -6,7 +6,7 @@
       class="btn btn-primary btn-sm"
       @click="addLike(pictureId)"
     >
-      Like <font-awesome-icon icon="thumbs-up" class="far fa-thumbs-up" />
+      Like <font-awesome-icon :icon="['far', 'thumbs-up']" />
     </button>
     <button
       v-else
@@ -14,7 +14,7 @@
       class="btn btn-primary btn-sm"
       @click="removeLike(pictureId)"
     >
-      Unlike <font-awesome-icon icon="thumbs-down" />
+      Unlike <font-awesome-icon :icon="['far', 'thumbs-down']" />
     </button>
   </div>
 </template>
