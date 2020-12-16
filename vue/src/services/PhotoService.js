@@ -26,18 +26,24 @@ export default {
     getPhotos() {
         return axios.get('/');
     },
+    getPhotoDetails(pictureId) {
+        return axios.get(`/details/${pictureId}`);
+    },
     addLike(pictureId) {
-        return axios.post(`/like/${pictureId}`)
+        return axios.post(`/like/${pictureId}`);
 
     },
     removeLike(pictureId) {
-        return axios.delete(`/rlike/${pictureId}`)
+        return axios.delete(`/rlike/${pictureId}`);
 
     },
     addFavorite(pictureId) {
         return axios.post(`/favorite/${pictureId}`)
-
     },
+    getPhotosByUserId(userId) {
+        return axios.get(`/users/${userId}`);
+    },
+
     removeFavorite(pictureId) {
         return axios.delete(`/rfavorite/${pictureId}`)
     },

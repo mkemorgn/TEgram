@@ -8,6 +8,8 @@ import store from '../store/index'
 import Favorites from '../views/Favorites.vue'
 import Profile from '../views/Profile.vue'
 import Upload from '../views/Upload.vue'
+import PhotoDetail from '../views/PhotoDetail.vue'
+import UserPosts from '../views/UserPosts.vue'
 
 
 Vue.use(Router)
@@ -62,7 +64,7 @@ const router = new Router({
       name: "favorites",
       component: Favorites,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -70,7 +72,7 @@ const router = new Router({
       name: "profile",
       component: Profile,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -78,10 +80,25 @@ const router = new Router({
       name: "upload",
       component: Upload,
       meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/photo-detail/:pictureId",
+      name: "photo-detail",
+      component: PhotoDetail,
+      meta: {
         requiresAuth: false
       }
     },
-    
+    {
+      path: "/posts/:userId",
+      name: "user-posts",
+      component: UserPosts,
+      meta: {
+        requiresAuth: true
+      }
+    }    
   ],
 })
 
