@@ -15,13 +15,14 @@
         v-for="photo in photos"
         v-bind:key="photo.pictureId"
       >
-        <img
-          class="card-img-top"
-          id="image"
-          v-bind:src="photo.picUrl"
-          v-bind:alt="photo.picName"
-        />
-
+        <router-link v-bind:to="{ name: 'photo-detail', params: { pictureId: photo.pictureId } }">
+          <img
+            class="card-img-top"
+            id="image"
+            v-bind:src="photo.picUrl"
+            v-bind:alt="photo.picName"
+          />
+        </router-link>
         <div class="pic-info">
           <rate-lists v-bind:ratings="photo.ratings" /> &nbsp; &nbsp;
           <like-list v-bind:likes="photo.likes" /> &nbsp; &nbsp;
@@ -31,7 +32,9 @@
           <div style="heigth: 30px">
             <h5 class="card-title">{{ photo.description }}</h5>
           </div>
-          <p class="card-text">Posted By: {{ photo.userName }}</p>
+          <router-link v-bind:to="{ name: 'user-posts', params: { userId: photo.userId } }">
+            <p class="card-text">Posted By: {{ photo.userName }}</p>
+          </router-link>  
           <like-manager
             v-bind:likes="photo.likes"
             v-bind:pictureId="photo.pictureId"
@@ -42,6 +45,7 @@
             v-bind:ratings="photo.ratings"
             v-bind:pictureId="photo.pictureId"
           />
+          <details v-bind:pictureId="photo.pictureId"/>
         </div>
       </div>
     </div>
@@ -69,12 +73,16 @@ export default {
     LikeManager,
     RateLists,
     RatingManager,
+
     CommentList
+
   },
 };
 </script>
 
-<style>
+,
+    PhotoDetail,
+    PhotoDetail<style>
 /* do not revome this styles */
 
 #feedbox {

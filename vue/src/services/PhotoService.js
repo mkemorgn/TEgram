@@ -26,13 +26,19 @@ export default {
     getPhotos() {
         return axios.get('/');
     },
+    getPhotoDetails(pictureId) {
+        return axios.get(`/details/${pictureId}`);
+    },
     addLike(pictureId) {
-        return axios.post(`/like/${pictureId}`)
+        return axios.post(`/like/${pictureId}`);
 
     },
     removeLike(pictureId) {
-        return axios.delete(`/rlike/${pictureId}`)
+        return axios.delete(`/rlike/${pictureId}`);
 
     },
+    getPhotosByUserId(userId) {
+        return axios.get(`/users/${userId}`);
+    }
 
 }
