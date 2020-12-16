@@ -8,6 +8,7 @@ import store from '../store/index'
 import Favorites from '../views/Favorites.vue'
 import Profile from '../views/Profile.vue'
 import Upload from '../views/Upload.vue'
+import PhotoDetail from '../views/PhotoDetail.vue'
 
 
 Vue.use(Router)
@@ -81,7 +82,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
-    
+    {
+      path: "/photo-detail/:pictureId",
+      name: "photo-detail",
+      component: PhotoDetail,
+      meta: {
+        requiresAuth: false
+      }
+    },    
   ],
 })
 
