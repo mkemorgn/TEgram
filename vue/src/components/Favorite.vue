@@ -1,16 +1,16 @@
 <template>
   <div class="dropdown">
     <p class="dropbtn badge badge-pill badge-success">
-      <font-awesome-icon icon="thumbs-up" />
-      {{ likeCount(this.likes) }}
+      <font-awesome-icon icon="heart" />
+      {{ favCount(this.favorites) }}
     </p>
     <div class="dropdown-content">
       <p
         class="dropdown-elements"
-        v-for="like in likes"
-        v-bind:key="like.likeId"
+        v-for="favorite in favorites"
+        v-bind:key="favorite.favoriteId"
       >
-        {{ like.byUser }}
+        {{ favorite.byUser }}
       </p>
     </div>
   </div>
@@ -18,11 +18,11 @@
 
 <script>
 export default {
-  props: ["likes"],
+  props: ["favorites"],
   methods: {
-    likeCount(likes) {
-      if (likes) {
-        return likes.length;
+    favCount(favorites) {
+      if (favorites) {
+        return favorites.length;
       } else {
         return 0;
       }

@@ -26,6 +26,7 @@
           <rate-lists v-bind:ratings="photo.ratings" /> &nbsp; &nbsp;
           <like-list v-bind:likes="photo.likes" /> &nbsp; &nbsp;
           <comment v-bind:comments="photo.comments" />
+          
         </div>
         <div class="card-body" id="idcard-body">
           <div style="heigth: 30px">
@@ -41,6 +42,7 @@
             v-bind:ratings="photo.ratings"
             v-bind:pictureId="photo.pictureId"
           />
+          <favorite-manager v-bind:pictureId="photo.pictureId" />
         </div>
       </div>
     </div>
@@ -54,6 +56,9 @@ import CommentManager from "./CommentManager";
 import LikeManager from "./LikeManager.vue";
 import RatingManager from "./RatingManager.vue";
 import RateLists from "./RateLists.vue";
+import Favorite from './Favorite.vue';
+import FavoriteManager from './FavoriteManager.vue';
+
 
 export default {
   name: "photo-feed",
@@ -66,6 +71,7 @@ export default {
     LikeManager,
     RateLists,
     RatingManager,
+    FavoriteManager,
   },
 };
 </script>

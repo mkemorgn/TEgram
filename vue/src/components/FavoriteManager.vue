@@ -1,20 +1,20 @@
 <template>
   <div>
     <button
-      v-if="!liked"
+      v-if="!favorited"
       type="button"
-      class="fas fa-star"
-      @click="addLike(pictureId)"
+      class="btn btn-primary btn-sm"
+      @click="addFavorite(pictureId)"
     >
-      Like <font-awesome-icon icon="thumbs-" />
+      Favorite <font-awesome-icon icon="heart" />
     </button>
     <button
       v-else
       type="button"
       class="btn btn-primary btn-sm"
-      @click="removeLike(pictureId)"
+      @click="removeFavorite(pictureId)"
     >
-      Unlike <font-awesome-icon icon="thumbs-down" />
+      Unfavorite <font-awesome-icon icon="heart-broken" />
     </button>
   </div>
 </template>
@@ -23,41 +23,41 @@
 import photoService from "@/services/PhotoService";
 
 export default {
-  props: ["likes", "pictureId"],
+  props: ["favorites", "pictureId"],
   data() {
     return {
-      liked: false,
+      favorite: true,
     };
   },
   created() {
-    this.isLiked(this.likes);
+    this.isFavorited(this.favorites);
   },
 
   methods: {
-    isLiked(lks) {
-      if (lks) {
-        this.liked = lks.find((l) => l.userId == this.$store.state.user.id);
+    isFav(fvs) {
+      if (fvs) {
+        this.favorited = favs.find((f) => f.userId == this.$store.state.user.id);
       }
     },
-    addLike(pictureId) {
+    addFavorite(pictureId) {
       photoService
-        .addLike(pictureId)
+        .addFavorite(pictureId)
         .then((res) => {
           if (res.status === 201) {
-            this.$store.commit("ADD_LIKE", res.data);
-            this.isLiked(this.likes);
+            this.$store.commit("ADD_FAVORITE", res.data);
+            this.isFavorited(this.favorites);
           }
         })
         .catch((err) => {
           console.log(err);
         });
     },
-    removeLike(pictureId) {
+    removeFavorite(pictureId) {
       photoService
-        .removeLike(pictureId)
+        .removeFavorite(pictureId)
         .then((res) => {
           if (res.status === 204) {
-            this.$store.commit("REMOVE_LIKE", pictureId);
+            this.$store.commit("REMOVE_FAVORITE", pictureId);
           }
         })
         .catch((err) => {
