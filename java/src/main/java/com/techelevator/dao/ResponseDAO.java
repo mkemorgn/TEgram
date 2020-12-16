@@ -10,6 +10,7 @@ public interface ResponseDAO {
 	List<Picture> userFav(int userId);
 	List<Picture> home();
 	List<Picture> photoDetail(int pictureID);
+	List<Picture> userPhotos(int userID);
 
 	
 

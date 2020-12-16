@@ -55,6 +55,22 @@ public class ResponseSqlDAO implements ResponseDAO {
         
         return polulatePicList(pictures);
 	}
+
+	@Override
+	public List<Picture> userPhotos(int userID) {
+		List<Picture> pictures = new ArrayList<>();
+		String sql = "SELECT picture_id, p.user_id, u.username, pic_url, pic_name, pic_server_name, description, private, favorite FROM pictures p "
+		+ "JOIN users u ON u.user_id = p.user_id WHERE p.private = 'false' AND p.user_id = ?";
+		SqlRowSet rowSet ;
+		try {
+			rowSet = jdbcTemplate.queryForRowSet(sql, userID);
+		} catch (DataAccessException e) {
+			throw new DataAccessResourceFailureException("Can not reach database: " + e.getMessage());
+		}
+        pictures=RowMapper.mapRowsetToPictureList(rowSet);        
+        return polulatePicList(pictures);
+	}
+
 	@Override
 	public List<Picture> photoDetail(int pictureID) {
 		List<Picture> pictures = new ArrayList<>();
@@ -66,8 +82,7 @@ public class ResponseSqlDAO implements ResponseDAO {
 		} catch (DataAccessException e) {
 			throw new DataAccessResourceFailureException("Can not reach database: " + e.getMessage());
 		}
-        pictures=RowMapper.mapRowsetToPictureList(rowSet);
-        
+        pictures=RowMapper.mapRowsetToPictureList(rowSet);        
         return polulatePicList(pictures);
 	}
 	@Override
@@ -105,4 +120,6 @@ public class ResponseSqlDAO implements ResponseDAO {
 		
 		return picList;
 	}
+
+	
 }
