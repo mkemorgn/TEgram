@@ -4,7 +4,7 @@
       <p>
         <span class="spinner-grow text-primary"></span> &nbsp;
         <span class="spinner-grow text-success"></span>&nbsp;
-        <span class="spinner-grow text-danger"></span>&nbsp;
+        <span class="spinner-grow text-secondary"></span>&nbsp;
         <span>Loading...</span>
       </p>
     </div>
@@ -15,48 +15,29 @@
         v-for="photo in photos"
         v-bind:key="photo.pictureId"
       >
-        <router-link
-          v-bind:to="{
-            name: 'photo-detail',
-            params: { pictureId: photo.pictureId },
-          }"
-        >
-          <img
-            class="card-img-top"
-            id="image"
-            v-bind:src="photo.picUrl"
-            v-bind:alt="photo.picName"
-          />
-        </router-link>
+        <img
+          class="card-img-top"
+          id="image"
+          v-bind:src="photo.picUrl"
+          v-bind:alt="photo.picName"
+        />
+
         <div class="pic-info">
           <rate-lists v-bind:ratings="photo.ratings" /> &nbsp; &nbsp;
           <like-list v-bind:likes="photo.likes" /> &nbsp; &nbsp;
           <comment v-bind:comments="photo.comments" />
-          
         </div>
-        <div class="card-body">
-          <div style="heigth: 30px">
-            <h5 class="card-title">{{ photo.description }}</h5>
-          </div>
-          <router-link
-            v-bind:to="{ name: 'user-posts', params: { userId: photo.userId } }"
-          >
-            <p class="card-text">Posted By: {{ photo.userName }}</p>
-          </router-link>
-          <div v-if="$store.state.token != ''" id="piccard-edits">
-            <like-manager
-              v-bind:likes="photo.likes"
-              v-bind:pictureId="photo.pictureId"
-            />
-            <comment-list v-bind:comments="photo.comments" />
-            <comment-manager v-bind:pictureId="photo.pictureId" />
-            <rating-manager
-              v-bind:ratings="photo.ratings"
-              v-bind:pictureId="photo.pictureId"
-            />
-          <favorite-manager v-bind:pictureId="photo.pictureId" />
-          </div>
-          <details v-bind:pictureId="photo.pictureId" />
+        <div class="card-body" id="idcard-body">
+          <h5 class="card-title">{{ photo.description }}</h5>
+          <p class="card-text">Posted By: {{ photo.userName }}</p>
+          <like-manager
+            v-bind:likes="photo.likes"
+            v-bind:pictureId="photo.pictureId"
+          />
+          <comment-manager v-bind:pictureId="photo.pictureId" />
+          <rating-manager
+            v-bind:ratings="photo.ratings" 
+            v-bind:pictureId="photo.pictureId" />
         </div>
       </div>
     </div>
@@ -68,11 +49,9 @@ import LikeList from "./LikeList.vue";
 import Comment from "./Comment.vue";
 import CommentManager from "./CommentManager";
 import LikeManager from "./LikeManager.vue";
-import RatingManager from "./RatingManager.vue";
+import RatingManager from "./RatingManager.vue"
 import RateLists from "./RateLists.vue";
-import Favorite from './Favorite.vue';
-import FavoriteManager from './FavoriteManager.vue';
-import CommentList from "./CommentList.vue";
+
 
 export default {
   name: "photo-feed",
@@ -84,12 +63,13 @@ export default {
     CommentManager,
     LikeManager,
     RateLists,
-    RatingManager,
-    FavoriteManager, 
-    CommentList,
-  },
-};
+    RatingManager
+    
+  }
+}
+  
 </script>
+
 <style>
 /* do not revome this styles */
 
@@ -112,9 +92,8 @@ export default {
   justify-content: flex-end;
   margin: 3px 10px;
 }
-#piccard-edits > * {
+#idcard-body > * {
   margin-bottom: 5px;
-  margin-top: 5px;
 }
 #loading {
   margin-top: auto;

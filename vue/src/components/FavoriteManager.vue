@@ -36,8 +36,8 @@ export default {
   },
 
   methods: {
-    isFav(fvs) {
-      if (fvs) {
+    isFav(favs) {
+      if (favs) {
         this.favorited = favs.find((f) => f.userId == this.$store.state.user.id);
       }
     },
