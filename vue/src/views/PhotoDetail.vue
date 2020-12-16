@@ -1,11 +1,13 @@
 <template>
   <div class="Detail">
+    <p id="go-back" @click="$router.go(-1)">
+      <font-awesome-icon icon="arrow-circle-left" />
+    </p>
     <photo-feed
       v-bind:photos="this.$store.state.photos"
-      v-bind:pageLoaded="this.pageLoaded"           
+      v-bind:pageLoaded="this.pageLoaded"
     />
   </div>
-  
 </template>
 
 <script>
@@ -20,20 +22,18 @@ export default {
   data() {
     return {
       pageLoaded: false,
-
     };
   },
   created() {
     this.retrievePhotos();
-    
   },
   methods: {
     retrievePhotos() {
-        const pictureId = this.$route.params.pictureId
-        console.log('here ' + pictureId);
-        PhotoService.getPhotoDetails(pictureId)
+      const pictureId = this.$route.params.pictureId;
+      console.log("here " + pictureId);
+      PhotoService.getPhotoDetails(pictureId)
         .then((response) => {
-          console.log('success');
+          console.log("success");
           this.$store.commit("SET_PHOTOS", response.data);
           this.pageLoaded = true;
         })
@@ -55,5 +55,4 @@ export default {
 </script>
 
 <style>
-
 </style>

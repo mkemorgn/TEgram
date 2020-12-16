@@ -37,7 +37,7 @@ public class UploadController {
 	@ResponseStatus(HttpStatus.CREATED)
 	@RequestMapping(value = "/upload", method = RequestMethod.POST, consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public Picture upload(@RequestParam("file") MultipartFile file, 
-			@RequestParam(value = "desc", defaultValue = "") String desc,
+			@RequestParam(value = "desc", defaultValue = "...") String desc,
 			@RequestParam(value = "isPrivate", required = false) boolean isPrivate, Principal principal) {
 		
 		int userID=userDAO.findIdByUsername(principal.getName());

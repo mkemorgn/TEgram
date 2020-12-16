@@ -57,14 +57,20 @@ body {
   .feed {
       margin:auto;
   }
-  .logo-link{
-      font-size: 200%;
-      font-family: "Montserrat";
-      color:#2CB2EA;
-  }
-  .logo-link:hover{
-    text-decoration: none;
-    color:#2CB2EA;
+
+  #logo:hover, .topImage:hover{
+    -webkit-filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.904));
+    filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.904));
+    transform: scale(1.2, 1.2);
+}
+
+#go-back{
+    padding-left: 40px; 
+    font-size: 30pt;
+}
+#go-back:hover{
+    -webkit-filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.904));
+    filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.904));
 }
 
   @media screen and (max-width: 425px) {
