@@ -41,6 +41,32 @@
             v-bind:to="{ name: 'user-posts', params: { userId: photo.userId } }"
           >
             <p class="card-text">Posted By: {{ photo.userName }}</p>
+<<<<<<< HEAD
+          </router-link>  
+          <like-manager
+            v-bind:likes="photo.likes"
+            v-bind:pictureId="photo.pictureId"
+          />
+          <comment-list v-bind:comments="photo.comments"/>
+          <comment-manager v-bind:pictureId="photo.pictureId" />
+          <rating-manager
+            v-bind:ratings="photo.ratings"
+            v-bind:pictureId="photo.pictureId"
+          />
+          <details v-bind:pictureId="photo.pictureId"/>
+||||||| merged common ancestors
+          </router-link>  
+          <like-manager
+            v-bind:likes="photo.likes"
+            v-bind:pictureId="photo.pictureId"
+          />
+          <comment-manager v-bind:pictureId="photo.pictureId" />
+          <rating-manager
+            v-bind:ratings="photo.ratings"
+            v-bind:pictureId="photo.pictureId"
+          />
+          <details v-bind:pictureId="photo.pictureId"/>
+=======
           </router-link>
           <div v-if="$store.state.token != ''" id="piccard-edits">
             <like-manager
@@ -54,6 +80,7 @@
             />
           </div>
           <details v-bind:pictureId="photo.pictureId" />
+>>>>>>> 60b394d01e56e01b68c830feb8618084fd91ba1e
         </div>
       </div>
     </div>
@@ -67,6 +94,8 @@ import CommentManager from "./CommentManager";
 import LikeManager from "./LikeManager.vue";
 import RatingManager from "./RatingManager.vue";
 import RateLists from "./RateLists.vue";
+import CommentList from "./CommentList.vue";
+
 
 export default {
   name: "photo-feed",
@@ -79,6 +108,14 @@ export default {
     LikeManager,
     RateLists,
     RatingManager,
+<<<<<<< HEAD
+
+    CommentList
+
+||||||| merged common ancestors
+    
+=======
+>>>>>>> 60b394d01e56e01b68c830feb8618084fd91ba1e
   },
 };
 </script>
