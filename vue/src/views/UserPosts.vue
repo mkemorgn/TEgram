@@ -1,5 +1,5 @@
 <template>
-  <div class="Detail">
+  <div class="user-posts">
     <photo-feed
       v-bind:photos="this.$store.state.photos"
       v-bind:pageLoaded="this.pageLoaded"           
@@ -20,18 +20,16 @@ export default {
   data() {
     return {
       pageLoaded: false,
-
     };
   },
   created() {
-    this.retrievePhotos();
-    
+    this.retrievePhotos();    
   },
   methods: {
     retrievePhotos() {
-        const pictureId = this.$route.params.pictureId
-        console.log('here ' + pictureId);
-        PhotoService.getPhotoDetails(pictureId)
+        const userId = this.$route.params.userId
+        console.log('here ' + userId);
+        PhotoService.getPhotosByUserId(userId)
         .then((response) => {
           console.log('success');
           this.$store.commit("SET_PHOTOS", response.data);
@@ -53,7 +51,3 @@ export default {
   },
 };
 </script>
-
-<style>
-
-</style>
