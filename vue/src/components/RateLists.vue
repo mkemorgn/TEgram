@@ -9,7 +9,7 @@
         v-for="rating in ratings"
         v-bind:key="rating.ratingId"
       >
-        {{ rating.byUser }} rated: {{ rating.rating }}
+        {{ rating.byUser }}&nbsp;-&nbsp;rated: {{ rating.rating }}
         <font-awesome-icon icon="star" />
       </p>
     </div>
