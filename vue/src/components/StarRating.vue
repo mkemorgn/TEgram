@@ -121,7 +121,7 @@ div p {
   color: gold;
 }
 div span {
-  color: gray;
+  color: rgb(196, 193, 193);
 }
 div span:hover {
   -webkit-filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.904));
