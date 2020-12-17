@@ -88,7 +88,7 @@ const router = new Router({
       name: "photo-detail",
       component: PhotoDetail,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
