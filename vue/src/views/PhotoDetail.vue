@@ -30,10 +30,9 @@ export default {
   methods: {
     retrievePhotos() {
       const pictureId = this.$route.params.pictureId;
-      console.log("here " + pictureId);
+
       PhotoService.getPhotoDetails(pictureId)
         .then((response) => {
-          console.log("success");
           this.$store.commit("SET_PHOTOS", response.data);
           this.pageLoaded = true;
         })

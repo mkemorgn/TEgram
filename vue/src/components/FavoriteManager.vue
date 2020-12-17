@@ -22,18 +22,8 @@ export default {
       isUsersPic: this.photo.userId == this.$store.state.user.id,
     };
   },
-  // created() {
-  //   this.isFavorited(this.favorites);
-  // },
 
   methods: {
-    // isFav(fvs) {
-    //   if (fvs) {
-    //     this.favorited = favs.find(
-    //       (f) => f.userId == this.$store.state.user.id
-    //     );
-    //   }
-    // },
     editFavorite(photo) {
       photo.favorite = !photo.favorite;
       photoService
