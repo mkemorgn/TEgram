@@ -104,6 +104,14 @@ export default new Vuex.Store({
     FAVORITE_FILTER(state) {
       state.photos = state.photos.filter(p => p.favorite == true);
 
+    },
+
+    ADD_RATING(state, rating) {
+      state.photos.forEach(p => {
+        if(p.pictureId == rating.pictureId) {
+          p.ratings.push(rating);
+        }
+      })
     }
   }
 })

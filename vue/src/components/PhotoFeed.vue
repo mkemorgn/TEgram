@@ -48,6 +48,7 @@
               v-bind:likes="photo.likes"
               v-bind:pictureId="photo.pictureId"
             />
+          
             <comment-list v-bind:comments="photo.comments" />
             <comment-manager v-bind:pictureId="photo.pictureId" />
             <rating-manager
@@ -74,6 +75,7 @@ import RateLists from "./RateLists.vue";
 import FavoriteManager from "./FavoriteManager.vue";
 import CommentList from "./CommentList.vue";
 
+
 export default {
   name: "photo-feed",
   props: ["photos", "pageLoaded"],
@@ -87,6 +89,7 @@ export default {
     RatingManager,
     FavoriteManager,
     CommentList,
+    
   },
 };
 </script>

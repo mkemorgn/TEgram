@@ -1,14 +1,14 @@
 <template>
-<div> Rating <font-awesome-icon icon="star-half-alt" />
-  <select id="rating" @change="onChange(this.value)" class="dropdown-elements">
-    
+
+<div v-if="!rated"> Rating <font-awesome-icon icon="star-half-alt" />
+  <select id="rating" @change="addRating(pictureId)" class="dropdown-elements">
         <option value="1">1 Star</option>
         <option value="2">2 Stars</option>
         <option value="3">3 Stars</option>
         <option value="4">4 Stars</option>
         <option value="5">5 Stars</option>
 </select>
-    
+
         <!-- class="dropdown-elements">
         <select id="rating" v-model.number="photo.rating">
         <option value="1">1 Star</option>
@@ -47,11 +47,14 @@
 </template>
 
 <script>
+
 import photoService from "@/services/PhotoService";
 
 export default {
+ 
   props: ["ratings", "pictureId"],
   data() {
+    
     return {
       rated: false,
     };
@@ -61,6 +64,12 @@ export default {
   },
 
   methods: {
+    setRating: function(rating){
+      this.rating= rating;
+    },
+    data: {
+    rating: 0
+  },
     isRated(rate) {
       if (rate) {
         this.rated = rate.find((r) => r.userId == this.$store.state.user.id);
@@ -70,28 +79,29 @@ export default {
       photoService
         .addRating(pictureId)
         .then((response) => {
-          if (response.status === 200) {
-            
-            this.$router.push("/");
+          if (response.status === 201) {
+            this.$store.commit("ADD_RATING", response.data);
+            this.rated = true;
+    
           }
         })
         .catch((err) => {
           console.log(err);
         });
     },
-    changeRating(pictureId) {
-      photoService
-        .changeRating(pictureId)
-        .then((response) => {
-          if (response.status === 200) {
+    // changeRating(pictureId) {
+    //   photoService
+    //     .changeRating(pictureId)
+    //     .then((response) => {
+    //       if (response.status === 200) {
             
-            this.$router.push("/");
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    },
+    //         this.$router.push("/");
+    //       }
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
+    // },
   },
 };
 </script>
