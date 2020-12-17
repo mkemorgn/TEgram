@@ -5,22 +5,11 @@ body {
     font-family: "Montserrat";
     color:#2CB2EA;
   }
-
-  head {
-      /* background-color: #f9f9f9; */
-  }
-
-#app {
-    /* background-color: #f9f9f9; */
-}
-
   #logo {
       top: 40px;
-      /* float: left; */
       padding-top: 10px;
       padding-left: 20px;
   }
-
   #nav {
       background-color: #f9f9f9;
       text-align: right; 
@@ -36,30 +25,24 @@ body {
       align-items: center;
       justify-content: space-between;
   }
-
   .nav-links div > *{
       font-size: 8pt;
   }
   .nav-links div>:hover{
     text-decoration: none;
-    
 }
-
   #app {
       color:#2CB2EA;
   }
-
   .card {
       margin: auto;
   }
   .card:hover{
     transform: scale(1.06);
   }
-
   .home {
       margin: auto;
   }
-
   .feed {
       margin:auto;
   }
@@ -67,17 +50,15 @@ body {
       width: 40px;
       height: 40px;
   }
-
   #logo:hover, .topImage:hover{
     -webkit-filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.904));
     filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.904));
     transform: scale(1.2, 1.2);
 }
-
-
 #go-back{
     padding-left: 40px; 
     font-size: 30pt;
+    color: #2CB2EA;
 }
 #go-back:hover{
     -webkit-filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.904));
