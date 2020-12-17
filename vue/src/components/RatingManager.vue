@@ -1,13 +1,23 @@
 <template>
-  <div>
-    <button
-      v-if="!rated"
-      type="button"
-      class="btn btn-primary btn-sm"
-      @click="addRating"
-    >
-      Add Rating <font-awesome-icon icon="star" />
-
+<div> Rating <font-awesome-icon icon="star-half-alt" />
+  <select id="rating" @change="onChange(this.value)" class="dropdown-elements">
+    
+        <option value="1">1 Star</option>
+        <option value="2">2 Stars</option>
+        <option value="3">3 Stars</option>
+        <option value="4">4 Stars</option>
+        <option value="5">5 Stars</option>
+</select>
+    
+        <!-- class="dropdown-elements">
+        <select id="rating" v-model.number="photo.rating">
+        <option value="1">1 Star</option>
+        <option value="2">2 Stars</option>
+        <option value="3">3 Stars</option>
+        <option value="4">4 Stars</option>
+        <option value="5">5 Stars</option>
+      </select>
+      > -->
       <!-- <label for="rating">Rating</label>
       <select id="rating" v-model.number="photo.rating">
         <option value="1">1 Star</option>
@@ -16,14 +26,14 @@
         <option value="4">4 Stars</option>
         <option value="5">5 Stars</option>
       </select> -->
-    </button>
+    <!-- </button>
     <button
       v-else
       type="button"
       class="btn btn-primary btn-sm"
       @click="changeRating"
     >
-      Change Rating <font-awesome-icon icon="star-half-alt" />
+      Change Rating <font-awesome-icon icon="star-half-alt" /> -->
       <!-- <label for="rating">Rating</label>
       <select id="rating" v-model.number="photo.rating">
         <option value="1">1 Star</option>
@@ -32,7 +42,7 @@
         <option value="4">4 Stars</option>
         <option value="5">5 Stars</option>
       </select> -->
-    </button>
+    
   </div>
 </template>
 
@@ -58,9 +68,10 @@ export default {
     },
     addRating(pictureId) {
       photoService
-        .addLike(pictureId)
+        .addRating(pictureId)
         .then((response) => {
           if (response.status === 200) {
+            
             this.$router.push("/");
           }
         })
@@ -73,6 +84,7 @@ export default {
         .changeRating(pictureId)
         .then((response) => {
           if (response.status === 200) {
+            
             this.$router.push("/");
           }
         })
