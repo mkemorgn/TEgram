@@ -55,8 +55,6 @@
             />
             <comment-list v-bind:comments="photo.comments" />
             <comment-manager v-bind:pictureId="photo.pictureId" />
-
-            <star-rating v-bind:ratings="photo.ratings" v-bind:photo="photo" />
           </div>
           <details v-bind:pictureId="photo.pictureId" />
         </div>
