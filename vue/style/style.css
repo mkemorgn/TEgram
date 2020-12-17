@@ -37,10 +37,13 @@ body {
       justify-content: space-between;
   }
 
-  .nav-links a{
-      align-items: center;
-      color: #2CB2EA;
+  .nav-links div > *{
+      font-size: 8pt;
   }
+  .nav-links div>:hover{
+    text-decoration: none;
+    
+}
 
   #app {
       color:#2CB2EA;
@@ -60,12 +63,17 @@ body {
   .feed {
       margin:auto;
   }
+  .topImage{
+      width: 40px;
+      height: 40px;
+  }
 
   #logo:hover, .topImage:hover{
     -webkit-filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.904));
     filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.904));
     transform: scale(1.2, 1.2);
 }
+
 
 #go-back{
     padding-left: 40px; 

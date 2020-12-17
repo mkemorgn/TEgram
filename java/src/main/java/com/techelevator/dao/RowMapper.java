@@ -62,7 +62,7 @@ public class RowMapper {
 		List<Ratings> ratingList =new ArrayList<Ratings>();
 		while(rowSet.next()) {
 			Ratings  newRating= new Ratings(rowSet.getInt("rating_id"), rowSet.getInt("picture_id"), rowSet.getInt("user_id"),
-					rowSet.getInt("user_id"),rowSet.getString("username"));
+					rowSet.getInt("rating"),rowSet.getString("username"));
 			
 			ratingList.add(newRating);
 		}
