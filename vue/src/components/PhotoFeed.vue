@@ -30,6 +30,11 @@
           />
         </router-link>
         <div class="pic-info">
+          <star-rating
+            v-if="$store.state.token != ''"
+            v-bind:ratings="photo.ratings"
+            v-bind:photo="photo"
+          />
           <rate-lists v-bind:ratings="photo.ratings" /> &nbsp; &nbsp;
           <like-list v-bind:likes="photo.likes" /> &nbsp; &nbsp;
           <comment v-bind:comments="photo.comments" />
@@ -50,11 +55,8 @@
             />
             <comment-list v-bind:comments="photo.comments" />
             <comment-manager v-bind:pictureId="photo.pictureId" />
-            <rating-manager
-              v-bind:ratings="photo.ratings"
-              v-bind:pictureId="photo.pictureId"
-            />
-            <!-- <favorite-manager v-bind:photo="photo" /> -->
+
+            <star-rating v-bind:ratings="photo.ratings" v-bind:photo="photo" />
           </div>
           <details v-bind:pictureId="photo.pictureId" />
         </div>
@@ -68,11 +70,10 @@ import LikeList from "./LikeList.vue";
 import Comment from "./Comment.vue";
 import CommentManager from "./CommentManager";
 import LikeManager from "./LikeManager.vue";
-import RatingManager from "./RatingManager.vue";
 import RateLists from "./RateLists.vue";
-// import Favorite from "./Favorite.vue";
 import FavoriteManager from "./FavoriteManager.vue";
 import CommentList from "./CommentList.vue";
+import StarRating from "./StarRating.vue";
 
 export default {
   name: "photo-feed",
@@ -84,9 +85,9 @@ export default {
     CommentManager,
     LikeManager,
     RateLists,
-    RatingManager,
     FavoriteManager,
     CommentList,
+    StarRating,
   },
 };
 </script>

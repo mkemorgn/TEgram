@@ -21,7 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     photos: [],
-    favoritePhotos: [],
+    // favoritePhotos: [],
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -74,15 +74,22 @@ export default new Vuex.Store({
         }
       });
     },
-    // REMOVE_FAVORITE_PHOTO(state, data) {
-    //   let newPhotos = state.favoritePhotos.filter(photo => {
-    //     return photo.pictureId != data
-    //   });
-    //   this.commit("SET_FAVORITE_PHOTOS", newPhotos);
-    // },
-    SET_FILTERED_PHOTOS(state, userId) {
-      state.filteredPhotos = state.photos.filter(photo => {
-        return photo.userId == userId;
+    ADD_RATING(state, rating) {
+      state.photos.forEach(p => {
+        if (p.pictureId == rating.pictureId) {
+          p.ratings.push(rating);
+        }
+      });
+    },
+    EDIT_RATING(state, rating) {
+      state.photos.forEach(p => {
+        if (p.pictureId == rating.pictureId) {
+          p.ratings.forEach(rt => {
+            if (rt.ratingId == rating.ratingId) {
+              rt = rating;
+            }
+          });
+        }
       });
     },
     ADD_LIKE(state, like) {

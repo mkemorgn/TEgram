@@ -14,14 +14,8 @@ export default {
     deleteComment(comment) {
         return axios.delete(`/comment/${comment.commentId}`);
     },
-    rating(formData) {
-        return axios.post('/rating', formData);
-    },
     getUserPhotos() {
         return axios.get('/photos');
-    },
-    getUserFav(favoriteId) {
-        return axios.get(`/photos/${favoriteId}`);
     },
     getPhotos() {
         return axios.get('/');
@@ -42,6 +36,12 @@ export default {
     },
     editFavorite(photo) {
         return axios.put("/editfav", photo)
+    },
+    addRating(rating) {
+        return axios.post('/rate', rating);
+    },
+    editRating(rating) {
+        return axios.put('/editrate', rating);
     },
 
 }
