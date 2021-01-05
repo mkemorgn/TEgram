@@ -15,8 +15,8 @@ public class CloudinaryUpload {
 		
 		cloudinary = new Cloudinary(ObjectUtils.asMap(
 				"cloud_name", "dr1xyxwvj",
-				"api_key", "238366875587185",
-				"api_secret", "95NwCdjBedugKSkoqmfoMUIdRh0"));
+				"api_key", "API_KEY_HERE",
+				"api_secret", "API_SECRET_HERE"));
 		
 		Map <String, String>uploadResult = cloudinary.uploader().upload(file, ObjectUtils.asMap("folder", userID+"/"));
 		
